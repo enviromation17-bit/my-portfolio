@@ -428,27 +428,44 @@
     </main>
 
     <footer>
-        <div class="social-icons">
-            <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i></a>
-            <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="mailto:your.email@example.com"><i class="fa-solid fa-envelope"></i></a>
-        </div>
+       <div class="social-icons">
+    <!-- Links directly to your main GitHub profile where all your repositories live -->
+    <a href="https://github.com/enviromation17-bit" target="_blank" title="View my GitHub Repositories">
+        <i class="fa-brands fa-github"></i>
+    </a>
+    
+    <!-- Link to your LinkedIn Profile -->
+    <a href="https://linkedin.com/in/YOUR_LINKEDIN_USERNAME" target="_blank" title="Connect on LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+    </a>
+    
+    <!-- Link to open a direct email draft to you -->
+    <a href="mailto:YOUR_ACTUAL_EMAIL@gmail.com" title="Email Me">
+        <i class="fa-solid fa-envelope"></i>
+    </a>
+</div>
         <p>&copy; 2026 Salman. Built for high performance.</p>
     </footer>
 
     <script>
         function switchView(viewId) {
+            // 1. Hide all page views
             document.querySelectorAll('.page-view').forEach(view => {
                 view.classList.remove('active');
             });
+            // 2. Show the selected page view
             document.getElementById('view-' + viewId).classList.add('active');
 
+            // 3. Clear the highlight active class from all navigation links
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.classList.remove('active');
             });
+            
+            // 4. Highlight the correct nav link matching the current view
             const targetLink = document.getElementById('link-' + viewId);
             if(targetLink) targetLink.classList.add('active');
 
+            // 5. Smooth scroll back to top so the user sees the new content
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
