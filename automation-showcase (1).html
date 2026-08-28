@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automation Pipeline — Lead Generation &amp; Outreach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blueprint:#0B3D6E;
+    --blueprint-deep:#082C50;
+    --line:#7FB3E8;
+    --line-dim:#3D6E9E;
+    --paper:#F4F1E8;
+    --amber:#FF9F1C;
+    --white:#EAF2FB;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Space Grotesk', sans-serif;
+    background:var(--blueprint);
+    color:var(--white);
+    background-image:
+      linear-gradient(var(--line-dim) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-dim) 1px, transparent 1px);
+    background-size:32px 32px;
+    background-position:-1px -1px;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  .mono{font-family:'JetBrains Mono', monospace;}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 32px;}
+
+  header{padding:40px 0 20px; border-bottom:1px solid rgba(127,179,232,0.3);}
+  header .wrap{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;}
+  .stamp{
+    font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.06em;
+    border:1px solid var(--amber); color:var(--amber); padding:6px 12px; border-radius:2px;
+    text-transform:uppercase;
+  }
+  h1{font-size:clamp(1.8rem, 4vw, 2.6rem); font-weight:600; max-width:640px; margin-top:12px;}
+  .sub{color:var(--line); max-width:520px; margin-top:10px; font-size:0.98rem;}
+
+  .rev-box{
+    font-family:'JetBrains Mono', monospace; font-size:0.72rem; color:var(--line);
+    border:1px solid var(--line-dim); padding:10px 14px; min-width:180px;
+  }
+  .rev-box div{display:flex; justify-content:space-between; gap:16px; padding:2px 0;}
+  .rev-box span:first-child{color:var(--line-dim);}
+
+  section{padding:70px 0;}
+  .stage-label{
+    font-family:'JetBrains Mono', monospace; font-size:0.75rem; color:var(--amber);
+    letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;
+  }
+  .pipeline{position:relative;}
+  .stage{
+    display:grid; grid-template-columns:60px 1fr; gap:24px; margin-bottom:0;
+    position:relative; padding-bottom:60px;
+  }
+  .stage:last-child{padding-bottom:0;}
+  .node-col{display:flex; flex-direction:column; align-items:center;}
+  .node{
+    width:44px; height:44px; border:2px solid var(--amber); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace; font-weight:600; color:var(--amber);
+    background:var(--blueprint-deep); flex-shrink:0; z-index:2;
+  }
+  .connector{
+    flex:1; width:2px; background-image:linear-gradient(to bottom, var(--line-dim) 50%, transparent 50%);
+    background-size:2px 10px; margin-top:4px; min-height:40px;
+  }
+  .stage-content h3{font-size:1.3rem; margin-bottom:8px;}
+  .stage-content p{color:var(--line); max-width:520px; font-size:0.95rem; margin-bottom:16px;}
+
+  .sample-panel{
+    background:var(--paper); color:#1a1a1a; border-radius:6px; overflow:hidden;
+    box-shadow:0 20px 40px rgba(0,0,0,0.3);
+  }
+  .sample-panel-head{
+    background:#1a1a1a; color:var(--paper); font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem; padding:8px 14px; letter-spacing:0.05em; display:flex; justify-content:space-between;
+  }
+  .sample-table{width:100%; border-collapse:collapse; font-family:'JetBrains Mono', monospace; font-size:0.82rem;}
+  .sample-table th{
+    text-align:left; padding:10px 14px; background:#e8e2d0; font-weight:600; font-size:0.72rem;
+    text-transform:uppercase; letter-spacing:0.04em; border-bottom:1px solid #d4cdb5;
+  }
+  .sample-table td{padding:9px 14px; border-bottom:1px solid #e8e2d0;}
+  .sample-table tr:last-child td{border-bottom:none;}
+  .tag{
+    display:inline-block; font-size:0.7rem; padding:2px 8px; border-radius:100px; font-weight:600;
+  }
+  .tag.keep{background:#DCEFE1; color:#1B7A3D;}
+  .tag.drop{background:#F5DADA; color:#B02A2A;}
+
+  .email-sample{padding:22px; font-family:'JetBrains Mono', monospace; font-size:0.85rem;}
+  .email-sample .field{display:flex; gap:10px; margin-bottom:6px; color:#555;}
+  .email-sample .field b{color:#1a1a1a; min-width:56px;}
+  .email-body{margin-top:14px; padding-top:14px; border-top:1px dashed #cfc7ac; color:#2a2a2a; line-height:1.6;}
+
+  .note{
+    font-family:'JetBrains Mono', monospace; font-size:0.75rem; color:var(--line-dim);
+    margin-top:10px; font-style:italic;
+  }
+
+  footer{padding:50px 0; border-top:1px solid rgba(127,179,232,0.3); text-align:center;}
+  footer p{color:var(--line); font-size:0.85rem;}
+  footer a{color:var(--amber); text-decoration:none;}
+
+  @media (max-width:700px){
+    .stage{grid-template-columns:44px 1fr; gap:16px;}
+    .sample-table{font-size:0.72rem;}
+    .sample-table th, .sample-table td{padding:8px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div>
+      <a href="https://enviromation17-bit.github.io/my-portfolio/" style="color:var(--amber); font-family:'JetBrains Mono', monospace; font-size:0.75rem; text-decoration:none;">← Back to portfolio</a>
+      <div style="margin-top:14px;">
+        <span class="stamp">Process Diagram · Live System</span>
+      </div>
+      <h1>Lead Generation &amp; Outreach Automation</h1>
+      <p class="sub">The pipeline that finds real businesses, filters them down to usable contacts, and sends the first outreach message — all built and running today.</p>
+    </div>
+    <div class="rev-box">
+      <div><span>System</span><span>n8n + Python</span></div>
+      <div><span>Data Source</span><span>OpenStreetMap</span></div>
+      <div><span>Status</span><span style="color:var(--amber);">Active</span></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap pipeline">
+
+    <div class="stage">
+      <div class="node-col">
+        <div class="node mono">01</div>
+        <div class="connector"></div>
+      </div>
+      <div class="stage-content">
+        <div class="stage-label">Stage 1 — Discover</div>
+        <h3>Find real businesses by category and city</h3>
+        <p>A script queries open map data for a target category (cafes, gyms, dentists, restaurants) in a chosen city, pulling business names, addresses, and any listed phone or website.</p>
+        <div class="sample-panel">
+          <div class="sample-panel-head"><span>output_sample.csv</span><span>SAMPLE DATA</span></div>
+          <table class="sample-table">
+            <tr><th>Name</th><th>Phone</th><th>Website</th><th>City</th></tr>
+            <tr><td>[Independent Cafe]</td><td>+44 xxx xxx xxxx</td><td>example.co.uk</td><td>Manchester</td></tr>
+            <tr><td>[Local Practice]</td><td>—</td><td>example2.co.uk</td><td>Manchester</td></tr>
+            <tr><td>[Studio / Gym]</td><td>+44 xxx xxx xxxx</td><td>—</td><td>Leeds</td></tr>
+          </table>
+        </div>
+        <p class="note">// Real runs return 50–300+ verified listings per search. Names shown here are illustrative — real client data isn't published.</p>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="node-col">
+        <div class="node mono">02</div>
+        <div class="connector"></div>
+      </div>
+      <div class="stage-content">
+        <div class="stage-label">Stage 2 — Filter &amp; Clean</div>
+        <h3>Remove chains, duplicates, and dead entries</h3>
+        <p>Large national chains and incomplete listings are automatically filtered out, leaving only independent businesses with at least one working contact method.</p>
+        <div class="sample-panel">
+          <div class="sample-panel-head"><span>filter_pass.log</span><span>335 → 41 kept</span></div>
+          <table class="sample-table">
+            <tr><th>Entry</th><th>Reason</th><th>Result</th></tr>
+            <tr><td>[National chain]</td><td>Existing digital infra</td><td><span class="tag drop">Dropped</span></td></tr>
+            <tr><td>[No contact info]</td><td>Unreachable</td><td><span class="tag drop">Dropped</span></td></tr>
+            <tr><td>[Independent business]</td><td>Contact verified</td><td><span class="tag keep">Kept</span></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="node-col">
+        <div class="node mono">03</div>
+      </div>
+      <div class="stage-content">
+        <div class="stage-label">Stage 3 — Outreach</div>
+        <h3>Send a personalized first message</h3>
+        <p>Each verified contact receives a short, tailored message via email or an automated send queue — logged, tracked, and never repeated to the same contact.</p>
+        <div class="sample-panel">
+          <div class="sample-panel-head"><span>outreach_preview.eml</span><span>SAMPLE MESSAGE</span></div>
+          <div class="email-sample">
+            <div class="field"><b>To:</b> hello@[business].co.uk</div>
+            <div class="field"><b>Subject:</b> A quick idea for [Business Name]</div>
+            <div class="email-body">
+              Hi — I build AI assistants for local businesses like yours. Here's a working example you can try yourself: [demo link]. Takes about a day to set up on your own site if you're interested — no pressure.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>This is the same pipeline used to research and reach out to real independent businesses — built and operated end to end.</p>
+    <p style="margin-top:8px;">See the AI assistant this leads to: <a href="https://enviromation17-bit.github.io/demo_website/">Live demo →</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
