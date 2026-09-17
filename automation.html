@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Renolt lead generation and outreach automation system — a repeatable workflow for prospecting, filtering and outreach.">
+<title>Renolt — Lead Generation & Outreach Automation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a0d12; --ink2:#0d121a; --panel:#131822; --panel2:#171d29;
+  --line:rgba(255,255,255,.08); --text:#f2f5f8; --muted:#8d97a6; --muted2:#647082;
+  --amber:#e8a33d; --amber-dim:rgba(232,163,61,.14); --teal:#35d6a6; --wire:#2a3341; --max:960px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',Arial,sans-serif;background:var(--ink);color:var(--text);line-height:1.65}
+h1,h2{font-family:'Sora',sans-serif;letter-spacing:-.02em}
+a{text-decoration:none;color:inherit}
+.wrap{width:min(var(--max),calc(100% - 44px));margin:auto}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+.nav{border-bottom:1px solid var(--line);background:rgba(10,13,18,.9);position:sticky;top:0;backdrop-filter:blur(14px);z-index:10}
+.navin{height:72px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'Sora',sans-serif;font-weight:800;font-size:1.2rem}
+.brand em{color:var(--amber);font-style:normal}
+.back{color:var(--muted);font-size:.86rem}
+
+header.hero{padding:64px 0 40px}
+.stamp{display:inline-flex;align-items:center;gap:8px;color:var(--amber);border:1px solid rgba(232,163,61,.32);background:var(--amber-dim);padding:7px 13px;border-radius:99px;font:500 .74rem 'IBM Plex Mono',monospace}
+.stamp::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber)}
+h1{font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.08;margin-top:20px;font-weight:700}
+.sub{color:var(--muted);max-width:640px;margin-top:16px;font-size:1.02rem}
+.metaRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.pill{border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:8px 13px;border-radius:99px;font-size:.78rem}
+.pill b{color:var(--text)}
+
+section.body{padding:20px 0 70px}
+.stage{display:grid;grid-template-columns:52px 1fr;gap:22px;position:relative;padding-bottom:56px}
+.stage:last-child{padding-bottom:0}
+.nodecol{display:flex;flex-direction:column;align-items:center}
+.node{width:44px;height:44px;border:2px solid var(--amber);border-radius:11px;display:grid;place-items:center;color:var(--amber);font-family:'Sora',sans-serif;font-weight:700;background:var(--panel2);z-index:2}
+.connector{width:2px;flex:1;background:var(--wire);margin-top:6px}
+.label{color:var(--amber);font:500 .74rem 'IBM Plex Mono',monospace;margin-bottom:8px}
+.stage h2{font-size:1.35rem;margin-bottom:9px;font-weight:600}
+.stage p{color:var(--muted);max-width:640px;margin-bottom:18px;font-size:.95rem}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.panelhead{background:var(--panel2);border-bottom:1px solid var(--line);padding:10px 15px;display:flex;justify-content:space-between;font:500 .7rem 'IBM Plex Mono',monospace;color:var(--muted)}
+.table{width:100%;border-collapse:collapse;font:.82rem/1.4 'IBM Plex Mono',monospace}
+.table th{text-align:left;padding:11px 13px;color:var(--muted2);font-size:.68rem;font-weight:500;border-bottom:1px solid var(--line)}
+.table td{padding:10px 13px;border-top:1px solid var(--line);color:var(--text)}
+.keep{color:var(--teal)}
+.drop{color:#e0715f}
+.email{padding:20px;font:.86rem/1.5 'IBM Plex Mono',monospace;color:var(--text)}
+.email div{margin-bottom:7px}
+.email b{display:inline-block;width:64px;color:var(--muted2);font-weight:500}
+.body-copy{border-top:1px dashed var(--line);padding-top:14px;margin-top:14px;color:var(--muted)}
+.note{color:var(--muted2);font:italic .76rem 'IBM Plex Mono',monospace;margin-top:11px}
+
+footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;color:var(--muted);font-size:.9rem}
+footer a{color:var(--amber);font-weight:600}
+.waWidget{position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 8px 22px rgba(37,211,102,.35);z-index:50;transition:transform .15s ease}
+.waWidget:hover{transform:scale(1.07)}
+@media(max-width:640px){.waWidget{width:52px;height:52px;right:16px;bottom:16px}}
+@media(max-width:640px){.stage{grid-template-columns:40px 1fr;gap:14px}.node{width:36px;height:36px;font-size:.85rem}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap navin"><a class="brand" href="index.html">RENOLT<em>.</em></a><a class="back" href="index.html">← Back to Renolt</a></div></header>
+
+<header class="hero"><div class="wrap">
+  <span class="stamp">Automation case study · Demonstration</span>
+  <h1>Lead Generation &amp; Outreach Automation</h1>
+  <p class="sub">A repeatable workflow for discovering businesses, filtering prospect data and preparing targeted outreach — designed to turn manual prospecting into a structured system.</p>
+  <div class="metaRow">
+    <span class="pill">System <b>n8n + Python</b></span>
+    <span class="pill">Data <b>Public business listings</b></span>
+    <span class="pill">Mode <b>Demonstration</b></span>
+  </div>
+</div></header>
+
+<section class="body"><div class="wrap">
+
+  <div class="stage">
+    <div class="nodecol"><div class="node mono">01</div><div class="connector"></div></div>
+    <div>
+      <div class="label">STAGE 1 — DISCOVER</div>
+      <h2>Find businesses by category and location</h2>
+      <p>A workflow can query a chosen business category and city, collecting available names, locations and contact details into a structured dataset.</p>
+      <div class="panel">
+        <div class="panelhead"><span>prospect_sample.csv</span><span>ILLUSTRATIVE</span></div>
+        <table class="table"><tr><th>Name</th><th>Phone</th><th>Website</th><th>City</th></tr>
+        <tr><td>[Independent Cafe]</td><td>+44 xxx</td><td>example.co.uk</td><td>Manchester</td></tr>
+        <tr><td>[Local Practice]</td><td>—</td><td>example2.co.uk</td><td>Leeds</td></tr>
+        <tr><td>[Studio / Gym]</td><td>+44 xxx</td><td>—</td><td>Leeds</td></tr></table>
+      </div>
+      <p class="note">// Names and contact details shown here are illustrative; real client data is not published.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="nodecol"><div class="node mono">02</div><div class="connector"></div></div>
+    <div>
+      <div class="label">STAGE 2 — FILTER &amp; CLEAN</div>
+      <h2>Remove duplicates and unusable entries</h2>
+      <p>Business rules can remove duplicates, incomplete listings and unwanted categories so the outreach process starts with cleaner information.</p>
+      <div class="panel">
+        <div class="panelhead"><span>filter_pass.log</span><span>EXAMPLE</span></div>
+        <table class="table"><tr><th>Entry</th><th>Reason</th><th>Result</th></tr>
+        <tr><td>[Duplicate]</td><td>Already in dataset</td><td class="drop">Dropped</td></tr>
+        <tr><td>[No contact]</td><td>Unreachable</td><td class="drop">Dropped</td></tr>
+        <tr><td>[Independent business]</td><td>Useful contact</td><td class="keep">Kept</td></tr></table>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="nodecol"><div class="node mono">03</div></div>
+    <div>
+      <div class="label">STAGE 3 — OUTREACH</div>
+      <h2>Prepare personalized communication</h2>
+      <p>Once a prospect is qualified, the workflow can generate a tailored message, route it through an approval step when required, send through the chosen channel and record the result.</p>
+      <div class="panel">
+        <div class="panelhead"><span>outreach_preview.eml</span><span>EXAMPLE</span></div>
+        <div class="email">
+          <div><b>To:</b> business@example.com</div>
+          <div><b>Subject:</b> A quick idea for your business</div>
+          <div class="body-copy">Hi — we build practical automation systems for businesses. If you have a repetitive process around leads, customer messages or follow-up, we'd be happy to show you what could be automated. No pressure.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div></section>
+
+<footer><div class="wrap">
+  <p>This page demonstrates the architecture and business logic. Production outreach requires appropriate consent, provider configuration, testing and delivery controls.</p>
+  <p style="margin-top:10px"><a href="index.html">Return to Renolt →</a></p>
+</div></footer>
+<a class="waWidget" href="https://wa.me/923207289443?text=Hello%20Renolt%2C%20I%20have%20a%20question" target="_blank" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" width="28" height="28" fill="#fff"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.383.7 4.6 1.906 6.463L4 29l7.727-1.867A11.94 11.94 0 0 0 16.001 27C22.63 27 28 21.627 28 15S22.63 3 16.001 3zm0 21.7a9.66 9.66 0 0 1-4.933-1.35l-.354-.21-4.585 1.108 1.13-4.47-.23-.365A9.63 9.63 0 0 1 6.3 15c0-5.357 4.344-9.7 9.7-9.7 5.357 0 9.7 4.343 9.7 9.7s-4.343 9.7-9.7 9.7zm5.31-7.267c-.29-.145-1.717-.848-1.983-.945-.266-.097-.46-.145-.653.146-.194.29-.75.945-.92 1.14-.169.194-.338.218-.628.073-.29-.146-1.223-.451-2.33-1.437-.862-.768-1.443-1.716-1.612-2.006-.169-.29-.018-.447.127-.592.13-.13.29-.338.435-.507.145-.169.194-.29.29-.484.097-.194.048-.363-.024-.508-.073-.146-.653-1.575-.895-2.157-.236-.567-.475-.49-.653-.5-.169-.008-.363-.01-.556-.01-.194 0-.508.073-.774.363-.266.29-1.016.993-1.016 2.422s1.04 2.81 1.185 3.005c.145.194 2.048 3.128 4.963 4.386.694.3 1.235.48 1.657.614.696.221 1.33.19 1.83.115.558-.083 1.717-.702 1.96-1.38.242-.677.242-1.257.169-1.38-.072-.121-.266-.194-.556-.34z"/></svg>
+</a>
+</body>
+</html>

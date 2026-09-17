@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Renolt Lead Recovery System — a six-stage automation architecture for lead intake, analysis, response, owner notification, follow-up and status management.">
+<title>Renolt — Lead Recovery System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a0d12; --ink2:#0d121a; --panel:#131822; --panel2:#171d29;
+  --line:rgba(255,255,255,.08); --text:#f2f5f8; --muted:#8d97a6; --muted2:#647082;
+  --amber:#e8a33d; --amber-dim:rgba(232,163,61,.14); --teal:#35d6a6; --max:1080px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',Arial,sans-serif;background:var(--ink);color:var(--text);line-height:1.65}
+h1,h2{font-family:'Sora',sans-serif;letter-spacing:-.02em}
+a{text-decoration:none;color:inherit}
+.wrap{width:min(var(--max),calc(100% - 44px));margin:auto}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+.nav{border-bottom:1px solid var(--line);background:rgba(10,13,18,.9);position:sticky;top:0;backdrop-filter:blur(14px)}
+.navin{height:72px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'Sora',sans-serif;font-weight:800;font-size:1.2rem}
+.brand em{color:var(--amber);font-style:normal}
+.back{color:var(--muted);font-size:.86rem}
+
+.hero{padding:84px 0 46px}
+.eyebrow{color:var(--teal);font-size:.85rem;font-weight:500;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal)}
+h1{font-size:clamp(2.3rem,5.4vw,3.6rem);line-height:1.05;max-width:820px;font-weight:700}
+h1 span{color:var(--amber)}
+.lead{max-width:680px;color:var(--muted);font-size:1.05rem;margin-top:22px}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.pill{border:1px solid var(--line);background:var(--panel);padding:8px 13px;border-radius:99px;color:var(--muted);font-size:.78rem}
+
+.section{padding:50px 0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;min-height:180px;transition:border-color .15s ease}
+.stage:hover{border-color:var(--muted2)}
+.stage b{color:var(--amber);font-size:.7rem;font-family:'IBM Plex Mono',monospace;letter-spacing:.03em}
+.stage h2{font-size:1.1rem;margin:10px 0;font-weight:600}
+.stage p{color:var(--muted);font-size:.87rem}
+
+.flow{margin-top:36px;background:linear-gradient(150deg,var(--amber-dim),var(--panel) 60%);border:1px solid var(--line);border-radius:18px;padding:28px}
+.flow h2{font-size:1.5rem;margin-bottom:9px;font-weight:600}
+.flow p{color:var(--muted);font-size:.9rem}
+.line{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:24px}
+.box{text-align:center;border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:10px;padding:14px 6px;font-size:.76rem}
+.box strong{display:block;color:var(--amber);font-size:.66rem;font-family:'IBM Plex Mono',monospace;margin-bottom:5px}
+
+.truth{border-left:2px solid var(--amber);padding:16px 18px;background:rgba(232,163,61,.05);color:var(--muted);font-size:.86rem;margin-top:28px;border-radius:0 8px 8px 0}
+.cta{margin-top:22px;display:inline-flex;background:var(--amber);color:#161005;padding:14px 20px;border-radius:10px;font-weight:600;font-size:.9rem}
+
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.85rem}
+.waWidget{position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 8px 22px rgba(37,211,102,.35);z-index:50;transition:transform .15s ease}
+.waWidget:hover{transform:scale(1.07)}
+@media(max-width:640px){.waWidget{width:52px;height:52px;right:16px;bottom:16px}}
+@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}.line{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.line{grid-template-columns:1fr 1fr}.hero{padding-top:56px}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap navin"><a class="brand" href="index.html">RENOLT<em>.</em></a><a class="back" href="index.html">← Back to Renolt</a></div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="eyebrow">Automation case study · Demonstration</div>
+  <h1>Lead Recovery <span>System</span></h1>
+  <p class="lead">A six-stage workflow architecture designed to reduce the chance that a new lead gets lost between the first inquiry and the next action.</p>
+  <div class="meta"><span class="pill">n8n workflow architecture</span><span class="pill">AI-assisted analysis</span><span class="pill">Lead lifecycle</span><span class="pill">Human handoff</span></div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="grid">
+    <article class="stage"><b>01 — INTAKE</b><h2>Lead Intake</h2><p>Receive and organize the incoming inquiry so the system has a consistent starting point.</p></article>
+    <article class="stage"><b>02 — ANALYSIS</b><h2>AI Lead Analysis</h2><p>Evaluate the information, identify useful signals and prepare the lead for the appropriate next step.</p></article>
+    <article class="stage"><b>03 — RESPONSE</b><h2>Lead Response Generator</h2><p>Prepare a context-aware customer response based on the lead and the workflow rules.</p></article>
+    <article class="stage"><b>04 — OWNER</b><h2>Owner Notification</h2><p>Bring the business owner or team into the loop when a human needs visibility or action.</p></article>
+    <article class="stage"><b>05 — FOLLOW-UP</b><h2>Lead Follow-Up</h2><p>Keep the opportunity moving with defined follow-up logic instead of relying on memory.</p></article>
+    <article class="stage"><b>06 — STATUS</b><h2>Lead Status Update</h2><p>Maintain the lead lifecycle so the system knows what happened and what should happen next.</p></article>
+  </div>
+
+  <div class="flow">
+    <h2>The complete recovery path</h2>
+    <p>These six stages are designed as one connected lead recovery system, not six unrelated automations.</p>
+    <div class="line">
+      <div class="box"><strong>01</strong>Intake</div>
+      <div class="box"><strong>02</strong>AI Analysis</div>
+      <div class="box"><strong>03</strong>Response</div>
+      <div class="box"><strong>04</strong>Owner Alert</div>
+      <div class="box"><strong>05</strong>Follow-Up</div>
+      <div class="box"><strong>06</strong>Status</div>
+    </div>
+  </div>
+
+  <div class="truth"><strong style="color:var(--text)">Current status:</strong> Demonstration / development portfolio. Production use requires provider configuration, testing, delivery controls, consent and opt-out handling, reliability checks and sufficient infrastructure. Renolt does not present unmeasured demo activity as client results.</div>
+
+  <a class="cta" href="https://wa.me/923207289443?text=Hello%20Renolt,%20I%20want%20to%20discuss%20a%20lead%20recovery%20system">Discuss a lead process</a>
+</div></section>
+
+<footer><div class="wrap">© 2026 RENOLT · Business automation &amp; digital systems.</div></footer>
+<a class="waWidget" href="https://wa.me/923207289443?text=Hello%20Renolt%2C%20I%20have%20a%20question" target="_blank" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" width="28" height="28" fill="#fff"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.383.7 4.6 1.906 6.463L4 29l7.727-1.867A11.94 11.94 0 0 0 16.001 27C22.63 27 28 21.627 28 15S22.63 3 16.001 3zm0 21.7a9.66 9.66 0 0 1-4.933-1.35l-.354-.21-4.585 1.108 1.13-4.47-.23-.365A9.63 9.63 0 0 1 6.3 15c0-5.357 4.344-9.7 9.7-9.7 5.357 0 9.7 4.343 9.7 9.7s-4.343 9.7-9.7 9.7zm5.31-7.267c-.29-.145-1.717-.848-1.983-.945-.266-.097-.46-.145-.653.146-.194.29-.75.945-.92 1.14-.169.194-.338.218-.628.073-.29-.146-1.223-.451-2.33-1.437-.862-.768-1.443-1.716-1.612-2.006-.169-.29-.018-.447.127-.592.13-.13.29-.338.435-.507.145-.169.194-.29.29-.484.097-.194.048-.363-.024-.508-.073-.146-.653-1.575-.895-2.157-.236-.567-.475-.49-.653-.5-.169-.008-.363-.01-.556-.01-.194 0-.508.073-.774.363-.266.29-1.016.993-1.016 2.422s1.04 2.81 1.185 3.005c.145.194 2.048 3.128 4.963 4.386.694.3 1.235.48 1.657.614.696.221 1.33.19 1.83.115.558-.083 1.717-.702 1.96-1.38.242-.677.242-1.257.169-1.38-.072-.121-.266-.194-.556-.34z"/></svg>
+</a>
+</body>
+</html>
