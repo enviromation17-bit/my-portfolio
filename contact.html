@@ -146,7 +146,7 @@ footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted2);font-
 // Small backend for this form — see renolt-contact-backend.gs for setup.
 // Paste your Google Apps Script /exec URL below once deployed.
 // (Alternative: point this at your n8n webhook instead, e.g. https://novixa.duckdns.org/webhook/renolt-contact)
-const CONTACT_WEBHOOK = 'https://script.google.com/macros/s/AKfycbzbNPw4iZVRCRH36FxWfN64Z8j5YkVQ3EoSzY7W34kLukR2QPsIdSABXisiIQiWO5LETw/exec';
+const CONTACT_WEBHOOK = 'https://script.google.com/macros/s/AKfycby70Bq40qb4g_tW93JkntAoEKncXoPBKYCPjePFXikIoi_q5sViRlqc2WO5hgHBqBX28Q/exec';
 document.getElementById('contactForm').addEventListener('submit', async function(e){
   e.preventDefault();
   const f = new FormData(this);
