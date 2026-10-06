@@ -159,3 +159,12 @@ footer{padding:40px 0;border-top:1px solid var(--line);color:var(--dim);font-siz
 @media(prefers-reduced-motion:reduce){.kicker::before{animation:none}}
 .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:100}
 .skip-link:focus{position:fixed;left:16px;top:16px;width:auto;height:auto;padding:12px 18px;background:var(--amber);color:#0c0a04;border-radius:10px;font-weight:600;outline:2px solid #fff}
+.site-types{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:56px}
+.site-type{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;backdrop-filter:blur(10px);transition:border-color .25s,transform .25s}
+.site-type:hover{border-color:rgba(45,212,168,.35);transform:translateY(-4px)}
+.site-type .st-ic{font-size:1.5rem;margin-bottom:12px;line-height:1}
+.site-type h3{font-size:1.02rem;margin-bottom:8px}
+.site-type p{color:var(--muted);font-size:.85rem;font-weight:300;margin-bottom:12px;line-height:1.5}
+.site-type .st-ex{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--dim);letter-spacing:.04em}
+@media(max-width:900px){.site-types{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.site-types{grid-template-columns:1fr}}
