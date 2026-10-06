@@ -157,3 +157,5 @@ footer{padding:40px 0;border-top:1px solid var(--line);color:var(--dim);font-siz
   .cta-actions .btn{flex:1;justify-content:center}
 }
 @media(prefers-reduced-motion:reduce){.kicker::before{animation:none}}
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:100}
+.skip-link:focus{position:fixed;left:16px;top:16px;width:auto;height:auto;padding:12px 18px;background:var(--amber);color:#0c0a04;border-radius:10px;font-weight:600;outline:2px solid #fff}
