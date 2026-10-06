@@ -1,6 +1,159 @@
 (function () {
   const canvas = document.getElementById('webgl');
-  if (!canvas || typeof THREE === 'undefined') return;
+  const scrubVideo = document.getElementById('scrubVideo');
+  let latestScrubProgress = 0;
+
+  function seekScrubVideo() {
+    if (!scrubVideo || !Number.isFinite(scrubVideo.duration) || scrubVideo.seeking) return;
+    const targetTime = latestScrubProgress * Math.max(0, scrubVideo.duration - 0.04);
+    if (Math.abs(scrubVideo.currentTime - targetTime) > 0.04) scrubVideo.currentTime = targetTime;
+  }
+
+  window.addEventListener('blackhole:scrub', (event) => {
+    const progress = Number(event.detail && event.detail.progress);
+    if (!Number.isFinite(progress)) return;
+    latestScrubProgress = Math.max(0, Math.min(1, progress));
+    seekScrubVideo();
+  });
+
+  if (scrubVideo) {
+    scrubVideo.addEventListener('loadedmetadata', seekScrubVideo);
+    scrubVideo.addEventListener('seeked', seekScrubVideo);
+    scrubVideo.addEventListener('error', () => {
+      console.error('The NASA black-hole background video could not be loaded.');
+    });
+  }
+
+  if (!canvas) return;
+
+  if (typeof THREE === 'undefined') {
+    const context = canvas.getContext('2d');
+    if (!context) {
+      console.error('The black-hole background could not initialize a 2D canvas context.');
+      return;
+    }
+
+    const isMobile = window.matchMedia('(max-width: 680px)').matches;
+    const particles = Array.from({ length: isMobile ? 160 : 340 }, () => ({
+      angle: Math.random() * Math.PI * 2,
+      radius: 0.3 + Math.random() * 1.2,
+      speed: 0.08 + Math.random() * 0.32,
+      size: 0.35 + Math.random() * 1.15,
+      depth: 0.25 + Math.random() * 0.75,
+      hue: Math.random() > 0.84 ? 38 : 24
+    }));
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let width = 0;
+    let height = 0;
+    let pixelRatio = 1;
+    let scrubProgress = 0;
+    let suction = 0;
+    let previousTime = 0;
+
+    function resize() {
+      pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = Math.round(width * pixelRatio);
+      canvas.height = Math.round(height * pixelRatio);
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    }
+
+    function draw(time) {
+      if (document.hidden && !reduceMotion) {
+        requestAnimationFrame(draw);
+        return;
+      }
+      const elapsed = previousTime ? Math.min((time - previousTime) / 1000, 0.05) : 0;
+      previousTime = time;
+      suction += (scrubProgress - suction) * (reduceMotion ? 1 : 0.055);
+
+      context.clearRect(0, 0, width, height);
+      const scale = Math.min(width, height);
+      const cx = width * 0.5;
+      const cy = height * (0.5 + suction * 0.035);
+      const rx = scale * (0.19 + suction * 0.035);
+      const ry = scale * (0.055 + suction * 0.014);
+      const holeRadius = scale * (0.071 + suction * 0.012);
+      const spin = reduceMotion ? 0 : time * 0.00004;
+
+      const glow = context.createRadialGradient(cx, cy, holeRadius * 0.55, cx, cy, rx * 1.7);
+      glow.addColorStop(0, 'rgba(255, 160, 62, ' + (0.09 + suction * 0.06) + ')');
+      glow.addColorStop(0.38, 'rgba(171, 73, 24, 0.075)');
+      glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      context.fillStyle = glow;
+      context.fillRect(0, 0, width, height);
+
+      context.save();
+      context.translate(cx, cy);
+      context.rotate(-0.09 + suction * 0.05);
+
+      context.save();
+      context.scale(1, ry / rx);
+      const diskGlow = context.createRadialGradient(0, 0, holeRadius * 0.9, 0, 0, rx);
+      diskGlow.addColorStop(0, 'rgba(255, 230, 176, 0.95)');
+      diskGlow.addColorStop(0.12, 'rgba(255, 163, 71, 0.74)');
+      diskGlow.addColorStop(0.38, 'rgba(235, 106, 39, 0.25)');
+      diskGlow.addColorStop(1, 'rgba(129, 45, 24, 0)');
+      context.fillStyle = diskGlow;
+      context.beginPath();
+      context.arc(0, 0, rx, 0, Math.PI * 2);
+      context.fill();
+      context.restore();
+
+      for (let i = 0; i < particles.length; i++) {
+        const particle = particles[i];
+        if (!reduceMotion) particle.angle += elapsed * particle.speed * (1 + suction * 2.3);
+        const orbit = particle.radius * (0.3 + suction * 0.45);
+        const x = Math.cos(particle.angle + spin) * rx * orbit;
+        const y = Math.sin(particle.angle + spin) * ry * orbit;
+        const alpha = Math.min(0.86, particle.depth * (0.3 + orbit * 0.48) * (1 + suction * 0.45));
+        const radius = particle.size * particle.depth * (0.7 + suction * 0.45);
+
+        context.beginPath();
+        context.fillStyle = 'hsla(' + particle.hue + ', 94%, ' + (66 + particle.depth * 28) + '%, ' + alpha + ')';
+        context.shadowColor = 'rgba(255, 151, 76, 0.55)';
+        context.shadowBlur = particle.depth > 0.88 ? 2 : 0;
+        context.ellipse(x, y, radius * (1 + suction * 0.7), radius * 0.7, 0, 0, Math.PI * 2);
+        context.fill();
+      }
+
+      context.shadowColor = 'rgba(255, 184, 108, 0.58)';
+      context.shadowBlur = 12 + suction * 12;
+      context.strokeStyle = 'rgba(255, 214, 167, ' + (0.4 + suction * 0.24) + ')';
+      context.lineWidth = Math.max(1, scale * 0.0016);
+      context.beginPath();
+      context.ellipse(0, 0, holeRadius * 1.19, holeRadius * 0.32, 0, Math.PI, Math.PI * 2);
+      context.stroke();
+      context.restore();
+
+      const shadowGlow = context.createRadialGradient(cx, cy, holeRadius * 0.82, cx, cy, holeRadius * 1.55);
+      shadowGlow.addColorStop(0, 'rgba(0, 0, 0, 1)');
+      shadowGlow.addColorStop(0.68, 'rgba(0, 0, 0, 1)');
+      shadowGlow.addColorStop(0.88, 'rgba(0, 0, 0, 0.85)');
+      shadowGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      context.fillStyle = shadowGlow;
+      context.beginPath();
+      context.arc(cx, cy, holeRadius * 1.55, 0, Math.PI * 2);
+      context.fill();
+
+      if (!reduceMotion) requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('blackhole:scrub', (event) => {
+      const progress = Number(event.detail && event.detail.progress);
+      if (Number.isFinite(progress)) scrubProgress = Math.max(0, Math.min(1, progress));
+    });
+    window.addEventListener('resize', resize);
+    resize();
+    draw(0);
+    if (reduceMotion) {
+      window.addEventListener('blackhole:scrub', () => draw(performance.now()));
+    }
+    return;
+  }
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -178,19 +331,22 @@
   scene.add(aura);
 
   let mouseX = 0, mouseY = 0;
-  let scrollY = 0, lastScrollY = 0, scrollVel = 0, scrollDir = 0;
+  let scrubProgress = 0;
   let suction = 0;
 
   window.addEventListener('mousemove', (e) => {
     mouseX = (e.clientX / window.innerWidth - 0.5) * 0.4;
     mouseY = (e.clientY / window.innerHeight - 0.5) * 0.25;
   });
+  window.addEventListener('blackhole:scrub', (event) => {
+    const progress = Number(event.detail && event.detail.progress);
+    if (Number.isFinite(progress)) scrubProgress = Math.max(0, Math.min(1, progress));
+  });
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
-  window.addEventListener('scroll', () => { scrollY = window.scrollY || 0; }, { passive: true });
 
   const clock = new THREE.Clock();
 
@@ -209,18 +365,7 @@
     const t = clock.getElapsedTime();
     const dt = 0.016;
 
-    const dy = scrollY - lastScrollY;
-    scrollVel += (dy - scrollVel) * 0.12;
-    lastScrollY = scrollY;
-    if (Math.abs(scrollVel) > 0.3) scrollDir = scrollVel > 0 ? 1 : -1;
-
-    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    const progress = Math.min(1, scrollY / maxScroll);
-    const velMag = Math.min(1, Math.abs(scrollVel) / 22);
-    const sTarget = scrollDir >= 0
-      ? Math.min(1, progress * 0.9 + velMag * 0.5)
-      : Math.max(0, progress * 0.2 - velMag * 0.35);
-    suction += (sTarget - suction) * 0.04;
+    suction += (scrubProgress - suction) * 0.04;
     const pull = suction * suction;
 
     const carr = cosmosGeo.attributes.position.array;
