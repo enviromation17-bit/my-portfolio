@@ -1,1 +1,388 @@
-SEE_FILE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Renolt — Business Automation & Digital Systems for Small Businesses</title>
+<meta name="description" content="Renolt builds practical automation systems for small businesses in Pakistan. Lead recovery, AI assistants, WhatsApp automation, and professional websites — so no customer is ignored.">
+<meta name="keywords" content="business automation, lead recovery, WhatsApp automation, AI customer assistant, small business Pakistan, Renolt">
+<meta name="author" content="Renolt">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://enviromation17-bit.github.io/my-portfolio/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://enviromation17-bit.github.io/my-portfolio/">
+<meta property="og:title" content="Renolt — Business Automation & Digital Systems">
+<meta property="og:description" content="Practical automation for small businesses: catch every lead, answer faster, and stop repeating the same work.">
+<meta property="og:site_name" content="Renolt">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Renolt — Business Automation & Digital Systems">
+<meta name="twitter:description" content="Practical automation for small businesses: catch every lead, answer faster, and stop repeating the same work.">
+<meta name="theme-color" content="#05060a">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Renolt",
+  "description": "Renolt builds simple, practical automation systems that help small businesses answer customers faster and stop repeating the same work.",
+  "url": "https://enviromation17-bit.github.io/my-portfolio/",
+  "telephone": "+923207289443",
+  "areaServed": "Pakistan",
+  "serviceType": ["Business automation", "Lead recovery systems", "AI customer assistants", "Website development"],
+  "sameAs": ["https://wa.me/923207289443"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<canvas id="webgl"></canvas>
+<div class="grain"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="content">
+<header class="nav" id="nav">
+  <div class="wrap navin">
+    <a class="brand" href="#top">RENOLT<span>.</span></a>
+    <nav class="links" id="navLinks">
+      <a href="#process">Process</a>
+      <a href="#projects">Projects</a>
+      <a href="#services">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a class="navcta" href="contact.html">Contact Renolt</a>
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="kicker" id="heroKicker">Business automation & digital systems</div>
+    <h1 id="heroTitle">
+      <span class="line"><span class="word">Your team shouldn't</span></span>
+      <span class="line"><span class="word">have to <span class="accent">remember</span></span></span>
+      <span class="line"><span class="word"><span class="accent">everything.</span></span></span>
+    </h1>
+    <p class="lead" id="heroLead">Renolt builds simple digital helpers for businesses. We stop leads from being forgotten, answer customers faster, and take repeated tasks off your team's plate.</p>
+    <div class="actions" id="heroActions">
+      <a class="btn primary" href="https://wa.me/923207289443?text=Hello%20Renolt,%20I%20want%20to%20show%20you%20a%20process%20in%20my%20business">Message on WhatsApp</a>
+      <a class="btn ghost" href="contact.html">Send project details</a>
+    </div>
+    <div class="stats" id="heroStats">
+      <div class="stat"><b>6-stage</b><span>lead recovery system</span></div>
+      <div class="stat"><b>3</b><span>working demos you can try</span></div>
+      <div class="stat"><b>1</b><span>problem at a time, done properly</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="scrub-wrap" id="process">
+  <section class="scrub-section" id="scrubPin">
+    <div class="scrub-bar-track"><div class="scrub-bar-fill" id="scrubBar"></div></div>
+    <div class="scrub-inner">
+      <div class="scrub-label">How Renolt works</div>
+      <h2 class="scrub-title">Four steps. Nothing gets lost.</h2>
+      <div class="scrub-steps" id="scrubSteps">
+        <div class="scrub-step" data-step="0">
+          <div class="num">01</div>
+          <h3>Customer reaches out</h3>
+          <p>Website, form, WhatsApp or social media — every message is caught.</p>
+          <div class="scrub-progress"></div>
+        </div>
+        <div class="scrub-step" data-step="1">
+          <div class="num">02</div>
+          <h3>System reads it</h3>
+          <p>It understands what the customer needs without human delay.</p>
+          <div class="scrub-progress"></div>
+        </div>
+        <div class="scrub-step" data-step="2">
+          <div class="num">03</div>
+          <h3>Takes the next step</h3>
+          <p>Replies, saves the lead, or alerts your team automatically.</p>
+          <div class="scrub-progress"></div>
+        </div>
+        <div class="scrub-step" data-step="3">
+          <div class="num">04</div>
+          <h3>Human stays in charge</h3>
+          <p>Big decisions always go to a person. Automation supports, never replaces.</p>
+          <div class="scrub-progress"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="block">
+  <div class="wrap">
+    <div class="explain-box" data-reveal>
+      <div class="explain-icon">👋</div>
+      <div>
+        <h2>What is Renolt, in plain words?</h2>
+        <p>Think of Renolt as a helper that never forgets. When a customer messages your business, Renolt makes sure someone (or something) replies, follows up, and keeps track — so <strong>no customer gets ignored and no task falls through the cracks.</strong> We build these helpers, test them, and hand them to you ready to use.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="section-label" data-reveal>Start with the problem</div>
+    <h2 class="section-title" data-split>These are the problems Renolt is built to fix.</h2>
+    <p class="section-sub" data-reveal>If any of these sound familiar, that's exactly where we start.</p>
+    <div class="pain-grid">
+      <div class="pain-card" data-reveal>
+        <div class="pain-quote">"A customer messaged us, but nobody replied in time."</div>
+        <div class="pain-sol">Renolt catches the message right away and sends a fast, helpful first reply.</div>
+      </div>
+      <div class="pain-card" data-reveal>
+        <div class="pain-quote">"We meant to follow up, but we forgot."</div>
+        <div class="pain-sol">Renolt remembers for you and follows up at the right time.</div>
+      </div>
+      <div class="pain-card" data-reveal>
+        <div class="pain-quote">"Our staff keeps typing the same information twice."</div>
+        <div class="pain-sol">Renolt connects your tools so information moves by itself.</div>
+      </div>
+      <div class="pain-card" data-reveal>
+        <div class="pain-quote">"Customers ask the same simple questions every day."</div>
+        <div class="pain-sol">Renolt answers the easy questions so your team can focus on people.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="projects">
+  <div class="wrap">
+    <div class="section-label" data-reveal>Projects & capabilities</div>
+    <h2 class="section-title" data-split>What we can build, and real examples of it working.</h2>
+    <p class="section-sub" data-reveal>Below you'll find what Renolt is capable of, followed by real projects and working demos.</p>
+    <p class="section-label" data-reveal style="margin-bottom:18px">What Renolt can build for you</p>
+    <div class="cap-grid">
+      <div class="cap" data-reveal><div class="ic">01</div><h3>Never-miss lead system</h3><p>Catches every inquiry, replies fast, and follows up automatically.</p></div>
+      <div class="cap" data-reveal><div class="ic">02</div><h3>AI customer assistant</h3><p>Answers common questions on your website or WhatsApp, any time of day.</p></div>
+      <div class="cap" data-reveal><div class="ic">03</div><h3>Automatic busywork</h3><p>Moves information between your tools so nobody has to copy-paste.</p></div>
+      <div class="cap" data-reveal><div class="ic">04</div><h3>Follow-up reminders</h3><p>Makes sure every lead gets a next step, instead of being forgotten.</p></div>
+      <div class="cap" data-reveal><div class="ic">05</div><h3>A proper business website</h3><p>A clear, professional site that makes customers trust you.</p></div>
+      <div class="cap" data-reveal><div class="ic">06</div><h3>Connected tools</h3><p>Your forms, sheets, email and WhatsApp, all talking to each other.</p></div>
+    </div>
+    <p class="section-label" data-reveal style="margin-bottom:18px">Real projects and demos</p>
+    <div class="work-grid">
+      <article class="proj" data-reveal>
+        <div class="proj-top">
+          <div class="proj-meta"><span class="tag">LEAD AUTOMATION</span><span class="pill dev">In development</span></div>
+          <h3>Lead Recovery System</h3>
+        </div>
+        <p>A 6-step helper that catches a new lead, understands it, replies, tells the owner, follows up, and keeps track — so nothing gets missed.</p>
+        <div class="proj-foot"><span class="tag">Case study</span><a href="recovery.html">See how it works →</a></div>
+      </article>
+      <article class="proj" data-reveal>
+        <div class="proj-top">
+          <div class="proj-meta"><span class="tag">REAL ESTATE</span><span class="pill live">Live demo</span></div>
+          <h3>Brick &amp; Build Developers</h3>
+        </div>
+        <p>A full, professional website for a real property company — clean, trustworthy, and built to bring in leads.</p>
+        <div class="proj-foot"><span class="tag">brick-and-build</span><a href="https://bricksandbuiltdevelopers.com/" target="_blank" rel="noopener">Open project →</a></div>
+      </article>
+      <article class="proj" data-reveal>
+        <div class="proj-top">
+          <div class="proj-meta"><span class="tag">HOME SERVICES</span><span class="pill live">Live demo</span></div>
+          <h3>AeroFlow HVAC</h3>
+        </div>
+        <p>Shows how a home-service business can catch a customer inquiry and turn it into a handled lead automatically.</p>
+        <div class="proj-foot"><span class="tag">aeroflow-hvac</span><a href="https://enviromation17-bit.github.io/aeroflow-hvac/index.html" target="_blank" rel="noopener">Try the demo →</a></div>
+      </article>
+      <article class="proj" data-reveal>
+        <div class="proj-top">
+          <div class="proj-meta"><span class="tag">WEB DEMO</span><span class="pill live">Live demo</span></div>
+          <h3>Business Website Demo</h3>
+        </div>
+        <p>A clean example of a modern business website structure — ready to adapt for almost any small company.</p>
+        <div class="proj-foot"><span class="tag">demo_website</span><a href="https://enviromation17-bit.github.io/demo_website/" target="_blank" rel="noopener">Open demo →</a></div>
+      </article>
+    </div>
+    <p class="note" data-reveal>These are working examples. The same approach can be adapted to your business — different industry, same problem-solving method.</p>
+  </div>
+</section>
+
+<section class="block" id="services">
+  <div class="wrap">
+    <div class="section-label" data-reveal>Services</div>
+    <h2 class="section-title" data-split>Here's exactly how we solve each problem.</h2>
+    <p class="section-sub" data-reveal>No jargon — just what the problem is, and what Renolt actually does about it.</p>
+    <div class="service" data-reveal>
+      <div class="side"><b>PROBLEM</b><h3>Leads go cold because nobody replies fast enough.</h3></div>
+      <div class="fix"><strong>How Renolt fixes it:</strong> we set up a system that reads every new message the second it arrives, sends a helpful first reply automatically, and puts the lead in front of your team so it's never lost.</div>
+    </div>
+    <div class="service" data-reveal>
+      <div class="side"><b>PROBLEM</b><h3>Customers ask the same questions, over and over.</h3></div>
+      <div class="fix"><strong>How Renolt fixes it:</strong> we build a friendly AI assistant for your website or WhatsApp that answers common questions instantly, any time of day, and passes anything tricky to a real person.</div>
+    </div>
+    <div class="service" data-reveal>
+      <div class="side"><b>PROBLEM</b><h3>Follow-ups get forgotten and opportunities disappear.</h3></div>
+      <div class="fix"><strong>How Renolt fixes it:</strong> we design a follow-up sequence that reminds your team (or sends the message itself) at the right time, so every lead gets a next step.</div>
+    </div>
+    <div class="service" data-reveal>
+      <div class="side"><b>PROBLEM</b><h3>Staff waste time copying the same information between tools.</h3></div>
+      <div class="fix"><strong>How Renolt fixes it:</strong> we connect your forms, sheets, email and messaging tools so information moves by itself — no more double entry.</div>
+    </div>
+    <div class="service" data-reveal>
+      <div class="side"><b>PROBLEM</b><h3>Your website doesn't clearly explain what you do or how to contact you.</h3></div>
+      <div class="fix"><strong>How Renolt fixes it:</strong> we build a clear, professional site that builds trust and makes it easy for customers to reach you.</div>
+    </div>
+    <div class="faq">
+      <details data-reveal><summary>How long does a typical project take?</summary><p>Most single-problem systems are ready in 1–3 weeks once we understand your process. Bigger multi-step systems take longer, but we always start with one clear win.</p></details>
+      <details data-reveal><summary>Do I need technical knowledge?</summary><p>No. You explain how your business works today. We design, build, and test the system, then hand it over with simple instructions.</p></details>
+      <details data-reveal><summary>Will this replace my team?</summary><p>No. Renolt handles the repetitive parts so your team can focus on the work that needs a human — decisions, relationships, and complex problems.</p></details>
+      <details data-reveal><summary>What if something goes wrong?</summary><p>Every system is tested before it goes live. We also leave clear ways for a human to step in when needed.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="cta-box" data-reveal>
+      <div>
+        <div class="section-label">Let's find the first process</div>
+        <h2>What is one task your team is tired of repeating?</h2>
+        <p>Tell us what happens today. Renolt can help you see what should stay human, what can be automated, and where to start.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn primary" href="contact.html">Contact form →</a>
+        <a class="btn ghost" href="https://wa.me/923207289443?text=Hello%20Renolt,%20I%20want%20to%20discuss%20a%20business%20process">WhatsApp: 0320 7289443</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 RENOLT. Business automation &amp; digital systems.</span>
+    <span class="amber">Start with one process. Expand as the business grows.</span>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/923207289443?text=Hello%20Renolt%2C%20I%20have%20a%20question" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" width="26" height="26" fill="#fff"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.383.7 4.6 1.906 6.463L4 29l7.727-1.867A11.94 11.94 0 0 0 16.001 27C22.63 27 28 21.627 28 15S22.63 3 16.001 3zm0 21.7a9.66 9.66 0 0 1-4.933-1.35l-.354-.21-4.585 1.108 1.13-4.47-.23-.365A9.63 9.63 0 0 1 6.3 15c0-5.357 4.344-9.7 9.7-9.7 5.357 0 9.7 4.343 9.7 9.7s-4.343 9.7-9.7 9.7zm5.31-7.267c-.29-.145-1.717-.848-1.983-.945-.266-.097-.46-.145-.653.146-.194.29-.75.945-.92 1.14-.169.194-.338.218-.628.073-.29-.146-1.223-.451-2.33-1.437-.862-.768-1.443-1.716-1.612-2.006-.169-.29-.018-.447.127-.592.13-.13.29-.338.435-.507.145-.169.194-.29.29-.484.097-.194.048-.363-.024-.508-.073-.146-.653-1.575-.895-2.157-.236-.567-.475-.49-.653-.5-.169-.008-.363-.01-.556-.01-.194 0-.508.073-.774.363-.266.29-1.016.993-1.016 2.422s1.04 2.81 1.185 3.005c.145.194 2.048 3.128 4.963 4.386.694.3 1.235.48 1.657.614.696.221 1.33.19 1.83.115.558-.083 1.717-.702 1.96-1.38.242-.677.242-1.257.169-1.38-.072-.121-.266-.194-.556-.34z"/></svg>
+</a>
+</div>
+
+<script>
+(function(){
+  const canvas = document.getElementById('webgl');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 100);
+  camera.position.z = 6;
+  const count = 800;
+  const positions = new Float32Array(count * 3);
+  const colors = new Float32Array(count * 3);
+  for (let i = 0; i < count; i++) {
+    const i3 = i * 3;
+    positions[i3] = (Math.random() - 0.5) * 14;
+    positions[i3 + 1] = (Math.random() - 0.5) * 10;
+    positions[i3 + 2] = (Math.random() - 0.5) * 10;
+    const t = Math.random();
+    colors[i3] = t > 0.65 ? 0.94 : 0.18;
+    colors[i3 + 1] = t > 0.65 ? 0.71 : 0.83;
+    colors[i3 + 2] = t > 0.65 ? 0.16 : 0.66;
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  const mat = new THREE.PointsMaterial({ size: 0.032, vertexColors: true, transparent: true, opacity: 0.6, depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true });
+  const points = new THREE.Points(geo, mat);
+  scene.add(points);
+  const orbGeo = new THREE.SphereGeometry(1.4, 32, 32);
+  const orb1 = new THREE.Mesh(orbGeo, new THREE.MeshBasicMaterial({ color: 0xf0b429, transparent: true, opacity: 0.035 }));
+  const orb2 = new THREE.Mesh(orbGeo, new THREE.MeshBasicMaterial({ color: 0x2dd4a8, transparent: true, opacity: 0.025 }));
+  orb1.position.set(-3.2, 1.4, -2); orb2.position.set(3.6, -1.3, -3);
+  scene.add(orb1, orb2);
+  let mouseX = 0, mouseY = 0;
+  window.addEventListener('mousemove', e => { mouseX = (e.clientX / window.innerWidth - 0.5) * 0.35; mouseY = (e.clientY / window.innerHeight - 0.5) * 0.25; });
+  window.addEventListener('resize', () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); });
+  const clock = new THREE.Clock();
+  (function animate() {
+    requestAnimationFrame(animate);
+    const t = clock.getElapsedTime();
+    points.rotation.y = t * 0.035; points.rotation.x = Math.sin(t * 0.07) * 0.06;
+    orb1.position.y = 1.4 + Math.sin(t * 0.35) * 0.25; orb2.position.y = -1.3 + Math.cos(t * 0.3) * 0.2;
+    camera.position.x += (mouseX - camera.position.x) * 0.04; camera.position.y += (-mouseY - camera.position.y) * 0.04;
+    camera.lookAt(0, 0, 0); renderer.render(scene, camera);
+  })();
+})();
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.to('#scrollProgress', { width: '100%', ease: 'none', scrollTrigger: { scrub: 0.3 } });
+
+ScrollTrigger.create({
+  start: 60,
+  onUpdate: self => document.getElementById('nav').classList.toggle('scrolled', self.scroll() > 50)
+});
+
+gsap.set(['#heroKicker', '#heroLead', '#heroActions', '#heroStats'], { y: 24, opacity: 0 });
+const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+heroTl
+  .to('#heroKicker', { opacity: 1, y: 0, duration: 0.7 }, 0.1)
+  .to('#heroTitle .word', { y: 0, opacity: 1, duration: 1, stagger: 0.11 }, 0.2)
+  .to('#heroLead', { opacity: 1, y: 0, duration: 0.75 }, 0.55)
+  .to('#heroActions', { opacity: 1, y: 0, duration: 0.65 }, 0.7)
+  .to('#heroStats', { opacity: 1, y: 0, duration: 0.65 }, 0.85);
+
+const steps = gsap.utils.toArray('.scrub-step');
+const scrubBar = document.getElementById('scrubBar');
+
+ScrollTrigger.create({
+  trigger: '#scrubPin',
+  start: 'top top',
+  end: '+=280%',
+  pin: true,
+  scrub: 0.6,
+  anticipatePin: 1,
+  onUpdate: self => {
+    const p = self.progress;
+    scrubBar.style.width = (p * 100) + '%';
+    const idx = Math.min(3, Math.floor(p * 4));
+    steps.forEach((el, i) => {
+      if (i === idx) el.classList.add('active');
+      else el.classList.remove('active');
+      const fill = el.querySelector('.scrub-progress');
+      if (i < idx) fill.style.width = '100%';
+      else if (i === idx) fill.style.width = ((p * 4 - idx) * 100) + '%';
+      else fill.style.width = '0%';
+    });
+  }
+});
+steps[0].classList.add('active');
+
+document.querySelectorAll('[data-split]').forEach(el => {
+  const text = el.textContent.trim();
+  el.innerHTML = text.split(/\s+/).map(w => '<span class="word" style="display:inline-block;opacity:0;transform:translateY(30px)">' + w + '&nbsp;</span>').join('');
+  gsap.to(el.querySelectorAll('.word'), {
+    opacity: 1, y: 0, duration: 0.65, stagger: 0.035, ease: 'power2.out',
+    scrollTrigger: { trigger: el, start: 'top 86%' }
+  });
+});
+
+gsap.utils.toArray('[data-reveal]').forEach((el, i) => {
+  gsap.fromTo(el,
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 88%' },
+      delay: (i % 4) * 0.04
+    }
+  );
+});
+</script>
+</body>
+</html>
