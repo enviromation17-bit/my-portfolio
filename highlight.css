@@ -1,0 +1,27 @@
+/* Scroll highlight system */
+.hl{
+  color:var(--text);
+  background:linear-gradient(120deg,rgba(212,160,23,.18),rgba(212,160,23,.06));
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+  padding:.05em .12em;
+  border-radius:3px;
+}
+.hl-scroll{
+  color:inherit;
+  background-image:linear-gradient(120deg,rgba(212,160,23,.45),rgba(232,197,71,.3));
+  background-repeat:no-repeat;
+  background-size:0% 88%;
+  background-position:0 92%;
+  padding:.05em .1em;
+  border-radius:3px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+  transition:color .35s ease;
+}
+.hl-scroll.is-lit{color:var(--text)}
+.hl-pulse{animation:hlPulse 1.6s ease .2s 1}
+@keyframes hlPulse{
+  0%,100%{box-shadow:0 0 0 0 transparent}
+  40%{box-shadow:0 0 18px 2px rgba(212,160,23,.25)}
+}
