@@ -67,6 +67,25 @@ footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted2);font-
 .waWidget{position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 8px 22px rgba(37,211,102,.35);z-index:50;transition:transform .15s ease}
 .waWidget:hover{transform:scale(1.07)}
 @media(max-width:680px){.waWidget{width:52px;height:52px;right:16px;bottom:16px}}
+/* Client greeting avatar */
+.renolt-hi{position:fixed;right:22px;bottom:92px;z-index:51;display:flex;align-items:flex-end;gap:10px;pointer-events:none;font-family:inherit}
+.renolt-hi *{box-sizing:border-box}
+.renolt-hi-bubble{pointer-events:auto;max-width:220px;background:#181d27;border:1px solid rgba(255,255,255,.1);border-radius:14px 14px 4px 14px;padding:12px 14px;box-shadow:0 12px 32px rgba(0,0,0,.4);opacity:0;transform:translateY(12px) scale(.96);transition:opacity .45s ease,transform .45s ease;position:relative}
+.renolt-hi.is-on .renolt-hi-bubble{opacity:1;transform:translateY(0) scale(1)}
+.renolt-hi-bubble p{margin:0;font-size:.84rem;line-height:1.45;color:#eef1f6;font-weight:500}
+.renolt-hi-bubble span{display:block;margin-top:4px;font-size:.72rem;color:#9aa3b5;font-weight:400}
+.renolt-hi-bubble .hi-x{position:absolute;top:6px;right:8px;border:0;background:transparent;color:#6b7385;cursor:pointer;font-size:.9rem;line-height:1;padding:2px 4px;pointer-events:auto}
+.renolt-hi-bubble .hi-x:hover{color:#eef1f6}
+.renolt-hi-av{pointer-events:auto;width:56px;height:56px;border-radius:50%;border:2px solid rgba(232,163,61,.55);background:linear-gradient(145deg,#1a2030,#12161e);display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.35),0 0 0 4px rgba(232,163,61,.08);cursor:pointer;flex-shrink:0;transition:transform .2s ease,box-shadow .2s ease;position:relative;text-decoration:none}
+.renolt-hi-av:hover{transform:scale(1.06);box-shadow:0 10px 28px rgba(0,0,0,.4),0 0 0 5px rgba(232,163,61,.14)}
+.renolt-hi-av svg{width:34px;height:34px}
+.renolt-hi-av .dot{position:absolute;bottom:2px;right:2px;width:12px;height:12px;border-radius:50%;background:#25d366;border:2px solid #12161e}
+@media(max-width:680px){
+  .renolt-hi{right:16px;bottom:84px}
+  .renolt-hi-av{width:50px;height:50px}
+  .renolt-hi-bubble{max-width:180px;padding:10px 12px}
+  .renolt-hi-bubble p{font-size:.78rem}
+}
 </style>
 </head>
 <body>
@@ -128,6 +147,26 @@ footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted2);font-
 <footer>
   <div class="wrap">© 2026 RENOLT · hellorenolt@gmail.com · WhatsApp 0320 7289443</div>
 </footer>
+
+<div class="renolt-hi" id="renoltHi" aria-live="polite">
+  <div class="renolt-hi-bubble" id="renoltHiBubble">
+    <button type="button" class="hi-x" id="renoltHiClose" aria-label="Dismiss">×</button>
+    <p>Hi — how can Renolt help today?</p>
+    <span>One stuck process. Fixed properly.</span>
+  </div>
+  <a class="renolt-hi-av" href="https://wa.me/923207289443?text=Hello%20Renolt%2C%20Hi" target="_blank" rel="noopener" aria-label="Say hi on WhatsApp">
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="32" cy="32" r="32" fill="#1a2233"/>
+      <circle cx="32" cy="24" r="11" fill="#e8a33d"/>
+      <path d="M14 52c2.5-12 12-18 18-18s15.5 6 18 18" fill="#e8a33d"/>
+      <circle cx="28" cy="22" r="1.6" fill="#12161e"/>
+      <circle cx="36" cy="22" r="1.6" fill="#12161e"/>
+      <path d="M28 28c1.5 2 6.5 2 8 0" stroke="#12161e" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+    <span class="dot" title="Online"></span>
+  </a>
+</div>
+
 <a class="waWidget" href="https://wa.me/923207289443?text=Hello%20Renolt%2C%20I%20have%20a%20question" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32" width="28" height="28" fill="#fff"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.383.7 4.6 1.906 6.463L4 29l7.727-1.867A11.94 11.94 0 0 0 16.001 27C22.63 27 28 21.627 28 15S22.63 3 16.001 3zm0 21.7a9.66 9.66 0 0 1-4.933-1.35l-.354-.21-4.585 1.108 1.13-4.47-.23-.365A9.63 9.63 0 0 1 6.3 15c0-5.357 4.344-9.7 9.7-9.7 5.357 0 9.7 4.343 9.7 9.7s-4.343 9.7-9.7 9.7zm5.31-7.267c-.29-.145-1.717-.848-1.983-.945-.266-.097-.46-.145-.653.146-.194.29-.75.945-.92 1.14-.169.194-.338.218-.628.073-.29-.146-1.223-.451-2.33-1.437-.862-.768-1.443-1.716-1.612-2.006-.169-.29-.018-.447.127-.592.13-.13.29-.338.435-.507.145-.169.194-.29.29-.484.097-.194.048-.363-.024-.508-.073-.146-.653-1.575-.895-2.157-.236-.567-.475-.49-.653-.5-.169-.008-.363-.01-.556-.01-.194 0-.508.073-.774.363-.266.29-1.016.993-1.016 2.422s1.04 2.81 1.185 3.005c.145.194 2.048 3.128 4.963 4.386.694.3 1.235.48 1.657.614.696.221 1.33.19 1.83.115.558-.083 1.717-.702 1.96-1.38.242-.677.242-1.257.169-1.38-.072-.121-.266-.194-.556-.34z"/></svg></a>
 <script>
 const CONTACT_WEBHOOK = 'https://script.google.com/macros/s/AKfycbz1F38ENaoLhbW_uYq_Slrb3D7-zRDBfKexkWS-rsf155upeNXV-InE-HAVBqIlElDWBw/exec';
@@ -164,5 +203,18 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{
   setTimeout(()=>el.classList.add('in'), 80 + i*70);
 });
 </script>
+<script>(function(){
+  var root = document.getElementById('renoltHi');
+  if (!root) return;
+  var key = 'renolt_hi_dismissed';
+  if (sessionStorage.getItem(key)) return;
+  setTimeout(function(){ root.classList.add('is-on'); }, 900);
+  var close = document.getElementById('renoltHiClose');
+  if (close) close.addEventListener('click', function(){
+    root.classList.remove('is-on');
+    sessionStorage.setItem(key, '1');
+    setTimeout(function(){ root.style.display = 'none'; }, 400);
+  });
+})();</script>
 </body>
 </html>
