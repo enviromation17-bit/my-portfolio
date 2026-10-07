@@ -1,517 +1,144 @@
 (function () {
   const canvas = document.getElementById('webgl');
-  const scrubVideo = document.getElementById('scrubVideo');
-  let latestScrubProgress = 0;
-
-  function seekScrubVideo() {
-    if (!scrubVideo || !Number.isFinite(scrubVideo.duration) || scrubVideo.seeking) return;
-    const targetTime = latestScrubProgress * Math.max(0, scrubVideo.duration - 0.04);
-    if (Math.abs(scrubVideo.currentTime - targetTime) > 0.04) scrubVideo.currentTime = targetTime;
-  }
-
-  window.addEventListener('blackhole:scrub', (event) => {
-    const progress = Number(event.detail && event.detail.progress);
-    if (!Number.isFinite(progress)) return;
-    latestScrubProgress = Math.max(0, Math.min(1, progress));
-    seekScrubVideo();
-  });
-
-  if (scrubVideo) {
-    scrubVideo.addEventListener('loadedmetadata', seekScrubVideo);
-    scrubVideo.addEventListener('seeked', seekScrubVideo);
-    scrubVideo.addEventListener('error', () => {
-      console.error('The NASA black-hole background video could not be loaded.');
-    });
-  }
-
   if (!canvas) return;
 
-  if (typeof THREE === 'undefined') {
-    const context = canvas.getContext('2d');
-    if (!context) {
-      console.error('The black-hole background could not initialize a 2D canvas context.');
-      return;
-    }
-
-    const isMobile = window.matchMedia('(max-width: 680px)').matches;
-    const particles = Array.from({ length: isMobile ? 160 : 340 }, () => ({
-      angle: Math.random() * Math.PI * 2,
-      radius: 0.3 + Math.random() * 1.2,
-      speed: 0.08 + Math.random() * 0.32,
-      size: 0.35 + Math.random() * 1.15,
-      depth: 0.25 + Math.random() * 0.75,
-      hue: Math.random() > 0.84 ? 38 : 24
-    }));
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let width = 0;
-    let height = 0;
-    let pixelRatio = 1;
-    let scrubProgress = 0;
-    let suction = 0;
-    let previousTime = 0;
-
-    function resize() {
-      pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = Math.round(width * pixelRatio);
-      canvas.height = Math.round(height * pixelRatio);
-      canvas.style.width = width + 'px';
-      canvas.style.height = height + 'px';
-      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-    }
-
-    function draw(time) {
-      if (document.hidden && !reduceMotion) {
-        requestAnimationFrame(draw);
-        return;
-      }
-      const elapsed = previousTime ? Math.min((time - previousTime) / 1000, 0.05) : 0;
-      previousTime = time;
-      suction += (scrubProgress - suction) * (reduceMotion ? 1 : 0.055);
-
-      context.clearRect(0, 0, width, height);
-      const scale = Math.min(width, height);
-      const cx = width * 0.5;
-      const cy = height * (0.5 + suction * 0.035);
-      const rx = scale * (0.19 + suction * 0.035);
-      const ry = scale * (0.055 + suction * 0.014);
-      const holeRadius = scale * (0.071 + suction * 0.012);
-      const spin = reduceMotion ? 0 : time * 0.00004;
-
-      const glow = context.createRadialGradient(cx, cy, holeRadius * 0.55, cx, cy, rx * 1.7);
-      glow.addColorStop(0, 'rgba(255, 160, 62, ' + (0.09 + suction * 0.06) + ')');
-      glow.addColorStop(0.38, 'rgba(171, 73, 24, 0.075)');
-      glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
-      context.fillStyle = glow;
-      context.fillRect(0, 0, width, height);
-
-      context.save();
-      context.translate(cx, cy);
-      context.rotate(-0.09 + suction * 0.05);
-
-      context.save();
-      context.scale(1, ry / rx);
-      const diskGlow = context.createRadialGradient(0, 0, holeRadius * 0.9, 0, 0, rx);
-      diskGlow.addColorStop(0, 'rgba(255, 230, 176, 0.95)');
-      diskGlow.addColorStop(0.12, 'rgba(255, 163, 71, 0.74)');
-      diskGlow.addColorStop(0.38, 'rgba(235, 106, 39, 0.25)');
-      diskGlow.addColorStop(1, 'rgba(129, 45, 24, 0)');
-      context.fillStyle = diskGlow;
-      context.beginPath();
-      context.arc(0, 0, rx, 0, Math.PI * 2);
-      context.fill();
-      context.restore();
-
-      for (let i = 0; i < particles.length; i++) {
-        const particle = particles[i];
-        if (!reduceMotion) particle.angle += elapsed * particle.speed * (1 + suction * 2.3);
-        const orbit = particle.radius * (0.3 + suction * 0.45);
-        const x = Math.cos(particle.angle + spin) * rx * orbit;
-        const y = Math.sin(particle.angle + spin) * ry * orbit;
-        const alpha = Math.min(0.86, particle.depth * (0.3 + orbit * 0.48) * (1 + suction * 0.45));
-        const radius = particle.size * particle.depth * (0.7 + suction * 0.45);
-
-        context.beginPath();
-        context.fillStyle = 'hsla(' + particle.hue + ', 94%, ' + (66 + particle.depth * 28) + '%, ' + alpha + ')';
-        context.shadowColor = 'rgba(255, 151, 76, 0.55)';
-        context.shadowBlur = particle.depth > 0.88 ? 2 : 0;
-        context.ellipse(x, y, radius * (1 + suction * 0.7), radius * 0.7, 0, 0, Math.PI * 2);
-        context.fill();
-      }
-
-      context.shadowColor = 'rgba(255, 184, 108, 0.58)';
-      context.shadowBlur = 12 + suction * 12;
-      context.strokeStyle = 'rgba(255, 214, 167, ' + (0.4 + suction * 0.24) + ')';
-      context.lineWidth = Math.max(1, scale * 0.0016);
-      context.beginPath();
-      context.ellipse(0, 0, holeRadius * 1.19, holeRadius * 0.32, 0, Math.PI, Math.PI * 2);
-      context.stroke();
-      context.restore();
-
-      const shadowGlow = context.createRadialGradient(cx, cy, holeRadius * 0.82, cx, cy, holeRadius * 1.55);
-      shadowGlow.addColorStop(0, 'rgba(0, 0, 0, 1)');
-      shadowGlow.addColorStop(0.68, 'rgba(0, 0, 0, 1)');
-      shadowGlow.addColorStop(0.88, 'rgba(0, 0, 0, 0.85)');
-      shadowGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
-      context.fillStyle = shadowGlow;
-      context.beginPath();
-      context.arc(cx, cy, holeRadius * 1.55, 0, Math.PI * 2);
-      context.fill();
-
-      if (!reduceMotion) requestAnimationFrame(draw);
-    }
-
-    window.addEventListener('blackhole:scrub', (event) => {
-      const progress = Number(event.detail && event.detail.progress);
-      if (Number.isFinite(progress)) scrubProgress = Math.max(0, Math.min(1, progress));
-    });
-    window.addEventListener('resize', resize);
-    resize();
-    draw(0);
-    if (reduceMotion) {
-      window.addEventListener('blackhole:scrub', () => draw(performance.now()));
-    }
-    return;
-  }
-
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor(0x000000, 0);
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(38, window.innerWidth / window.innerHeight, 0.05, 500);
-  camera.position.set(0, 1.8, 10);
-  camera.lookAt(0, 0, 0);
-
-  const Rs = 1.7;
-  const R_PHOTON = Rs * 1.55;
-  const R_ISCO = Rs * 2.4;
-  const R_OUT = Rs * 5.5;
-
-  const COSMOS = 1800;
-  const cPos = new Float32Array(COSMOS * 3);
-  const cCol = new Float32Array(COSMOS * 3);
-  const cSpd = new Float32Array(COSMOS);
-  for (let i = 0; i < COSMOS; i++) {
-    const i3 = i * 3;
-    const r = 12 + Math.random() * 80;
-    const th = Math.random() * Math.PI * 2;
-    const ph = Math.acos(2 * Math.random() - 1);
-    cPos[i3] = r * Math.sin(ph) * Math.cos(th);
-    cPos[i3 + 1] = r * Math.sin(ph) * Math.sin(th);
-    cPos[i3 + 2] = r * Math.cos(ph);
-    cSpd[i] = 0.002 + Math.random() * 0.008;
-    const t = Math.random();
-    if (t > 0.85) { cCol[i3] = 1; cCol[i3+1] = 0.85; cCol[i3+2] = 0.5; }
-    else if (t > 0.7) { cCol[i3] = 0.7; cCol[i3+1] = 0.85; cCol[i3+2] = 1; }
-    else { const b = 0.5 + Math.random() * 0.5; cCol[i3] = b; cCol[i3+1] = b; cCol[i3+2] = b * 0.95; }
-  }
-  const cosmosGeo = new THREE.BufferGeometry();
-  cosmosGeo.setAttribute('position', new THREE.BufferAttribute(cPos, 3));
-  cosmosGeo.setAttribute('color', new THREE.BufferAttribute(cCol, 3));
-  const cosmos = new THREE.Points(cosmosGeo, new THREE.PointsMaterial({
-    size: 0.08, vertexColors: true, transparent: true, opacity: 0.75,
-    depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true
-  }));
-  scene.add(cosmos);
-
-  const KIN = 900;
-  const kPos = new Float32Array(KIN * 3);
-  const kBase = new Float32Array(KIN * 4);
-  const kCol = new Float32Array(KIN * 3);
-  for (let i = 0; i < KIN; i++) {
-    const r = R_ISCO + Math.random() * (R_OUT * 1.4 - R_ISCO);
-    const theta = Math.random() * Math.PI * 2;
-    const y = (Math.random() - 0.5) * 0.8;
-    kBase[i * 4] = r;
-    kBase[i * 4 + 1] = theta;
-    kBase[i * 4 + 2] = y;
-    kBase[i * 4 + 3] = 0.4 + Math.random() * 0.9;
-    kPos[i * 3] = Math.cos(theta) * r;
-    kPos[i * 3 + 1] = y;
-    kPos[i * 3 + 2] = Math.sin(theta) * r;
-    const hot = Math.random();
-    kCol[i * 3] = 1.0;
-    kCol[i * 3 + 1] = 0.7 + hot * 0.3;
-    kCol[i * 3 + 2] = 0.35 + hot * 0.4;
-  }
-  const kinGeo = new THREE.BufferGeometry();
-  kinGeo.setAttribute('position', new THREE.BufferAttribute(kPos, 3));
-  kinGeo.setAttribute('color', new THREE.BufferAttribute(kCol, 3));
-  const kinMat = new THREE.PointsMaterial({
-    size: 0.05, vertexColors: true, transparent: true, opacity: 0.85,
-    depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true
-  });
-  scene.add(new THREE.Points(kinGeo, kinMat));
-
-  const DISK = 2400;
-  const dPos = new Float32Array(DISK * 3);
-  const dBase = new Float32Array(DISK * 4);
-  const dCol = new Float32Array(DISK * 3);
-  for (let i = 0; i < DISK; i++) {
-    const u = Math.random();
-    const r = R_ISCO + Math.pow(u, 1.5) * (R_OUT - R_ISCO);
-    const theta = Math.random() * Math.PI * 2;
-    const h = (Math.random() - 0.5) * 0.05 * (r / R_OUT);
-    dBase[i * 4] = r;
-    dBase[i * 4 + 1] = theta;
-    dBase[i * 4 + 2] = h;
-    dBase[i * 4 + 3] = 0.7 + Math.random() * 0.3;
-    const t = (r - R_ISCO) / (R_OUT - R_ISCO);
-    let cr, cg, cb;
-    if (t < 0.15) { cr = 1; cg = 0.98; cb = 0.92; }
-    else if (t < 0.4) { const k = (t - 0.15) / 0.25; cr = 1; cg = 0.98 - k * 0.3; cb = 0.92 - k * 0.55; }
-    else if (t < 0.7) { const k = (t - 0.4) / 0.3; cr = 1; cg = 0.68 - k * 0.28; cb = 0.37 - k * 0.18; }
-    else { const k = (t - 0.7) / 0.3; cr = 1 - k * 0.28; cg = 0.4 - k * 0.22; cb = 0.19 - k * 0.1; }
-    dCol[i * 3] = cr; dCol[i * 3 + 1] = Math.max(0.05, cg); dCol[i * 3 + 2] = Math.max(0.02, cb);
-    dPos[i * 3] = Math.cos(theta) * r;
-    dPos[i * 3 + 1] = h;
-    dPos[i * 3 + 2] = Math.sin(theta) * r;
-  }
-  const diskGeo = new THREE.BufferGeometry();
-  diskGeo.setAttribute('position', new THREE.BufferAttribute(dPos, 3));
-  diskGeo.setAttribute('color', new THREE.BufferAttribute(dCol, 3));
-  const diskMat = new THREE.PointsMaterial({
-    size: 0.048, vertexColors: true, transparent: true, opacity: 0.9,
-    depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true
-  });
-  scene.add(new THREE.Points(diskGeo, diskMat));
-
-  const LENS = 1400;
-  const lPos = new Float32Array(LENS * 3);
-  const lBase = new Float32Array(LENS * 4);
-  const lCol = new Float32Array(LENS * 3);
-  for (let i = 0; i < LENS; i++) {
-    const r = R_ISCO + Math.pow(Math.random(), 1.3) * (R_OUT * 0.85 - R_ISCO);
-    const theta = Math.random() * Math.PI * 2;
-    const side = Math.random() > 0.5 ? 1 : -1;
-    lBase[i * 4] = r; lBase[i * 4 + 1] = theta; lBase[i * 4 + 2] = side; lBase[i * 4 + 3] = 0.5 + Math.random() * 0.5;
-    const t = (r - R_ISCO) / (R_OUT - R_ISCO);
-    lCol[i * 3] = 1; lCol[i * 3 + 1] = Math.max(0.15, 0.85 - t * 0.4); lCol[i * 3 + 2] = Math.max(0.05, 0.45 - t * 0.3);
-  }
-  const lensGeo = new THREE.BufferGeometry();
-  lensGeo.setAttribute('position', new THREE.BufferAttribute(lPos, 3));
-  lensGeo.setAttribute('color', new THREE.BufferAttribute(lCol, 3));
-  const lensMat = new THREE.PointsMaterial({
-    size: 0.042, vertexColors: true, transparent: true, opacity: 0.7,
-    depthWrite: false, blending: THREE.AdditiveBlending, sizeAttenuation: true
-  });
-  scene.add(new THREE.Points(lensGeo, lensMat));
-
-  function glowRing(inner, outer, color, opacity, segs) {
-    const g = new THREE.RingGeometry(inner, outer, segs || 128);
-    const m = new THREE.MeshBasicMaterial({
-      color, transparent: true, opacity,
-      side: THREE.DoubleSide, blending: THREE.AdditiveBlending, depthWrite: false
-    });
-    const mesh = new THREE.Mesh(g, m);
-    mesh.rotation.x = -Math.PI / 2 + 0.12;
-    scene.add(mesh);
-    return mesh;
-  }
-
-  const horizon = new THREE.Mesh(
-    new THREE.SphereGeometry(Rs, 80, 80),
-    new THREE.MeshBasicMaterial({ color: 0x000000 })
-  );
-  scene.add(horizon);
-  const shadow = new THREE.Mesh(
-    new THREE.SphereGeometry(Rs * 1.05, 64, 64),
-    new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.8, depthWrite: false })
-  );
-  scene.add(shadow);
-
-  const photonCore = glowRing(R_PHOTON * 0.98, R_PHOTON * 1.12, 0xfffaf0, 1.0, 200);
-  const photonBloom = glowRing(R_PHOTON * 0.9, R_PHOTON * 1.28, 0xffe0a0, 0.45, 160);
-  const photonSoft = glowRing(R_PHOTON * 0.82, R_PHOTON * 1.45, 0xffb060, 0.18, 128);
-  const diskR1 = glowRing(R_ISCO * 0.95, R_ISCO * 1.35, 0xffe8c0, 0.35, 128);
-  const diskR2 = glowRing(R_ISCO * 1.3, R_OUT * 0.45, 0xffb040, 0.2, 100);
-  const diskR3 = glowRing(R_OUT * 0.4, R_OUT * 0.75, 0xe07020, 0.1, 80);
-  const diskR4 = glowRing(R_OUT * 0.7, R_OUT * 1.05, 0xc04810, 0.045, 64);
-
-  const diskPlane = new THREE.Mesh(
-    new THREE.RingGeometry(R_ISCO * 0.98, R_OUT * 1.0, 128),
-    new THREE.MeshBasicMaterial({
-      color: 0xd86818, transparent: true, opacity: 0.07,
-      side: THREE.DoubleSide, blending: THREE.AdditiveBlending, depthWrite: false
-    })
-  );
-  diskPlane.rotation.x = -Math.PI / 2 + 0.12;
-  scene.add(diskPlane);
-
-  const aura = new THREE.Mesh(
-    new THREE.SphereGeometry(Rs * 2.0, 40, 40),
-    new THREE.MeshBasicMaterial({
-      color: 0xffa040, transparent: true, opacity: 0.06,
-      blending: THREE.AdditiveBlending, depthWrite: false
-    })
-  );
-  scene.add(aura);
-
-  let mouseX = 0, mouseY = 0;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ctx = canvas.getContext('2d');
+  let w = 0, h = 0, dpr = 1;
   let scrubProgress = 0;
-  let suction = 0;
+  let mouseX = 0.5, mouseY = 0.5;
+  let time = 0;
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
 
   window.addEventListener('mousemove', (e) => {
-    mouseX = (e.clientX / window.innerWidth - 0.5) * 0.4;
-    mouseY = (e.clientY / window.innerHeight - 0.5) * 0.25;
-  });
-  window.addEventListener('blackhole:scrub', (event) => {
-    const progress = Number(event.detail && event.detail.progress);
-    if (Number.isFinite(progress)) scrubProgress = Math.max(0, Math.min(1, progress));
-  });
-  window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    mouseX = e.clientX / w;
+    mouseY = e.clientY / h;
+  }, { passive: true });
+
+  window.addEventListener('blackhole:scrub', (e) => {
+    scrubProgress = (e.detail && typeof e.detail.progress === 'number') ? e.detail.progress : 0;
   });
 
-  const clock = new THREE.Clock();
-
-  function doppler(cr, cg, cb, vz) {
-    const beta = Math.max(-0.45, Math.min(0.45, -vz * 0.09));
-    const boost = Math.pow(1 + beta, 2.2);
-    return [
-      Math.min(1.45, cr * boost * (1 - beta * 0.1)),
-      Math.min(1.3, cg * boost),
-      Math.min(1.15, cb * boost * 0.9)
-    ];
+  const orbs = [];
+  for (let i = 0; i < 5; i++) {
+    orbs.push({
+      x: 0.15 + Math.random() * 0.7,
+      y: 0.1 + Math.random() * 0.8,
+      r: 120 + Math.random() * 180,
+      vx: (Math.random() - 0.5) * 0.00015,
+      vy: (Math.random() - 0.5) * 0.00012,
+      hue: i % 2 === 0 ? 38 : 28,
+      alpha: 0.04 + Math.random() * 0.03
+    });
   }
 
-  function animate() {
-    requestAnimationFrame(animate);
-    const t = clock.getElapsedTime();
-    const dt = 0.016;
-
-    suction += (scrubProgress - suction) * 0.04;
-    const pull = suction * suction;
-
-    const carr = cosmosGeo.attributes.position.array;
-    for (let i = 0; i < COSMOS; i++) {
-      const i3 = i * 3;
-      const x = carr[i3], z = carr[i3 + 2];
-      const ang = cSpd[i] * (1 + pull * 0.5);
-      const cos = Math.cos(ang), sin = Math.sin(ang);
-      carr[i3] = x * cos - z * sin;
-      carr[i3 + 2] = x * sin + z * cos;
-      if (pull > 0.1) {
-        carr[i3] *= 1 - pull * 0.0008;
-        carr[i3 + 1] *= 1 - pull * 0.0008;
-        carr[i3 + 2] *= 1 - pull * 0.0008;
-      }
-    }
-    cosmosGeo.attributes.position.needsUpdate = true;
-
-    const karr = kinGeo.attributes.position.array;
-    const kcols = kinGeo.attributes.color.array;
-    for (let i = 0; i < KIN; i++) {
-      const i3 = i * 3;
-      const i4 = i * 4;
-      let r = kBase[i4];
-      let theta = kBase[i4 + 1];
-      let y = kBase[i4 + 2];
-      const spd = kBase[i4 + 3];
-      const omega = (0.55 * spd) / Math.pow(r / Rs + 0.3, 1.4);
-      theta += omega * dt * (1 + pull * 2);
-      r -= (0.008 + pull * 0.025) * spd * (Rs / (r + 0.4));
-      y *= 0.999;
-      if (r < Rs * 1.15) {
-        r = R_OUT * (0.9 + Math.random() * 0.5);
-        theta = Math.random() * Math.PI * 2;
-        y = (Math.random() - 0.5) * 0.9;
-      }
-      kBase[i4] = r; kBase[i4 + 1] = theta; kBase[i4 + 2] = y;
-      karr[i3] = Math.cos(theta) * r;
-      karr[i3 + 1] = y;
-      karr[i3 + 2] = Math.sin(theta) * r;
-      const near = Math.max(0.4, 1 - (r - Rs) / (R_OUT * 1.5));
-      kcols[i3] = near;
-      kcols[i3 + 1] = near * (0.65 + near * 0.3);
-      kcols[i3 + 2] = near * 0.35;
-    }
-    kinGeo.attributes.position.needsUpdate = true;
-    kinGeo.attributes.color.needsUpdate = true;
-
-    const arr = diskGeo.attributes.position.array;
-    const cols = diskGeo.attributes.color.array;
-    for (let i = 0; i < DISK; i++) {
-      const i3 = i * 3;
-      const i4 = i * 4;
-      let r = dBase[i4];
-      let theta = dBase[i4 + 1];
-      const h = dBase[i4 + 2];
-      const br = dBase[i4 + 3];
-      const omega = 0.5 / Math.pow(r / Rs + 0.2, 1.5);
-      theta += omega * dt * (1 + pull * 1.3);
-      dBase[i4 + 1] = theta;
-      if (pull > 0.02) {
-        r -= pull * 0.016 * (Rs / (r + 0.3));
-        if (r < Rs * 1.12) { r = R_OUT * (0.75 + Math.random() * 0.25); theta = Math.random() * Math.PI * 2; }
-        dBase[i4] = r; dBase[i4 + 1] = theta;
-      }
-      const cos = Math.cos(theta), sin = Math.sin(theta);
-      arr[i3] = cos * r; arr[i3 + 1] = h * (1 - pull * 0.3); arr[i3 + 2] = sin * r;
-      const grav = Math.max(0.3, Math.min(1, (r - Rs) / (R_OUT - Rs)));
-      const d = doppler(dCol[i3], dCol[i3 + 1], dCol[i3 + 2], cos * omega * r);
-      cols[i3] = d[0] * grav * br; cols[i3 + 1] = d[1] * grav * br; cols[i3 + 2] = d[2] * grav * br;
-    }
-    diskGeo.attributes.position.needsUpdate = true;
-    diskGeo.attributes.color.needsUpdate = true;
-
-    const larr = lensGeo.attributes.position.array;
-    const lcols = lensGeo.attributes.color.array;
-    for (let i = 0; i < LENS; i++) {
-      const i3 = i * 3;
-      const i4 = i * 4;
-      let r = lBase[i4];
-      let theta = lBase[i4 + 1];
-      const side = lBase[i4 + 2];
-      const br = lBase[i4 + 3];
-      const omega = 0.42 / Math.pow(r / Rs + 0.25, 1.5);
-      theta += omega * dt * 0.9 * (1 + pull);
-      lBase[i4 + 1] = theta;
-      if (pull > 0.02) {
-        r -= pull * 0.01;
-        if (r < R_ISCO * 0.95) r = R_OUT * 0.75;
-        lBase[i4] = r;
-      }
-      const far = Math.sin(theta);
-      const back = Math.max(0, far);
-      const phi = Math.cos(theta) * Math.PI * 0.55;
-      const lensR = R_PHOTON * 1.1 + (r - R_ISCO) * 0.13;
-      const arcH = side * (0.22 + (r / R_OUT) * 1.4) * (0.5 + back * 0.5);
-      const blend = 0.4 + back * 0.55;
-      const trueX = Math.cos(theta) * r, trueZ = Math.sin(theta) * r;
-      const lensX = Math.sin(phi) * lensR;
-      const lensZ = -Math.cos(phi) * lensR * 0.28 - Rs * 0.35;
-      larr[i3] = trueX * (1 - blend) + lensX * blend;
-      larr[i3 + 1] = arcH * blend;
-      larr[i3 + 2] = trueZ * (1 - blend) + lensZ * blend;
-      const vis = 0.25 + back * 0.75;
-      const grav = Math.max(0.35, (r - Rs) / (R_OUT - Rs));
-      const d = doppler(lCol[i3], lCol[i3 + 1], lCol[i3 + 2], Math.cos(theta) * omega * r);
-      lcols[i3] = d[0] * grav * br * vis;
-      lcols[i3 + 1] = d[1] * grav * br * vis;
-      lcols[i3 + 2] = d[2] * grav * br * vis;
-    }
-    lensGeo.attributes.position.needsUpdate = true;
-    lensGeo.attributes.color.needsUpdate = true;
-
-    const hs = 1 + suction * 0.5;
-    horizon.scale.setScalar(hs);
-    shadow.scale.setScalar(hs);
-    photonCore.scale.setScalar(hs);
-    photonBloom.scale.setScalar(hs);
-    photonSoft.scale.setScalar(hs);
-    aura.scale.setScalar(hs * 1.05);
-
-    photonCore.material.opacity = 0.92 + suction * 0.08;
-    photonBloom.material.opacity = 0.4 + suction * 0.15;
-    diskPlane.material.opacity = 0.055 + (1 - suction) * 0.03;
-    aura.material.opacity = 0.05 + suction * 0.07;
-
-    photonCore.rotation.z = t * 0.03;
-    diskR1.rotation.z = t * 0.02;
-    diskR2.rotation.z = -t * 0.012;
-    diskR3.rotation.z = t * 0.008;
-    diskPlane.rotation.z = t * 0.006;
-
-    diskMat.opacity = 0.65 + (1 - suction) * 0.28;
-    kinMat.opacity = 0.55 + pull * 0.35;
-    kinMat.size = 0.04 + pull * 0.025;
-    lensMat.opacity = 0.5 + (1 - suction) * 0.25;
-    cosmos.material.opacity = 0.4 + (1 - suction) * 0.35;
-
-    const camR = 10 - suction * 2.5;
-    const camY = 1.8 - suction * 0.35 + mouseY * 0.3;
-    camera.position.x += (mouseX * 1.0 - camera.position.x) * 0.03;
-    camera.position.y += (camY - camera.position.y) * 0.03;
-    camera.position.z += (camR - camera.position.z) * 0.03;
-    camera.lookAt(0, 0, 0);
-
-    renderer.render(scene, camera);
+  const N = 90;
+  const particles = [];
+  for (let i = 0; i < N; i++) {
+    particles.push({
+      x: Math.random(),
+      y: Math.random(),
+      z: 0.3 + Math.random() * 0.7,
+      s: 0.6 + Math.random() * 1.4,
+      drift: (Math.random() - 0.5) * 0.00008
+    });
   }
-  animate();
+
+  function drawGrid() {
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,200,120,0.03)';
+    ctx.lineWidth = 1;
+    const gap = 80;
+    const ox = (mouseX - 0.5) * 12;
+    const oy = (mouseY - 0.5) * 8;
+    for (let x = -gap; x < w + gap; x += gap) {
+      ctx.beginPath();
+      ctx.moveTo(x + ox, 0);
+      ctx.lineTo(x + ox, h);
+      ctx.stroke();
+    }
+    for (let y = -gap; y < h + gap; y += gap) {
+      ctx.beginPath();
+      ctx.moveTo(0, y + oy);
+      ctx.lineTo(w, y + oy);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function frame(ts) {
+    if (!reduceMotion) requestAnimationFrame(frame);
+    time = ts * 0.001;
+
+    ctx.fillStyle = '#08090c';
+    ctx.fillRect(0, 0, w, h);
+
+    const vg = ctx.createRadialGradient(w * 0.5, h * 0.35, 0, w * 0.5, h * 0.4, w * 0.75);
+    vg.addColorStop(0, 'rgba(18,16,14,0.9)');
+    vg.addColorStop(1, 'rgba(5,6,8,0)');
+    ctx.fillStyle = vg;
+    ctx.fillRect(0, 0, w, h);
+
+    for (const o of orbs) {
+      if (!reduceMotion) {
+        o.x += o.vx;
+        o.y += o.vy;
+        if (o.x < -0.1 || o.x > 1.1) o.vx *= -1;
+        if (o.y < -0.1 || o.y > 1.1) o.vy *= -1;
+      }
+      const px = o.x * w + (mouseX - 0.5) * 20;
+      const py = o.y * h + (mouseY - 0.5) * 14;
+      const g = ctx.createRadialGradient(px, py, 0, px, py, o.r);
+      const a = o.alpha * (1 - scrubProgress * 0.35);
+      g.addColorStop(0, 'hsla(' + o.hue + ',70%,55%,' + a + ')');
+      g.addColorStop(0.45, 'hsla(' + o.hue + ',60%,40%,' + (a * 0.35) + ')');
+      g.addColorStop(1, 'hsla(' + o.hue + ',50%,20%,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(px, py, o.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    drawGrid();
+
+    for (const p of particles) {
+      if (!reduceMotion) {
+        p.x += p.drift;
+        if (p.x < 0) p.x = 1;
+        if (p.x > 1) p.x = 0;
+      }
+      const px = p.x * w + (mouseX - 0.5) * 8 * p.z;
+      const py = p.y * h + Math.sin(time * 0.3 + p.x * 6) * 4 * p.z;
+      const size = p.s * p.z;
+      const alpha = 0.15 + p.z * 0.35;
+      ctx.beginPath();
+      ctx.fillStyle = 'rgba(245, 210, 160,' + alpha + ')';
+      ctx.arc(px, py, size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    const bot = ctx.createLinearGradient(0, h * 0.6, 0, h);
+    bot.addColorStop(0, 'rgba(8,9,12,0)');
+    bot.addColorStop(1, 'rgba(8,9,12,0.55)');
+    ctx.fillStyle = bot;
+    ctx.fillRect(0, 0, w, h);
+  }
+
+  if (reduceMotion) {
+    frame(0);
+  } else {
+    requestAnimationFrame(frame);
+  }
 })();
