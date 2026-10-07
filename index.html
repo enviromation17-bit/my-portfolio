@@ -68,11 +68,8 @@
 </section>
 <div class="scrub-wrap" id="process">
   <section class="scrub-section" id="scrubPin">
-    <video class="scrub-video" id="scrubVideo" muted playsinline preload="auto" aria-hidden="true" tabindex="-1">
-      <source src="https://svs.gsfc.nasa.gov/vis/a010000/a014500/a014576/14576_BH_Plunge_Inset_900x480_60.mp4" type="video/mp4">
-    </video>
+    <canvas id="scrub3d" class="scrub-3d" aria-hidden="true"></canvas>
     <div class="scrub-video-shade" aria-hidden="true"></div>
-    <a class="scrub-video-credit" href="https://svs.gsfc.nasa.gov/14576" target="_blank" rel="noopener">Background simulation · NASA GSFC</a>
     <div class="scrub-bar-track"><div class="scrub-bar-fill" id="scrubBar"></div></div>
     <div class="scrub-inner">
       <div class="scrub-label">How Renolt works</div>
@@ -190,7 +187,7 @@
         <div class="proj-foot"><span class="tag">Case study</span><a href="recovery.html">See how it works →</a></div>
       </article>
       <article class="proj" data-reveal>
-        <div class="proj-top"><div class="proj-meta"><span class="tag">REAL ESTATE</span><span class="pill live">Live demo</span></div><h3>Brick & Build Developers</h3></div>
+        <div class="proj-top"><div class="proj-meta"><span class="tag">REAL ESTATE</span><span class="pill live">Live demo</span></div><h3>Brick &amp; Build Developers</h3></div>
         <p>Professional property website built to bring in leads.</p>
         <div class="proj-foot"><span class="tag">brick-and-build</span><a href="https://bricksandbuiltdevelopers.com/" target="_blank" rel="noopener">Open project →</a></div>
       </article>
@@ -272,7 +269,6 @@ ScrollTrigger.create({
     const p = self.progress;
     if (scrubBar) scrubBar.style.width = (p * 100) + '%';
     window.dispatchEvent(new CustomEvent('blackhole:scrub', { detail: { progress: p } }));
-    if (window.__bhScrubVideo) window.__bhScrubVideo(p);
     const idx = Math.min(3, Math.floor(p * 4));
     steps.forEach((el, i) => {
       el.classList.toggle('active', i === idx);
@@ -285,21 +281,6 @@ ScrollTrigger.create({
   }
 });
 if (steps[0]) steps[0].classList.add('active');
-(function(){
-  const video = document.getElementById('scrubVideo');
-  if (!video) return;
-  video.pause(); video.muted = true; video.playsInline = true; video.preload = 'auto';
-  let duration = 0, ready = false;
-  const setTime = (p) => {
-    if (!ready || !duration) return;
-    const t = Math.max(0, Math.min(duration - 0.05, p * duration));
-    if (Math.abs(video.currentTime - t) > 0.04) { try { video.currentTime = t; } catch (e) {} }
-  };
-  video.addEventListener('loadedmetadata', () => { duration = video.duration || 0; ready = duration > 0; setTime(0); });
-  video.addEventListener('error', () => { video.style.opacity = '0'; });
-  window.addEventListener('blackhole:scrub', (e) => setTime((e.detail && e.detail.progress) || 0));
-  window.__bhScrubVideo = setTime;
-})();
 document.querySelectorAll('[data-split]').forEach(el => {
   const text = el.textContent.trim();
   el.innerHTML = text.split(/\s+/).map(w => '<span class="word" style="display:inline-block;opacity:0;transform:translateY(30px)">' + w + '&nbsp;</span>').join('');
