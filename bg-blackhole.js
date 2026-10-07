@@ -1,144 +1,166 @@
 (function () {
+  // Clean professional 3D field — cursor parallax + scroll depth
+  // Free: Three.js r128 (CDN)
   const canvas = document.getElementById('webgl');
-  if (!canvas) return;
+  if (!canvas || typeof THREE === 'undefined') return;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const ctx = canvas.getContext('2d');
-  let w = 0, h = 0, dpr = 1;
-  let scrubProgress = 0;
-  let mouseX = 0.5, mouseY = 0.5;
-  let time = 0;
 
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    w = window.innerWidth;
-    h = window.innerHeight;
-    canvas.width = Math.floor(w * dpr);
-    canvas.height = Math.floor(h * dpr);
-    canvas.style.width = w + 'px';
-    canvas.style.height = h + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
+    alpha: true,
+    powerPreference: 'high-performance'
+  });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor(0x08090c, 1);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 120);
+  camera.position.set(0, 0, 14);
+
+  const COUNT = 1400;
+  const positions = new Float32Array(COUNT * 3);
+  const colors = new Float32Array(COUNT * 3);
+
+  for (let i = 0; i < COUNT; i++) {
+    const i3 = i * 3;
+    const r = 4 + Math.random() * 22;
+    const theta = Math.random() * Math.PI * 2;
+    const phi = Math.acos(2 * Math.random() - 1);
+    positions[i3] = r * Math.sin(phi) * Math.cos(theta);
+    positions[i3 + 1] = r * Math.sin(phi) * Math.sin(theta) * 0.7;
+    positions[i3 + 2] = r * Math.cos(phi);
+
+    const t = Math.random();
+    if (t > 0.82) {
+      colors[i3] = 0.95; colors[i3 + 1] = 0.78; colors[i3 + 2] = 0.35;
+    } else if (t > 0.6) {
+      colors[i3] = 0.85; colors[i3 + 1] = 0.88; colors[i3 + 2] = 0.95;
+    } else {
+      const g = 0.45 + Math.random() * 0.35;
+      colors[i3] = g; colors[i3 + 1] = g * 0.98; colors[i3 + 2] = g * 0.9;
+    }
   }
-  resize();
-  window.addEventListener('resize', resize);
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+  const mat = new THREE.PointsMaterial({
+    size: 0.06,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.65,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    sizeAttenuation: true
+  });
+  const points = new THREE.Points(geo, mat);
+  scene.add(points);
+
+  const ringGeo = new THREE.TorusGeometry(5.2, 0.012, 8, 180);
+  const ringMat = new THREE.MeshBasicMaterial({
+    color: 0xd4a017,
+    transparent: true,
+    opacity: 0.14,
+    depthWrite: false
+  });
+  const ring = new THREE.Mesh(ringGeo, ringMat);
+  ring.rotation.x = Math.PI * 0.42;
+  ring.rotation.y = 0.15;
+  scene.add(ring);
+
+  const ring2 = new THREE.Mesh(
+    new THREE.TorusGeometry(7.8, 0.008, 6, 160),
+    new THREE.MeshBasicMaterial({
+      color: 0x8b92a5,
+      transparent: true,
+      opacity: 0.07,
+      depthWrite: false
+    })
+  );
+  ring2.rotation.x = Math.PI * 0.38;
+  ring2.rotation.z = 0.2;
+  scene.add(ring2);
+
+  const glow = new THREE.Mesh(
+    new THREE.CircleGeometry(2.2, 48),
+    new THREE.MeshBasicMaterial({
+      color: 0xd4a017,
+      transparent: true,
+      opacity: 0.035,
+      depthWrite: false,
+      side: THREE.DoubleSide
+    })
+  );
+  glow.position.z = -2;
+  scene.add(glow);
+
+  let mouseX = 0, mouseY = 0;
+  let targetX = 0, targetY = 0;
+  let scrub = 0;
+  let scrollY = 0;
 
   window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX / w;
-    mouseY = e.clientY / h;
+    targetX = (e.clientX / window.innerWidth - 0.5) * 2;
+    targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+  }, { passive: true });
+
+  window.addEventListener('scroll', () => {
+    scrollY = window.scrollY || 0;
   }, { passive: true });
 
   window.addEventListener('blackhole:scrub', (e) => {
-    scrubProgress = (e.detail && typeof e.detail.progress === 'number') ? e.detail.progress : 0;
+    scrub = (e.detail && typeof e.detail.progress === 'number') ? e.detail.progress : 0;
   });
 
-  const orbs = [];
-  for (let i = 0; i < 5; i++) {
-    orbs.push({
-      x: 0.15 + Math.random() * 0.7,
-      y: 0.1 + Math.random() * 0.8,
-      r: 120 + Math.random() * 180,
-      vx: (Math.random() - 0.5) * 0.00015,
-      vy: (Math.random() - 0.5) * 0.00012,
-      hue: i % 2 === 0 ? 38 : 28,
-      alpha: 0.04 + Math.random() * 0.03
-    });
-  }
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
 
-  const N = 90;
-  const particles = [];
-  for (let i = 0; i < N; i++) {
-    particles.push({
-      x: Math.random(),
-      y: Math.random(),
-      z: 0.3 + Math.random() * 0.7,
-      s: 0.6 + Math.random() * 1.4,
-      drift: (Math.random() - 0.5) * 0.00008
-    });
-  }
+  const clock = new THREE.Clock();
+  const reduceMotionFlag = reduceMotion;
 
-  function drawGrid() {
-    ctx.save();
-    ctx.strokeStyle = 'rgba(255,200,120,0.03)';
-    ctx.lineWidth = 1;
-    const gap = 80;
-    const ox = (mouseX - 0.5) * 12;
-    const oy = (mouseY - 0.5) * 8;
-    for (let x = -gap; x < w + gap; x += gap) {
-      ctx.beginPath();
-      ctx.moveTo(x + ox, 0);
-      ctx.lineTo(x + ox, h);
-      ctx.stroke();
-    }
-    for (let y = -gap; y < h + gap; y += gap) {
-      ctx.beginPath();
-      ctx.moveTo(0, y + oy);
-      ctx.lineTo(w, y + oy);
-      ctx.stroke();
-    }
-    ctx.restore();
-  }
+  function animate() {
+    requestAnimationFrame(animate);
+    const t = clock.getElapsedTime();
 
-  function frame(ts) {
-    if (!reduceMotion) requestAnimationFrame(frame);
-    time = ts * 0.001;
-
-    ctx.fillStyle = '#08090c';
-    ctx.fillRect(0, 0, w, h);
-
-    const vg = ctx.createRadialGradient(w * 0.5, h * 0.35, 0, w * 0.5, h * 0.4, w * 0.75);
-    vg.addColorStop(0, 'rgba(18,16,14,0.9)');
-    vg.addColorStop(1, 'rgba(5,6,8,0)');
-    ctx.fillStyle = vg;
-    ctx.fillRect(0, 0, w, h);
-
-    for (const o of orbs) {
-      if (!reduceMotion) {
-        o.x += o.vx;
-        o.y += o.vy;
-        if (o.x < -0.1 || o.x > 1.1) o.vx *= -1;
-        if (o.y < -0.1 || o.y > 1.1) o.vy *= -1;
-      }
-      const px = o.x * w + (mouseX - 0.5) * 20;
-      const py = o.y * h + (mouseY - 0.5) * 14;
-      const g = ctx.createRadialGradient(px, py, 0, px, py, o.r);
-      const a = o.alpha * (1 - scrubProgress * 0.35);
-      g.addColorStop(0, 'hsla(' + o.hue + ',70%,55%,' + a + ')');
-      g.addColorStop(0.45, 'hsla(' + o.hue + ',60%,40%,' + (a * 0.35) + ')');
-      g.addColorStop(1, 'hsla(' + o.hue + ',50%,20%,0)');
-      ctx.fillStyle = g;
-      ctx.beginPath();
-      ctx.arc(px, py, o.r, 0, Math.PI * 2);
-      ctx.fill();
+    if (!reduceMotionFlag) {
+      mouseX += (targetX - mouseX) * 0.04;
+      mouseY += (targetY - mouseY) * 0.04;
+      points.rotation.y = t * 0.018 + mouseX * 0.08;
+      points.rotation.x = mouseY * 0.05 + Math.sin(t * 0.1) * 0.02;
     }
 
-    drawGrid();
+    ring.rotation.z = t * 0.06;
+    ring2.rotation.z = -t * 0.035;
+    ring.rotation.x = Math.PI * 0.42 + mouseY * 0.06;
+    ring2.rotation.x = Math.PI * 0.38 + mouseY * 0.04;
 
-    for (const p of particles) {
-      if (!reduceMotion) {
-        p.x += p.drift;
-        if (p.x < 0) p.x = 1;
-        if (p.x > 1) p.x = 0;
-      }
-      const px = p.x * w + (mouseX - 0.5) * 8 * p.z;
-      const py = p.y * h + Math.sin(time * 0.3 + p.x * 6) * 4 * p.z;
-      const size = p.s * p.z;
-      const alpha = 0.15 + p.z * 0.35;
-      ctx.beginPath();
-      ctx.fillStyle = 'rgba(245, 210, 160,' + alpha + ')';
-      ctx.arc(px, py, size, 0, Math.PI * 2);
-      ctx.fill();
-    }
+    glow.position.x = mouseX * 0.4;
+    glow.position.y = -mouseY * 0.3;
 
-    const bot = ctx.createLinearGradient(0, h * 0.6, 0, h);
-    bot.addColorStop(0, 'rgba(8,9,12,0)');
-    bot.addColorStop(1, 'rgba(8,9,12,0.55)');
-    ctx.fillStyle = bot;
-    ctx.fillRect(0, 0, w, h);
+    mat.opacity = 0.55 + (1 - scrub) * 0.15;
+    ringMat.opacity = 0.1 + scrub * 0.08;
+    glow.material.opacity = 0.03 + scrub * 0.04;
+
+    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const pageP = Math.min(1, scrollY / maxScroll);
+    const camZ = 14 - pageP * 2.2 - scrub * 1.8;
+    const camX = mouseX * 1.4;
+    const camY = -mouseY * 0.9 + pageP * 0.3;
+
+    camera.position.x += (camX - camera.position.x) * 0.05;
+    camera.position.y += (camY - camera.position.y) * 0.05;
+    camera.position.z += (camZ - camera.position.z) * 0.05;
+    camera.lookAt(mouseX * 0.3, -mouseY * 0.2, 0);
+
+    renderer.render(scene, camera);
   }
 
-  if (reduceMotion) {
-    frame(0);
-  } else {
-    requestAnimationFrame(frame);
-  }
+  animate();
 })();
