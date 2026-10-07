@@ -10,7 +10,6 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Contact Renolt">
 <meta property="og:url" content="https://enviromation17-bit.github.io/my-portfolio/contact.html">
-<meta property="og:title" content="Contact Renolt">
 <meta name="theme-color" content="#0c0f14">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -97,17 +96,17 @@ footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted2);font-
   <div class="panel reveal">
     <h2>Contact form</h2>
     <p class="muted" style="margin-bottom:20px">Submit this and it goes straight to our team — logged instantly and emailed to us so nothing sits unread.</p>
-    <form class="form" id="contactForm">
+    <form class="form" id="contactForm" autocomplete="on">
       <div class="row">
-        <label>Name<input name="name" required placeholder="Your name"></label>
-        <label>Business<input name="business" placeholder="Company name"></label>
+        <label for="cf-name">Name<input id="cf-name" name="name" type="text" required placeholder="Your name" autocomplete="name"></label>
+        <label for="cf-business">Business<input id="cf-business" name="business" type="text" placeholder="Company name" autocomplete="organization"></label>
       </div>
       <div class="row">
-        <label>Email<input name="email" type="email" required placeholder="you@company.com"></label>
-        <label>WhatsApp / phone<input name="phone" placeholder="Your number"></label>
+        <label for="cf-email">Email<input id="cf-email" name="email" type="email" required placeholder="you@company.com" autocomplete="email"></label>
+        <label for="cf-phone">WhatsApp / phone<input id="cf-phone" name="phone" type="tel" placeholder="Your number" autocomplete="tel"></label>
       </div>
-      <label>What do you need?
-        <select name="need">
+      <label for="cf-need">What do you need?
+        <select id="cf-need" name="need" autocomplete="off">
           <option value="Lead system">Lead system / follow-up</option>
           <option value="Omni assistant">Omni multi-channel assistant</option>
           <option value="Post scheduler">Post scheduler</option>
@@ -116,7 +115,7 @@ footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted2);font-
           <option value="Not sure">Not sure yet</option>
         </select>
       </label>
-      <label>Tell us about the process<textarea name="message" required placeholder="Example: We receive leads from our website and WhatsApp, but follow-up is often missed..."></textarea></label>
+      <label for="cf-message">Tell us about the process<textarea id="cf-message" name="message" required placeholder="Example: We receive leads from our website and WhatsApp, but follow-up is often missed..." autocomplete="off"></textarea></label>
       <button class="submit" type="submit">Send to Renolt</button>
       <div class="success" id="successMsg">Got it — Renolt will reply soon. For a faster reply, use WhatsApp.</div>
       <div class="success" id="errorMsg" style="display:none;border-left-color:var(--danger,#e0715f);background:rgba(224,113,95,.08)">Couldn't send that — please try WhatsApp instead.</div>
