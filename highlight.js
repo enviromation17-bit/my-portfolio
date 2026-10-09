@@ -29,11 +29,11 @@
       card.id = 'proj-remotion';
       card.setAttribute('data-reveal', '');
       card.innerHTML =
-        '<div class="proj-top"><div class="proj-meta"><span class="tag">MOTION VIDEO</span><span class="pill live">Capability</span></div>' +
-        '<h3>Cinematic product video</h3></div>' +
-        '<p>Promo and launch videos built with <strong>Remotion</strong> and <strong>video-shotcraft</strong> — real page captures, shot recipes, and film-grade motion for your product.</p>' +
-        '<div class="proj-foot"><span class="tag">Remotion · shotcraft</span>' +
-        '<a href="https://vincentwei1021.github.io/video-shotcraft/showcase.html" target="_blank" rel="noopener">See motion examples →</a></div>';
+        '<div class="proj-top"><div class="proj-meta"><span class="tag">MOTION VIDEO</span><span class="pill live">Live promo</span></div>' +
+        '<h3>Renolt promo (Remotion)</h3></div>' +
+        '<p>18s cinematic promo — brand open, tagline, four workers, CTA. Built with <strong>Remotion</strong> using video-shotcraft-style shot structure.</p>' +
+        '<div class="proj-foot"><span class="tag">Remotion · 18s</span>' +
+        '<a href="https://litter.catbox.moe/ui7684.mp4" target="_blank" rel="noopener">Watch promo →</a></div>';
       grid.appendChild(card);
     }
 
@@ -46,7 +46,7 @@
       row.setAttribute('data-reveal', '');
       row.innerHTML =
         '<div class="side"><b>PRODUCT VIDEO</b><h3>Your offer looks flat on a static page.</h3></div>' +
-        '<div class="fix"><strong>How Renolt fixes it:</strong> cinematic product clips with <span class="hl-scroll">Remotion</span> + <span class="hl-scroll">video-shotcraft</span> — storyboarded motion, beat-synced cuts, and launch-ready promos you can reuse on ads and social.</div>';
+        '<div class="fix"><strong>How Renolt fixes it:</strong> cinematic product clips with <span class="hl-scroll">Remotion</span> + <span class="hl-scroll">video-shotcraft</span> — storyboarded motion and launch-ready promos for ads and social.</div>';
       if (faq) services.querySelector('.wrap').insertBefore(row, faq);
       else services.querySelector('.wrap').appendChild(row);
     }
@@ -58,7 +58,7 @@
       stack.id = 'video-stack-note';
       stack.setAttribute('data-reveal', '');
       stack.innerHTML =
-        'Video stack: <span class="hl-scroll">Remotion</span> (programmatic video) + <span class="hl-scroll">video-shotcraft</span> (shot recipes & product promos). Free for solo / small teams under Remotion\'s license.';
+        'Video stack: <span class="hl-scroll">Remotion</span> + <span class="hl-scroll">video-shotcraft</span> shot structure. Watch the Renolt promo or request a custom one for your product.';
       if (note.parentNode) note.parentNode.insertBefore(stack, note.nextSibling);
     }
   }
