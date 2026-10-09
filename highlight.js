@@ -30,10 +30,10 @@
       card.setAttribute('data-reveal', '');
       card.innerHTML =
         '<div class="proj-top"><div class="proj-meta"><span class="tag">MOTION VIDEO</span><span class="pill live">Live promo</span></div>' +
-        '<h3>Renolt promo (Remotion)</h3></div>' +
-        '<p>18s cinematic promo — brand open, tagline, four workers, CTA. Built with <strong>Remotion</strong> using video-shotcraft-style shot structure.</p>' +
-        '<div class="proj-foot"><span class="tag">Remotion · 18s</span>' +
-        '<a href="https://litter.catbox.moe/ui7684.mp4" target="_blank" rel="noopener">Watch promo →</a></div>';
+        '<h3>How Renolt solves the problem</h3></div>' +
+        '<p>22s promo: real business pain → each worker → clear fix. Messages, leads, posts, email — problem in, worker on, solved.</p>' +
+        '<div class="proj-foot"><span class="tag">Remotion · 22s</span>' +
+        '<a href="https://litter.catbox.moe/a0pcdn.mp4" target="_blank" rel="noopener">Watch promo →</a></div>';
       grid.appendChild(card);
     }
 
@@ -58,7 +58,7 @@
       stack.id = 'video-stack-note';
       stack.setAttribute('data-reveal', '');
       stack.innerHTML =
-        'Video stack: <span class="hl-scroll">Remotion</span> + <span class="hl-scroll">video-shotcraft</span> shot structure. Watch the Renolt promo or request a custom one for your product.';
+        'Video stack: <span class="hl-scroll">Remotion</span> + problem→worker→solution storytelling. Watch the Renolt promo or request a custom one for your product.';
       if (note.parentNode) note.parentNode.insertBefore(stack, note.nextSibling);
     }
   }
