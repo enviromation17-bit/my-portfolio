@@ -2,7 +2,13 @@
 .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .cap-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px 24px;backdrop-filter:blur(14px);transition:border-color .3s,transform .3s}
 .cap-card:hover{border-color:rgba(212,160,23,.28);transform:translateY(-4px)}
+.cap-card-wide{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;gap:20px 28px;align-items:start}
+.cap-card-wide .cap-icon{grid-row:1/3}
+.cap-card-wide h3{margin-bottom:6px}
+.cap-card-wide p{margin-bottom:0;max-width:52ch}
+.cap-card-wide .cap-list{flex-direction:row;flex-wrap:wrap;gap:10px 18px;align-self:center}
 .cap-icon{width:44px;height:44px;border-radius:12px;background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.2);display:grid;place-items:center;color:var(--amber);font-size:1.1rem;margin-bottom:18px}
+.cap-card-wide .cap-icon{margin-bottom:0}
 .cap-card h3{font-size:1.15rem;margin-bottom:10px}
 .cap-card p{color:var(--muted);font-size:.9rem;font-weight:300;line-height:1.55;margin-bottom:16px}
 .cap-list{list-style:none;display:flex;flex-direction:column;gap:6px}
@@ -14,5 +20,10 @@
 .ctrl-num{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--amber);letter-spacing:.08em;display:block;margin-bottom:12px}
 .ctrl-card h3{font-size:1.05rem;margin-bottom:8px}
 .ctrl-card p{color:var(--muted);font-size:.84rem;font-weight:300;line-height:1.5}
-@media(max-width:900px){.cap-grid{grid-template-columns:1fr}.ctrl-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){
+  .cap-grid{grid-template-columns:1fr}
+  .cap-card-wide{grid-template-columns:1fr}
+  .cap-card-wide .cap-list{flex-direction:column}
+  .ctrl-grid{grid-template-columns:1fr 1fr}
+}
 @media(max-width:680px){.ctrl-grid{grid-template-columns:1fr}}
