@@ -1,1 +1,1 @@
-window.RENOLT_AVATAR_SRC = 'https://h.uguu.se/AHBwkBwR.jpg';
+window.RENOLT_AVATAR_SRC = 'https://litter.catbox.moe/ntyd31.jpg';
