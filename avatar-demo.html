@@ -5,80 +5,43 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Renolt — Avatar into the black hole</title>
 <meta name="theme-color" content="#08090c">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#08090c; --text:#eef1f6; --muted:#9aa3b5; --amber:#d4a017; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    min-height: 100vh;
-    background: radial-gradient(ellipse at 55% 38%, #141018 0%, #08090c 50%, #030406 100%);
-    color: var(--text);
-    font-family: Outfit, system-ui, sans-serif;
-    overflow: hidden;
-  }
-  .stage { position: relative; width: 100vw; height: 100vh; }
-  #field {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%; display: block;
-  }
-  .hud {
-    position: absolute; left: 0; right: 0; top: 0;
-    padding: 28px 32px;
-    display: flex; justify-content: space-between; align-items: flex-start;
-    pointer-events: none; z-index: 2;
-  }
-  .brand {
-    font-family: Syne, sans-serif; font-weight: 800;
-    letter-spacing: -0.03em; font-size: 1.15rem;
-  }
-  .brand span { color: var(--amber); }
-  .meta { text-align: right; color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
-  .meta strong { color: var(--text); font-weight: 500; display: block; }
-  .caption {
-    position: absolute; left: 50%; bottom: 48px;
-    transform: translateX(-50%); text-align: center;
-    z-index: 2; pointer-events: none; max-width: 90vw;
-  }
-  .caption h1 {
-    font-family: Syne, sans-serif; font-weight: 700;
-    font-size: clamp(1.2rem, 3vw, 1.7rem);
-    letter-spacing: -0.03em; margin-bottom: 8px;
-  }
-  .caption p { color: var(--muted); font-size: 0.9rem; max-width: 440px; margin: 0 auto; }
-  .back {
-    position: absolute; left: 32px; bottom: 36px; z-index: 3;
-    color: var(--muted); text-decoration: none; font-size: 0.85rem;
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 10px 14px; border-radius: 10px;
-    background: rgba(16,18,24,0.6); backdrop-filter: blur(8px);
-  }
-  .back:hover { color: var(--text); border-color: rgba(212,160,23,0.35); }
+:root{--bg:#08090c;--text:#eef1f6;--muted:#9aa3b5;--amber:#d4a017}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:radial-gradient(ellipse at 55% 38%,#141018 0%,#08090c 50%,#030406 100%);color:var(--text);font-family:Outfit,system-ui,sans-serif;overflow:hidden}
+.stage{position:relative;width:100vw;height:100vh}
+#field{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hud{position:absolute;left:0;right:0;top:0;padding:28px 32px;display:flex;justify-content:space-between;pointer-events:none;z-index:2}
+.brand{font-family:Syne,sans-serif;font-weight:800;letter-spacing:-.03em;font-size:1.15rem}
+.brand span{color:var(--amber)}
+.meta{text-align:right;color:var(--muted);font-size:.82rem;line-height:1.5}
+.meta strong{color:var(--text);font-weight:500;display:block}
+.caption{position:absolute;left:50%;bottom:48px;transform:translateX(-50%);text-align:center;z-index:2;pointer-events:none;max-width:90vw}
+.caption h1{font-family:Syne,sans-serif;font-weight:700;font-size:clamp(1.2rem,3vw,1.7rem);letter-spacing:-.03em;margin-bottom:8px}
+.caption p{color:var(--muted);font-size:.9rem;max-width:440px;margin:0 auto}
+.back{position:absolute;left:32px;bottom:36px;z-index:3;color:var(--muted);text-decoration:none;font-size:.85rem;border:1px solid rgba(255,255,255,.1);padding:10px 14px;border-radius:10px;background:rgba(16,18,24,.6)}
+.back:hover{color:var(--text);border-color:rgba(212,160,23,.35)}
 </style>
 </head>
 <body>
-  <div class="stage">
-    <canvas id="field"></canvas>
-    <div class="hud">
-      <div class="brand">RENOLT<span>.</span></div>
-      <div class="meta">
-        <strong>Avatar → black hole</strong>
-        Stands · emits particles · gravity pulls in
-      </div>
-    </div>
-    <div class="caption">
-      <h1>Standing. Emitting. Pulled in.</h1>
-      <p>Watch the loop: particles leave the avatar, the hole deepens, then both drift into the void.</p>
-    </div>
-    <a class="back" href="index.html">← Back to portfolio</a>
-  </div>
-  <script src="avatar-data.js"></script>
-  <script src="avatar-particles.js"></script>
-  <script>
-    new RenoltAvatarGravity({
-      canvas: '#field',
-      count: 240
-    });
-  </script>
+<div class="stage">
+<canvas id="field"></canvas>
+<div class="hud">
+<div class="brand">RENOLT<span>.</span></div>
+<div class="meta"><strong>Avatar → black hole</strong>Stands · emits particles · gravity pulls in</div>
+</div>
+<div class="caption">
+<h1>Standing. Emitting. Pulled in.</h1>
+<p>Watch the loop: particles leave the avatar, the hole deepens, then both drift into the void.</p>
+</div>
+<a class="back" href="index.html">← Back to portfolio</a>
+</div>
+<script src="av-part0.js"></script>
+<script src="av-part1.js"></script>
+<script src="av-part2.js"></script>
+<script src="avatar-data.js"></script>
+<script src="avatar-particles.js"></script>
+<script>new RenoltAvatarGravity({canvas:'#field',count:240});</script>
 </body>
 </html>
