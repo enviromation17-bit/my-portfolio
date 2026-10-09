@@ -21,7 +21,6 @@
     this.mouse = { x: 0, y: 0, active: false };
     this.dpr = Math.min(window.devicePixelRatio || 1, 2);
     this.avatar = new Image();
-    this.avatar.crossOrigin = 'anonymous';
     this.avatarReady = false;
     this.avatar.onload = function () { this.avatarReady = true; }.bind(this);
     this.avatar.src = this.avatarSrc;
@@ -52,7 +51,7 @@
     this.ay = h * 0.52;
     this.hx = w * 0.62;
     this.hy = h * 0.42;
-    this.avatarH = Math.min(w, h) * 0.42;
+    this.avatarH = Math.min(w, h) * 0.38;
   };
 
   AvatarGravity.prototype.seed = function () {
