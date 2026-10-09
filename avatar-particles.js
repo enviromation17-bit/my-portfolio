@@ -21,6 +21,7 @@
     this.mouse = { x: 0, y: 0, active: false };
     this.dpr = Math.min(window.devicePixelRatio || 1, 2);
     this.avatar = new Image();
+    this.avatar.crossOrigin = 'anonymous';
     this.avatarReady = false;
     this.avatar.onload = function () { this.avatarReady = true; }.bind(this);
     this.avatar.src = this.avatarSrc;
@@ -181,14 +182,12 @@
       ctx.ellipse(0, this.avatarH * 0.38, this.avatarH * 0.38, this.avatarH * 0.08, 0, 0, Math.PI * 2);
       ctx.fill();
     }
-    if (this.avatarReady) {
+    if (this.avatarReady && this.avatar.complete && this.avatar.naturalWidth > 0) {
       var h = this.avatarH;
-      var ratio = this.avatar.naturalWidth / this.avatar.naturalHeight || 0.85;
-      var w = h * ratio;
-      ctx.shadowColor = 'rgba(212,160,23,0.25)';
-      ctx.shadowBlur = 24 * (1 - pull);
-      ctx.drawImage(this.avatar, -w / 2, -h / 2, w, h);
-      ctx.shadowBlur = 0;
+      var nw = this.avatar.naturalWidth;
+      var nh = this.avatar.naturalHeight;
+      var w = h * (nw / nh);
+      ctx.drawImage(this.avatar, 0, 0, nw, nh, -w / 2, -h / 2, w, h);
     } else {
       ctx.beginPath(); ctx.arc(0, 0, this.avatarH * 0.35, 0, Math.PI * 2);
       ctx.fillStyle = '#1a2233'; ctx.fill();
