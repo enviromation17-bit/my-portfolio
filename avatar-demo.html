@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Renolt — Avatar gravity particles</title>
+<title>Renolt — Avatar into the black hole</title>
 <meta name="theme-color" content="#08090c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -12,81 +12,46 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     min-height: 100vh;
-    background: radial-gradient(ellipse at 50% 40%, #12161f 0%, #08090c 55%, #050608 100%);
+    background: radial-gradient(ellipse at 55% 38%, #141018 0%, #08090c 50%, #030406 100%);
     color: var(--text);
     font-family: Outfit, system-ui, sans-serif;
     overflow: hidden;
   }
-  .stage {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-  }
+  .stage { position: relative; width: 100vw; height: 100vh; }
   #field {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; display: block;
   }
   .hud {
-    position: absolute;
-    left: 0; right: 0; top: 0;
+    position: absolute; left: 0; right: 0; top: 0;
     padding: 28px 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    pointer-events: none;
-    z-index: 2;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    pointer-events: none; z-index: 2;
   }
   .brand {
-    font-family: Syne, sans-serif;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    font-size: 1.15rem;
+    font-family: Syne, sans-serif; font-weight: 800;
+    letter-spacing: -0.03em; font-size: 1.15rem;
   }
   .brand span { color: var(--amber); }
-  .meta {
-    text-align: right;
-    color: var(--muted);
-    font-size: 0.82rem;
-    line-height: 1.5;
-  }
+  .meta { text-align: right; color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
   .meta strong { color: var(--text); font-weight: 500; display: block; }
   .caption {
-    position: absolute;
-    left: 50%;
-    bottom: 48px;
-    transform: translateX(-50%);
-    text-align: center;
-    z-index: 2;
-    pointer-events: none;
+    position: absolute; left: 50%; bottom: 48px;
+    transform: translateX(-50%); text-align: center;
+    z-index: 2; pointer-events: none; max-width: 90vw;
   }
   .caption h1 {
-    font-family: Syne, sans-serif;
-    font-weight: 700;
-    font-size: clamp(1.25rem, 3vw, 1.75rem);
-    letter-spacing: -0.03em;
-    margin-bottom: 8px;
+    font-family: Syne, sans-serif; font-weight: 700;
+    font-size: clamp(1.2rem, 3vw, 1.7rem);
+    letter-spacing: -0.03em; margin-bottom: 8px;
   }
-  .caption p {
-    color: var(--muted);
-    font-size: 0.9rem;
-    max-width: 420px;
-  }
+  .caption p { color: var(--muted); font-size: 0.9rem; max-width: 440px; margin: 0 auto; }
   .back {
-    position: absolute;
-    left: 32px;
-    bottom: 36px;
-    z-index: 3;
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.85rem;
+    position: absolute; left: 32px; bottom: 36px; z-index: 3;
+    color: var(--muted); text-decoration: none; font-size: 0.85rem;
     border: 1px solid rgba(255,255,255,0.1);
-    padding: 10px 14px;
-    border-radius: 10px;
-    background: rgba(16,18,24,0.6);
-    backdrop-filter: blur(8px);
+    padding: 10px 14px; border-radius: 10px;
+    background: rgba(16,18,24,0.6); backdrop-filter: blur(8px);
   }
   .back:hover { color: var(--text); border-color: rgba(212,160,23,0.35); }
 </style>
@@ -97,19 +62,23 @@
     <div class="hud">
       <div class="brand">RENOLT<span>.</span></div>
       <div class="meta">
-        <strong>Avatar gravity field</strong>
-        Particles pull in · sling past · vanish into space
+        <strong>Avatar → black hole</strong>
+        Stands · emits particles · gravity pulls in
       </div>
     </div>
     <div class="caption">
-      <h1>One point of gravity</h1>
-      <p>Move the cursor to tug the field. Particles fall toward the avatar, then fly outward and get lost in space.</p>
+      <h1>Standing. Emitting. Pulled in.</h1>
+      <p>Watch the loop: particles leave the avatar, the hole deepens, then both drift into the void.</p>
     </div>
     <a class="back" href="index.html">← Back to portfolio</a>
   </div>
+  <script src="avatar-data.js"></script>
   <script src="avatar-particles.js"></script>
   <script>
-    new RenoltAvatarGravity({ canvas: '#field', count: 180 });
+    new RenoltAvatarGravity({
+      canvas: '#field',
+      count: 240
+    });
   </script>
 </body>
 </html>
