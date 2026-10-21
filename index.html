@@ -45,18 +45,27 @@
 
 <section class="hero">
   <div class="wrap hero-inner">
-    <div class="kicker" id="heroKicker">For local service businesses</div>
-    <h1 id="heroTitle">
-      <span class="line"><span class="word">Stop losing enquiries</span></span>
-      <span class="line"><span class="word">that come in on</span></span>
-      <span class="line"><span class="word"><span class="accent">WhatsApp, phone, forms &amp; email.</span></span></span>
+    <div class="kicker" id="heroKicker">Renolt · Lead System</div>
+    <h1 id="heroTitle" aria-label="They already messaged you. You were busy. They hired someone else.">
+      <span class="line"><span class="word">They already messaged you.</span></span>
+      <span class="line"><span class="word">You were on a job.</span></span>
+      <span class="line"><span class="word"><span class="accent">They hired someone else.</span></span></span>
     </h1>
-    <p class="lead" id="heroLead">If enquiries die in WhatsApp, missed calls, or unread forms — this is the fix. Renolt’s Lead System catches every lead, replies fast, and keeps follow-up on track so your team can focus on the job.</p>
+    <p class="hero-rotate" id="heroRotate" aria-live="polite">
+      <span class="rotate-label">Leads die on</span>
+      <span class="rotate-words" id="rotateWords">
+        <span class="rw active">WhatsApp</span>
+        <span class="rw">missed calls</span>
+        <span class="rw">website forms</span>
+        <span class="rw">email inboxes</span>
+      </span>
+    </p>
+    <p class="lead" id="heroLead">Renolt catches every enquiry the moment it lands, sends a fast first reply, and keeps follow-up on a list your team can open on a phone — so the next customer doesn’t walk to a competitor.</p>
     <div class="actions" id="heroActions">
       <a class="btn primary" href="https://wa.me/923207289443?text=Hi%20Renolt%2C%20I%20want%20to%20stop%20losing%20enquiries" target="_blank" rel="noopener">Message on WhatsApp</a>
-      <a class="btn ghost" href="#build">Describe the system you need</a>
+      <a class="btn ghost" href="demos/lead-system.html">See how it works</a>
     </div>
-    <p class="hero-trust">Built for plumbers, HVAC, dental clinics, and home-service teams — and any business that lives on enquiries.</p>
+    <p class="hero-trust" id="heroTrust">Plumbers · HVAC · clinics · home services — any team where a slow reply costs a job.</p>
   </div>
 </section>
 
@@ -195,7 +204,7 @@
     <div class="work-grid">
       <article class="work-card" data-reveal>
         <div class="work-meta"><span class="tag">REAL ESTATE</span><span class="pill live">Live</span></div>
-        <h3>Brick &amp; Build Developers</h3>
+        <h3>Brick & Build Developers</h3>
         <p>Property website built to bring in leads — clear offer, contact path, professional look.</p>
         <a class="work-link" href="https://bricksandbuiltdevelopers.com/" target="_blank" rel="noopener">Open project →</a>
       </article>
@@ -271,12 +280,12 @@
     <p class="section-sub" data-reveal>Not every business only needs a lead inbox. If your work depends on a process that keeps getting stuck, describe it. We design software and automation that fits how you already operate.</p>
     <div class="build-grid">
       <div class="build-card" data-reveal>
-        <h3>Lead &amp; enquiry systems</h3>
+        <h3>Lead & enquiry systems</h3>
         <p>WhatsApp, forms, calls, and email in one place — with reply rules and follow-up so nothing goes cold.</p>
         <p style="margin-top:12px"><a href="demos/lead-system.html" style="color:var(--amber);font-weight:600;font-size:.9rem">See interactive demo →</a></p>
       </div>
       <div class="build-card" data-reveal>
-        <h3>Booking &amp; appointment flow</h3>
+        <h3>Booking & appointment flow</h3>
         <p>Capture requests, confirm slots, send reminders, and hand off to staff without manual chasing.</p>
         <p style="margin-top:12px"><a href="demos/booking.html" style="color:var(--amber);font-weight:600;font-size:.9rem">See interactive demo →</a></p>
       </div>
@@ -385,10 +394,43 @@
 (function () {
   if (typeof gsap === 'undefined') return;
   gsap.registerPlugin(ScrollTrigger);
-  gsap.to('#heroKicker', { opacity: 1, duration: 0.6, delay: 0.15 });
-  gsap.to('#heroTitle .word', { y: 0, opacity: 1, duration: 0.75, stagger: 0.08, ease: 'power3.out', delay: 0.25 });
-  gsap.to('#heroLead', { opacity: 1, duration: 0.6, delay: 0.7 });
-  gsap.to('#heroActions', { opacity: 1, duration: 0.6, delay: 0.85 });
+
+  var heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  heroTl
+    .fromTo('#heroKicker', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5 })
+    .fromTo('#heroTitle .word', { y: '115%', opacity: 0 }, { y: '0%', opacity: 1, duration: 0.85, stagger: 0.14 }, '-=0.15')
+    .fromTo('#heroRotate', { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.55 }, '-=0.35')
+    .fromTo('#heroLead', { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.25')
+    .fromTo('#heroActions', { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.55 }, '-=0.3')
+    .fromTo('#heroTrust', { opacity: 0 }, { opacity: 1, duration: 0.5 }, '-=0.2');
+
+  (function rotateChannels() {
+    var words = document.querySelectorAll('#rotateWords .rw');
+    if (!words.length) return;
+    var i = 0;
+    function next() {
+      var cur = words[i];
+      var nxt = words[(i + 1) % words.length];
+      gsap.to(cur, { y: -18, opacity: 0, duration: 0.35, ease: 'power2.in', onComplete: function () {
+        cur.classList.remove('active');
+        gsap.set(cur, { y: 18 });
+      }});
+      nxt.classList.add('active');
+      gsap.fromTo(nxt, { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: 'power2.out' });
+      i = (i + 1) % words.length;
+    }
+    setInterval(next, 2400);
+  })();
+
+  gsap.to('#heroTitle .accent', {
+    textShadow: '0 0 28px rgba(212,160,23,0.35)',
+    duration: 1.6,
+    repeat: -1,
+    yoyo: true,
+    ease: 'sine.inOut',
+    delay: 2.2
+  });
+
   gsap.utils.toArray('[data-reveal]').forEach(function (el) {
     gsap.from(el, {
       opacity: 0,
