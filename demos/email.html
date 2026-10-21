@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Email automation demo — Renolt</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#08090c;--panel:#101218;--panel2:#161a22;--line:rgba(255,255,255,.08);--text:#eef0f4;--muted:#8b92a5;--dim:#5c6478;--amber:#d4a017;--red:#e0715f;--green:#3dd68c;--max:960px}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Outfit,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}h1,h3{font-family:Syne,sans-serif;font-weight:700}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.nav{border-bottom:1px solid var(--line);padding:16px 0;position:sticky;top:0;background:rgba(8,9,12,.92)}.navin{display:flex;justify-content:space-between}.brand{font-family:Syne,sans-serif;font-weight:800}.brand span{color:var(--amber)}.muted{color:var(--muted);font-size:.88rem}.hero{padding:48px 0 28px}.stamp{display:inline-flex;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(212,160,23,.3);background:rgba(212,160,23,.08);padding:7px 12px;border-radius:999px;margin-bottom:16px}h1{font-size:clamp(1.7rem,3.8vw,2.5rem);margin-bottom:12px}.sub{color:var(--muted);font-weight:300}.problem-box{background:rgba(224,113,95,.08);border:1px solid rgba(224,113,95,.25);border-radius:14px;padding:18px 20px;margin:20px 0}.problem-box h3{font-size:.85rem;color:var(--red);margin-bottom:8px;text-transform:uppercase}.problem-box p,.solution-box p{color:var(--muted);font-weight:300}.solution-box{background:rgba(61,214,140,.07);border:1px solid rgba(61,214,140,.25);border-radius:14px;padding:18px 20px;margin:12px 0 28px}.solution-box h3{font-size:.85rem;color:var(--green);margin-bottom:8px;text-transform:uppercase}.mock{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:28px}.mock-bar{display:flex;gap:8px;padding:12px 16px;background:var(--panel2);border-bottom:1px solid var(--line)}.dot{width:10px;height:10px;border-radius:50%}.dot.r{background:#ff5f57}.dot.y{background:#febc2e}.dot.g{background:#28c840}.mock-title{font-size:.8rem;color:var(--muted)}.mock-body{padding:18px}.steps{display:grid;gap:10px}.step{display:grid;grid-template-columns:36px 1fr;gap:12px;padding:12px;border-radius:10px;background:var(--panel2);border:1px solid var(--line)}.step .n{width:36px;height:36px;border-radius:10px;background:rgba(212,160,23,.12);color:var(--amber);display:grid;place-items:center;font-family:Syne,sans-serif;font-weight:700}.step span{color:var(--muted);font-size:.88rem;font-weight:300}.btn{display:inline-flex;padding:12px 20px;border-radius:999px;font-weight:600;font-size:.88rem;border:1px solid var(--line)}.btn.primary{background:var(--amber);color:#0c0a04}.btn.ghost{background:transparent}.actions{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 40px}footer{padding:28px 0;border-top:1px solid var(--line);color:var(--dim);font-size:.82rem}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap navin"><a class="brand" href="../index.html">RENOLT<span>.</span></a><div style="display:flex;gap:16px"><a class="muted" href="index.html">All demos</a><a class="muted" href="../index.html">Site</a></div></div></header>
+<main class="wrap">
+  <div class="hero">
+    <div class="stamp">Email automation</div>
+    <h1>Follow-ups that leave on time</h1>
+    <p class="sub">Welcome, nudge, and review emails on a simple timeline.</p>
+    <div class="problem-box"><h3>Problem</h3><p>Follow-up emails depend on someone remembering. Most never go out.</p></div>
+    <div class="solution-box"><h3>What Renolt builds</h3><p>Sequences tied to lead status: welcome, reminder, review after the job.</p></div>
+  </div>
+  <div class="mock">
+    <div class="mock-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="mock-title">Email timeline</span></div>
+    <div class="mock-body"><div class="steps">
+      <div class="step"><div class="n">0</div><div><b>Lead captured</b><span>Form or WhatsApp email collected</span></div></div>
+      <div class="step"><div class="n">1</div><div><b>Day 0 · Welcome</b><span>What happens next</span></div></div>
+      <div class="step"><div class="n">2</div><div><b>Day 2 · If no reply</b><span>Soft follow-up with one CTA</span></div></div>
+      <div class="step"><div class="n">3</div><div><b>After job · Review</b><span>Only when you mark the job done</span></div></div>
+    </div></div>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="https://wa.me/923207289443?text=Hi%20Renolt%2C%20I%20need%20email%20automation" target="_blank" rel="noopener">I need this for my business</a>
+    <a class="btn ghost" href="../contact.html">Send full request</a>
+  </div>
+</main>
+<footer><div class="wrap">© 2026 RENOLT · Demo only</div></footer>
+</body>
+</html>
