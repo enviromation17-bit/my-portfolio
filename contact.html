@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Contact Renolt — Business Automation</title>
-<meta name="description" content="Contact Renolt about lead automation, AI assistants, workflows and business websites. Email hellorenolt@gmail.com · WhatsApp 0320 7289443 · 0307 4136536.">
+<title>Contact Renolt — Tell us the system you need</title>
+<meta name="description" content="Contact Renolt about lead automation, custom software, workflows and business websites. Email hellorenolt@gmail.com · WhatsApp 0320 7289443 · 0307 4136536.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://enviromation17-bit.github.io/my-portfolio/contact.html">
 <meta property="og:type" content="website">
@@ -78,9 +78,9 @@ footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted2);font-
 </header>
 <main>
 <section class="hero wrap reveal">
-  <div class="kicker">Talk to Renolt</div>
-  <h1>Tell us the process that keeps getting stuck.</h1>
-  <p class="lead">One problem. Fixed properly. Start with WhatsApp or the form — same team either way.</p>
+  <div class="kicker" id="request">Talk to Renolt</div>
+  <h1>Tell us the system you need for your business.</h1>
+  <p class="lead">Lost enquiries, booking chaos, or custom automation — describe the problem. We’ll tell you what we can build and how we’d start.</p>
 </section>
 <section class="wrap grid">
   <aside class="panel reveal">
@@ -91,12 +91,12 @@ footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted2);font-
     <a class="wa" href="https://wa.me/923207289443?text=Hello%20Renolt,%20I%20want%20to%20discuss%20a%20business%20process">Message on WhatsApp →</a>
     <div class="ways">
       <a class="wayBtn" href="https://mail.google.com/mail/?view=cm&fs=1&to=hellorenolt@gmail.com&su=Inquiry%20from%20Renolt%20website" target="_blank" rel="noopener" aria-label="Email Renolt"><span class="wayIc">✉️</span><span><small>EMAIL</small><strong>hellorenolt@gmail.com</strong></span></a>
-      <a class="wayBtn" href="index.html#solution"><span class="wayIc">→</span><span><small>SERVICES</small><strong>See what Renolt builds</strong></span></a>
+      <a class="wayBtn" href="index.html#build"><span class="wayIc">→</span><span><small>BUILD YOURS</small><strong>See what we can build</strong></span></a>
     </div>
   </aside>
   <div class="panel reveal">
-    <h2>Contact form</h2>
-    <p class="muted" style="margin-bottom:20px">Submit this and it goes straight to our team — logged instantly and emailed to us so nothing sits unread.</p>
+    <h2>Request form</h2>
+    <p class="muted" style="margin-bottom:20px">Tell us the problem or the system you want. It goes straight to our team so nothing sits unread.</p>
     <form class="form" id="contactForm" autocomplete="on">
       <div class="row">
         <label for="cf-name">Name<input id="cf-name" name="name" type="text" required placeholder="Your name" autocomplete="name"></label>
@@ -108,19 +108,22 @@ footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted2);font-
       </div>
       <label for="cf-need">What do you need?
         <select id="cf-need" name="need" autocomplete="off">
-          <option value="Lead system">Lead system / follow-up</option>
+          <option value="Lead system">Lead system / stop losing enquiries</option>
+          <option value="Custom automation">Custom automation / software for my business</option>
+          <option value="Booking system">Booking / appointment system</option>
+          <option value="Internal tool">Internal tool for my team</option>
+          <option value="Website">Website that converts enquiries</option>
           <option value="Omni assistant">Omni multi-channel assistant</option>
           <option value="Post scheduler">Post scheduler</option>
           <option value="Email automation">Email automation</option>
-          <option value="Website">Website</option>
-          <option value="Not sure">Not sure yet</option>
+          <option value="Not sure">Not sure — help me choose</option>
         </select>
       </label>
-      <label for="cf-message">Tell us about the process<textarea id="cf-message" name="message" required placeholder="Example: We receive leads from our website and WhatsApp, but follow-up is often missed..." autocomplete="off"></textarea></label>
+      <label for="cf-message">Describe the problem or the system you want<textarea id="cf-message" name="message" required placeholder="Example: We get jobs on WhatsApp and the website, but follow-up is late. Or: I need software that tracks jobs from enquiry to invoice..." autocomplete="off"></textarea></label>
       <button class="submit" type="submit">Send to Renolt</button>
       <div class="success" id="successMsg">Got it — Renolt will reply soon. For a faster reply, use WhatsApp.</div>
       <div class="success" id="errorMsg" style="display:none;border-left-color:var(--danger,#e0715f);background:rgba(224,113,95,.08)">Couldn't send that — please try WhatsApp instead.</div>
-      <p class="hint">Prefer to talk directly? Use the WhatsApp button — it's a separate, faster line to us.</p>
+      <p class="hint">Prefer to talk directly? Use WhatsApp — it's the fastest line to us.</p>
       <p class="hint" style="margin-top:8px">We only use your details to reply about your project. We do not sell or share your information.</p>
     </form>
   </div>
