@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lead System demo — Renolt Demo</title>
+<meta name="description" content="WhatsApp, forms and calls become one list with a fast first reply.">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#08090c;--panel:#101218;--panel2:#161a22;--line:rgba(255,255,255,.08);--text:#eef0f4;--muted:#8b92a5;--dim:#5c6478;--amber:#d4a017;--red:#e0715f;--green:#3dd68c;--max:960px}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Outfit,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100vh}h1,h2,h3{font-family:Syne,sans-serif;font-weight:700;letter-spacing:-.03em;line-height:1.1}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.nav{border-bottom:1px solid var(--line);padding:16px 0;position:sticky;top:0;background:rgba(8,9,12,.92);backdrop-filter:blur(12px);z-index:20}.navin{display:flex;align-items:center;justify-content:space-between}.brand{font-family:Syne,sans-serif;font-weight:800}.brand span{color:var(--amber)}.nav a.muted{color:var(--muted);font-size:.88rem}.hero{padding:48px 0 28px}.stamp{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(212,160,23,.3);background:rgba(212,160,23,.08);padding:7px 12px;border-radius:999px;margin-bottom:16px}.stamp::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber)}h1{font-size:clamp(1.7rem,3.8vw,2.5rem);margin-bottom:12px}.sub{color:var(--muted);max-width:560px;font-weight:300;margin-bottom:20px}.problem-box{background:rgba(224,113,95,.08);border:1px solid rgba(224,113,95,.25);border-radius:14px;padding:18px 20px;margin:20px 0}.problem-box h3{font-size:.85rem;color:var(--red);margin-bottom:8px;text-transform:uppercase}.problem-box p{color:var(--muted);font-size:.95rem;font-weight:300}.solution-box{background:rgba(61,214,140,.07);border:1px solid rgba(61,214,140,.25);border-radius:14px;padding:18px 20px;margin:12px 0 28px}.solution-box h3{font-size:.85rem;color:var(--green);margin-bottom:8px;text-transform:uppercase}.solution-box p{color:var(--muted);font-size:.95rem;font-weight:300}.demo-label{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:10px}.mock{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:28px}.mock-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:var(--panel2);border-bottom:1px solid var(--line)}.dot{width:10px;height:10px;border-radius:50%}.dot.r{background:#ff5f57}.dot.y{background:#febc2e}.dot.g{background:#28c840}.mock-title{font-size:.8rem;color:var(--muted);margin-left:8px}.mock-body{padding:18px}.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:600;font-size:.88rem;border:1px solid var(--line);cursor:pointer;font-family:inherit}.btn.primary{background:var(--amber);color:#0c0a04;border-color:var(--amber)}.btn.ghost{background:transparent;color:var(--text)}.actions{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 40px}footer{padding:28px 0;border-top:1px solid var(--line);color:var(--dim);font-size:.82rem}.steps{display:grid;gap:10px;margin:16px 0}.step{display:grid;grid-template-columns:36px 1fr;gap:12px;padding:12px;border-radius:10px;background:var(--panel2);border:1px solid var(--line)}.step .n{width:36px;height:36px;border-radius:10px;background:rgba(212,160,23,.12);color:var(--amber);display:grid;place-items:center;font-family:Syne,sans-serif;font-weight:700}.step b{display:block}.step span{color:var(--muted);font-size:.88rem;font-weight:300}.chat{display:flex;flex-direction:column;gap:10px;max-height:320px;overflow:auto;min-height:120px}.bubble{max-width:85%;padding:10px 14px;border-radius:14px;font-size:.9rem}.bubble.in{background:var(--panel2);border:1px solid var(--line);align-self:flex-start}.bubble.out{background:rgba(212,160,23,.15);border:1px solid rgba(212,160,23,.3);align-self:flex-end}.bubble .meta{font-size:.7rem;color:var(--dim);margin-top:6px}.lead-row{display:grid;grid-template-columns:1fr auto;gap:8px;padding:12px;border-bottom:1px solid var(--line);align-items:center}.badge{font-size:.68rem;padding:4px 8px;border-radius:999px;border:1px solid var(--line)}.badge.new{color:var(--green);border-color:rgba(61,214,140,.35)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.grid2{grid-template-columns:1fr}}.play{margin:8px 0 0;font-size:.8rem;color:var(--dim)}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap navin">
+  <a class="brand" href="../index.html">RENOLT<span>.</span></a>
+  <div style="display:flex;gap:16px"><a class="muted" href="index.html">All demos</a><a class="muted" href="../index.html">Site</a></div>
+</div></header>
+<main class="wrap">
+  <div class="hero">
+    <div class="stamp">Lead System</div>
+    <h1>Stop losing enquiries</h1>
+    <p class="sub">WhatsApp, forms and calls become one list with a fast first reply.</p>
+    <div class="problem-box"><h3>Problem</h3><p>Messages sit in personal chats. Forms sit in email. By the time someone replies, the customer booked someone else.</p></div>
+    <div class="solution-box"><h3>What Renolt builds</h3><p>A Lead System that captures every enquiry, sends a first reply you approve, and shows who is new, waiting, or done.</p></div>
+  </div>
+  <div class="demo-label">Interactive demo — click “Simulate new enquiry”</div>
+  <div class="mock">
+    <div class="mock-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="mock-title">Renolt Lead System · Live inbox</span></div>
+    <div class="mock-body">
+      <div class="grid2">
+        <div>
+          <div class="demo-label">Customer channel</div>
+          <div class="chat" id="chat"></div>
+          <button class="btn primary" type="button" id="simBtn" style="margin-top:12px;width:100%;justify-content:center">Simulate new enquiry</button>
+          <p class="play">Message arrives → auto reply → lead appears in list</p>
+        </div>
+        <div>
+          <div class="demo-label">Your team view</div>
+          <div id="leads" style="border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel2);min-height:120px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  const samples=[
+    {from:"Ahmed · WhatsApp", text:"Hi, need AC service tomorrow in DHA. Can you come?", reply:"Thanks Ahmed — we got your request. A team member will confirm a slot shortly."},
+    {from:"Sara · Website form", text:"Form: Kitchen leak · Gulshan · please call", reply:"Hi Sara — we received your form. Someone will call you about the leak today."},
+    {from:"Phone note", text:"Missed call + voicemail about boiler service", reply:"Logged as phone lead. Owner notified."}
+  ];
+  let i=0;
+  const chat=document.getElementById('chat');
+  const leads=document.getElementById('leads');
+  function addLead(name,src){
+    const row=document.createElement('div'); row.className='lead-row';
+    row.innerHTML='<div><b style="font-size:.9rem">'+name+'</b><div style="color:var(--dim);font-size:.75rem">'+src+' · just now</div></div><span class="badge new">New</span>';
+    leads.prepend(row);
+  }
+  document.getElementById('simBtn').onclick=function(){
+    const s=samples[i%samples.length]; i++;
+    const b1=document.createElement('div'); b1.className='bubble in'; b1.innerHTML=s.text+'<div class="meta">'+s.from+'</div>';
+    chat.appendChild(b1);
+    setTimeout(function(){
+      const b2=document.createElement('div'); b2.className='bubble out'; b2.innerHTML=s.reply+'<div class="meta">Renolt auto-reply · ~12s</div>';
+      chat.appendChild(b2); chat.scrollTop=chat.scrollHeight;
+      addLead(s.from.split('·')[0].trim(), s.from.indexOf('form')>=0?'Form':s.from.indexOf('Phone')>=0?'Phone':'WhatsApp');
+    },900);
+    chat.scrollTop=chat.scrollHeight;
+  };
+  document.getElementById('simBtn').click();
+  </script>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div><b>Enquiry arrives</b><span>WhatsApp, form, email, or phone note</span></div></div>
+    <div class="step"><div class="n">2</div><div><b>System catches it</b><span>Logged with time, source, and status</span></div></div>
+    <div class="step"><div class="n">3</div><div><b>Fast first reply</b><span>On-brand message you approve</span></div></div>
+    <div class="step"><div class="n">4</div><div><b>Human closes</b><span>You call, quote, or book</span></div></div>
+  </div>
+  <div class="actions">
+    <a class="btn primary" href="https://wa.me/923207289443?text=Hi%20Renolt%2C%20I%20looked%20at%20the%20Lead%20System%20demo.%20I%20need%20something%20like%20this%20for%20my%20business." target="_blank" rel="noopener">I need this for my business</a>
+    <a class="btn ghost" href="../contact.html">Send full request</a>
+  </div>
+</main>
+<footer><div class="wrap">© 2026 RENOLT · Demo only · <a href="https://wa.me/923207289443" style="color:var(--amber)">0320 7289443</a></div></footer>
+</body>
+</html>

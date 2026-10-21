@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Booking system demo — Renolt</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#08090c;--panel:#101218;--panel2:#161a22;--line:rgba(255,255,255,.08);--text:#eef0f4;--muted:#8b92a5;--dim:#5c6478;--amber:#d4a017;--red:#e0715f;--green:#3dd68c;--max:960px}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Outfit,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}h1,h3{font-family:Syne,sans-serif;font-weight:700}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.nav{border-bottom:1px solid var(--line);padding:16px 0;position:sticky;top:0;background:rgba(8,9,12,.92);z-index:20}.navin{display:flex;justify-content:space-between;align-items:center}.brand{font-family:Syne,sans-serif;font-weight:800}.brand span{color:var(--amber)}.muted{color:var(--muted);font-size:.88rem}.hero{padding:48px 0 28px}.stamp{display:inline-flex;gap:8px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(212,160,23,.3);background:rgba(212,160,23,.08);padding:7px 12px;border-radius:999px;margin-bottom:16px}h1{font-size:clamp(1.7rem,3.8vw,2.5rem);margin-bottom:12px}.sub{color:var(--muted);max-width:560px;font-weight:300}.problem-box{background:rgba(224,113,95,.08);border:1px solid rgba(224,113,95,.25);border-radius:14px;padding:18px 20px;margin:20px 0}.problem-box h3{font-size:.85rem;color:var(--red);margin-bottom:8px;text-transform:uppercase}.problem-box p,.solution-box p{color:var(--muted);font-weight:300}.solution-box{background:rgba(61,214,140,.07);border:1px solid rgba(61,214,140,.25);border-radius:14px;padding:18px 20px;margin:12px 0 28px}.solution-box h3{font-size:.85rem;color:var(--green);margin-bottom:8px;text-transform:uppercase}.demo-label{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:10px}.mock{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:28px}.mock-bar{display:flex;gap:8px;padding:12px 16px;background:var(--panel2);border-bottom:1px solid var(--line)}.dot{width:10px;height:10px;border-radius:50%}.dot.r{background:#ff5f57}.dot.y{background:#febc2e}.dot.g{background:#28c840}.mock-title{font-size:.8rem;color:var(--muted)}.mock-body{padding:18px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.grid2{grid-template-columns:1fr}}.card{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px}.card h4{margin-bottom:6px}.slot{padding:10px 12px;border:1px dashed var(--line);border-radius:10px;text-align:center;cursor:pointer;font-size:.85rem;color:var(--muted)}.slot:hover,.slot.on{border-style:solid;border-color:rgba(212,160,23,.4);color:var(--amber);background:rgba(212,160,23,.08)}.btn{display:inline-flex;padding:12px 20px;border-radius:999px;font-weight:600;font-size:.88rem;border:1px solid var(--line);cursor:pointer;font-family:inherit}.btn.primary{background:var(--amber);color:#0c0a04}.btn.ghost{background:transparent;color:var(--text)}.actions{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 40px}.steps{display:grid;gap:10px;margin:16px 0}.step{display:grid;grid-template-columns:36px 1fr;gap:12px;padding:12px;border-radius:10px;background:var(--panel2);border:1px solid var(--line)}.step .n{width:36px;height:36px;border-radius:10px;background:rgba(212,160,23,.12);color:var(--amber);display:grid;place-items:center;font-family:Syne,sans-serif;font-weight:700}.step span{color:var(--muted);font-size:.88rem;font-weight:300}footer{padding:28px 0;border-top:1px solid var(--line);color:var(--dim);font-size:.82rem}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap navin"><a class="brand" href="../index.html">RENOLT<span>.</span></a><div style="display:flex;gap:16px"><a class="muted" href="index.html">All demos</a><a class="muted" href="../index.html">Site</a></div></div></header>
+<main class="wrap">
+  <div class="hero">
+    <div class="stamp">Booking system</div>
+    <h1>Bookings without chat ping-pong</h1>
+    <p class="sub">Customers pick a slot; confirmations and reminders go out automatically.</p>
+    <div class="problem-box"><h3>Problem</h3><p>Staff spend the day asking “what time works?” Appointments get double-booked or forgotten.</p></div>
+    <div class="solution-box"><h3>What Renolt builds</h3><p>Booking flow: slots, WhatsApp confirmation, reminders, and a simple staff day view.</p></div>
+  </div>
+  <div class="demo-label">Interactive — pick a slot</div>
+  <div class="mock">
+    <div class="mock-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="mock-title">Booking flow</span></div>
+    <div class="mock-body">
+      <div class="grid2">
+        <div class="card">
+          <h4>Available · Tomorrow</h4>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+            <div class="slot" data-t="10:00">10:00 AM</div>
+            <div class="slot" data-t="11:30">11:30 AM</div>
+            <div class="slot" data-t="14:00">2:00 PM</div>
+            <div class="slot" data-t="16:00">4:00 PM</div>
+          </div>
+          <button class="btn primary" id="bookBtn" type="button" style="margin-top:12px;width:100%;justify-content:center" disabled>Confirm booking</button>
+        </div>
+        <div class="card">
+          <h4>What happens next</h4>
+          <div class="steps" id="bookSteps" style="margin-top:10px">
+            <div class="step"><div class="n">1</div><div><b>Pick a time</b><span>Select a slot on the left</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  let picked=null;
+  document.querySelectorAll('.slot').forEach(function(el){
+    el.onclick=function(){
+      document.querySelectorAll('.slot').forEach(function(s){s.classList.remove('on')});
+      el.classList.add('on'); picked=el.dataset.t;
+      document.getElementById('bookBtn').disabled=false;
+    };
+  });
+  document.getElementById('bookBtn').onclick=function(){
+    if(!picked) return;
+    document.getElementById('bookSteps').innerHTML=
+      '<div class="step"><div class="n">1</div><div><b>Slot held · '+picked+'</b><span>Customer selected a time</span></div></div>'+
+      '<div class="step"><div class="n">2</div><div><b>Confirmation sent</b><span>WhatsApp: “You’re booked for '+picked+'”</span></div></div>'+
+      '<div class="step"><div class="n">3</div><div><b>Reminder</b><span>Auto reminder before the visit</span></div></div>'+
+      '<div class="step"><div class="n">4</div><div><b>Staff board updated</b><span>Shows on your team list</span></div></div>';
+  };
+  </script>
+  <div class="actions">
+    <a class="btn primary" href="https://wa.me/923207289443?text=Hi%20Renolt%2C%20I%20looked%20at%20the%20Booking%20demo.%20I%20need%20something%20like%20this." target="_blank" rel="noopener">I need this for my business</a>
+    <a class="btn ghost" href="../contact.html">Send full request</a>
+  </div>
+</main>
+<footer><div class="wrap">© 2026 RENOLT · Demo only</div></footer>
+</body>
+</html>
