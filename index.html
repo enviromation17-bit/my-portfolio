@@ -3,14 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Renolt — Stop Losing Enquiries from WhatsApp, Phone, Forms & Email</title>
+<title>Renolt — Stop Losing Enquiries</title>
 <meta name="description" content="Renolt helps service businesses stop losing enquiries from WhatsApp, phone, forms and email.">
 <meta name="theme-color" content="#08090c">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
 </head>
 <body>
-<script src="rp0.js"></script>
-<script src="rp1.js"></script>
-<script src="rp2.js"></script>
+<script src="s1.js"></script>
+<script src="s2.js"></script>
+<script>
+(function(){
+  var b64 = window.__S1 + window.__S2;
+  var bin = atob(b64);
+  var bytes = new Uint8Array(bin.length);
+  for (var i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+  var html = pako.ungzip(bytes, {to:'string'});
+  document.open(); document.write(html); document.close();
+})();
+</script>
 </body>
 </html>
