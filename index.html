@@ -17,8 +17,8 @@
 <script>
 (function(){
   try {
-    var b64 = (window.__S1||'') + (window.__S2||'');
-    if (!b64) throw new Error('missing');
+    var b64 = (window.__S1a||'') + (window.__S1b||'') + (window.__S2a||'') + (window.__S2b||'');
+    if (!b64) throw new Error('missing payload');
     var bin = atob(b64);
     var bytes = new Uint8Array(bin.length);
     for (var i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
