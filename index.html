@@ -7,103 +7,96 @@
 </div>
 <div id="waModal" class="wa-modal" hidden><div class="wa-modal-backdrop js-wa-close"></div><div class="wa-modal-panel" role="dialog"><div class="wa-modal-head"><div><h2>Chat with us on WhatsApp</h2><p>Share your name and number — then continue on WhatsApp.</p></div><button type="button" class="wa-modal-x js-wa-close">&times;</button></div><form id="waForm" class="wa-modal-form"><label for="wa-name">Name *</label><input id="wa-name" required placeholder="Your name"><label for="wa-phone">Phone / WhatsApp *</label><input id="wa-phone" type="tel" required placeholder="03XX XXXXXXX"><label for="wa-interest">What do you need?</label><select id="wa-interest" class="wa-select"><option value="">Select…</option><option>Lead System for my business</option><option>Real estate website</option><option>Website that converts</option><option>Custom automation</option><option>Something else</option></select><button type="submit" class="wa-modal-submit">Continue to WhatsApp</button><button type="button" class="wa-modal-skip" id="waSkip">Skip — open WhatsApp only</button></form><p class="wa-modal-foot">Business WhatsApp · 0307 4136536</p></div></div><script>(function(){const WA_NUM='923074136536';const modal=document.getElementById('waModal'),form=document.getElementById('waForm');function openModal(e){if(e)e.preventDefault();modal.hidden=false;document.body.style.overflow='hidden'}function closeModal(){modal.hidden=true;document.body.style.overflow=''}function openWA(name,phone,interest){let msg='Hello Renolt, I want to discuss Lead System.';if(name||phone||interest){msg='Hello Renolt.';if(name)msg+=' My name is '+name+'.';if(phone)msg+=' Phone: '+phone+'.';if(interest)msg+=' I am interested in: '+interest+'.';}window.open('https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(msg),'_blank','noopener')}document.querySelectorAll('.js-wa-open').forEach(el=>el.addEventListener('click',openModal));modal.querySelectorAll('.js-wa-close').forEach(el=>el.addEventListener('click',closeModal));form.addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('wa-name').value.trim(),phone=document.getElementById('wa-phone').value.trim(),interest=(document.getElementById('wa-interest').value||'').trim();if(!name||!phone)return;openWA(name,phone,interest);closeModal()});document.getElementById('waSkip').onclick=()=>{openWA('','','');closeModal()};const nav=document.getElementById('nav'),progress=document.getElementById('scrollProgress'),burger=document.getElementById('burger'),links=document.getElementById('navLinks');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);const hh=document.documentElement.scrollHeight-window.innerHeight;if(progress)progress.style.width=(hh?(window.scrollY/hh)*100:0)+'%'});if(burger&&links)burger.addEventListener('click',()=>links.classList.toggle('open'));const rws=document.querySelectorAll('.rotate-words .rw');let ri=0;if(rws.length)setInterval(()=>{rws[ri].classList.remove('active');ri=(ri+1)%rws.length;rws[ri].classList.add('active')},2200);if(window.gsap){gsap.registerPlugin(ScrollTrigger);gsap.to('.hero-chip',{opacity:1,y:0,duration:.6});gsap.to('.hero h1 .word',{y:0,opacity:1,duration:.7,stagger:.08,delay:.15});gsap.to('.hero-rotate,.lead,.actions,.hero-trust',{opacity:1,y:0,duration:.6,stagger:.08,delay:.45});gsap.to('.hero-visual',{opacity:1,y:0,duration:.8,delay:.35});const steps=gsap.utils.toArray('.scrub-step'),bar=document.getElementById('scrubBar');if(steps.length&&document.getElementById('scrub')){ScrollTrigger.create({trigger:'#scrub',start:'top top',end:'+=220%',pin:true,scrub:0.5,onUpdate:self=>{const p=self.progress;if(bar)bar.style.width=(p*100)+'%';const i=Math.min(steps.length-1,Math.floor(p*steps.length));steps.forEach((el,n)=>el.classList.toggle('is-active',n===i))}})}}})();</script>
 <script>
-/* Apple-style liquid typography + premium bg particles */
+/* Magnetic glow on headings — soft, no distortion */
 (function(){
-  var liquidEls = document.querySelectorAll('.hero h1 .word, .hero h1 .accent, .section-title, .brand');
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(!reduce && liquidEls.length){
-    var mx = 0, my = 0, raf = 0;
-    function tick(){
-      raf = 0;
-      liquidEls.forEach(function(el){
-        var r = el.getBoundingClientRect();
-        var cx = r.left + r.width/2;
-        var cy = r.top + r.height/2;
-        var dx = (mx - cx) / Math.max(window.innerWidth, 1);
-        var dy = (my - cy) / Math.max(window.innerHeight, 1);
-        var dist = Math.sqrt(dx*dx + dy*dy);
-        var influence = Math.max(0, 1 - dist * 2.2);
-        if(influence < 0.02){
-          el.style.transform = '';
-          el.classList.remove('liquid-active');
-          return;
-        }
-        var tx = dx * 18 * influence;
-        var ty = dy * 12 * influence;
-        var skew = dx * 4 * influence;
-        el.style.transform = 'translate('+tx.toFixed(2)+'px,'+ty.toFixed(2)+'px) skewX('+skew.toFixed(2)+'deg)';
-        el.classList.add('liquid-active');
-      });
-    }
-    window.addEventListener('mousemove', function(e){
-      mx = e.clientX; my = e.clientY;
-      if(!raf) raf = requestAnimationFrame(tick);
-    }, {passive:true});
-    window.addEventListener('mouseleave', function(){
-      liquidEls.forEach(function(el){ el.style.transform=''; el.classList.remove('liquid-active'); });
+  var els = document.querySelectorAll('.hero h1 .word, .hero h1 .accent, .section-title, .brand');
+  if(!els.length) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  els.forEach(function(el){ el.classList.add('mag-text'); });
+  var mx = -9999, my = -9999, raf = 0;
+  function tick(){
+    raf = 0;
+    els.forEach(function(el){
+      var r = el.getBoundingClientRect();
+      var cx = r.left + r.width * 0.5;
+      var cy = r.top + r.height * 0.5;
+      var dx = mx - cx, dy = my - cy;
+      var dist = Math.sqrt(dx*dx + dy*dy);
+      el.classList.toggle('is-near', dist < 160);
     });
   }
+  window.addEventListener('mousemove', function(e){
+    mx = e.clientX; my = e.clientY;
+    if(!raf) raf = requestAnimationFrame(tick);
+  }, {passive:true});
+  window.addEventListener('mouseleave', function(){
+    els.forEach(function(el){ el.classList.remove('is-near'); });
+  });
+})();
+</script>
+<script>
+/* Animated background */
+(function(){
   var canvas = document.getElementById('bgCanvas');
-  if(canvas && canvas.getContext){
-    var ctx = canvas.getContext('2d');
-    var w, h, particles = [], mouse = {x:-999,y:-999};
-    function resize(){ w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
-    function init(){
-      particles = [];
-      var count = Math.min(110, Math.floor((w*h)/11000));
-      for(var i=0;i<count;i++){
-        particles.push({
-          x: Math.random()*w, y: Math.random()*h,
-          r: Math.random()*2.2 + 0.3,
-          vx: (Math.random()-0.5)*0.65, vy: (Math.random()-0.5)*0.65,
-          a: Math.random()*0.45 + 0.12
-        });
-      }
+  if(!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext('2d');
+  var w, h, particles = [], mouse = {x:-999,y:-999};
+  function resize(){ w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+  function init(){
+    particles = [];
+    var count = Math.min(110, Math.floor((w*h)/11000));
+    for(var i=0;i<count;i++){
+      particles.push({
+        x: Math.random()*w, y: Math.random()*h,
+        r: Math.random()*2.2 + 0.3,
+        vx: (Math.random()-0.5)*0.65, vy: (Math.random()-0.5)*0.65,
+        a: Math.random()*0.45 + 0.12
+      });
     }
-    function draw(){
-      ctx.clearRect(0,0,w,h);
-      if(mouse.x > 0){
-        var g = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 280);
-        g.addColorStop(0, 'rgba(212,160,23,0.07)');
-        g.addColorStop(1, 'rgba(212,160,23,0)');
-        ctx.fillStyle = g;
-        ctx.fillRect(0,0,w,h);
-      }
-      for(var i=0;i<particles.length;i++){
-        var p = particles[i];
-        p.x += p.vx; p.y += p.vy;
-        if(p.x<0||p.x>w) p.vx *= -1;
-        if(p.y<0||p.y>h) p.vy *= -1;
-        var mdx = mouse.x - p.x, mdy = mouse.y - p.y;
-        var md = Math.sqrt(mdx*mdx+mdy*mdy);
-        if(md < 160 && md > 1){
-          p.vx += mdx/md * 0.02;
-          p.vy += mdy/md * 0.02;
-          var sp = Math.sqrt(p.vx*p.vx+p.vy*p.vy);
-          if(sp > 1.2){ p.vx *= 1.2/sp; p.vy *= 1.2/sp; }
-        }
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-        ctx.fillStyle = 'rgba(212,160,23,'+p.a+')';
-        ctx.fill();
-        for(var j=i+1;j<particles.length;j++){
-          var q = particles[j];
-          var dx = p.x-q.x, dy = p.y-q.y, d = Math.sqrt(dx*dx+dy*dy);
-          if(d < 130){
-            ctx.beginPath();
-            ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y);
-            ctx.strokeStyle = 'rgba(212,160,23,'+(0.14*(1-d/130))+')';
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-          }
-        }
-      }
-      requestAnimationFrame(draw);
-    }
-    resize(); init(); draw();
-    window.addEventListener('resize', function(){ resize(); init(); });
-    window.addEventListener('mousemove', function(e){ mouse.x = e.clientX; mouse.y = e.clientY; }, {passive:true});
   }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    if(mouse.x > 0){
+      var g = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 280);
+      g.addColorStop(0, 'rgba(212,160,23,0.07)');
+      g.addColorStop(1, 'rgba(212,160,23,0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0,0,w,h);
+    }
+    for(var i=0;i<particles.length;i++){
+      var p = particles[i];
+      p.x += p.vx; p.y += p.vy;
+      if(p.x<0||p.x>w) p.vx *= -1;
+      if(p.y<0||p.y>h) p.vy *= -1;
+      var mdx = mouse.x - p.x, mdy = mouse.y - p.y;
+      var md = Math.sqrt(mdx*mdx+mdy*mdy);
+      if(md < 160 && md > 1){
+        p.vx += mdx/md * 0.02;
+        p.vy += mdy/md * 0.02;
+        var sp = Math.sqrt(p.vx*p.vx+p.vy*p.vy);
+        if(sp > 1.2){ p.vx *= 1.2/sp; p.vy *= 1.2/sp; }
+      }
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(212,160,23,'+p.a+')';
+      ctx.fill();
+      for(var j=i+1;j<particles.length;j++){
+        var q = particles[j];
+        var dx = p.x-q.x, dy = p.y-q.y, d = Math.sqrt(dx*dx+dy*dy);
+        if(d < 130){
+          ctx.beginPath();
+          ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y);
+          ctx.strokeStyle = 'rgba(212,160,23,'+(0.14*(1-d/130))+')';
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  resize(); init(); draw();
+  window.addEventListener('resize', function(){ resize(); init(); });
+  window.addEventListener('mousemove', function(e){ mouse.x = e.clientX; mouse.y = e.clientY; }, {passive:true});
 })();
 </script>
 </body></html>
