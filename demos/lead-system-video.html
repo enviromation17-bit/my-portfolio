@@ -5,43 +5,23 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Lead System Demo — Renolt</title>
 <style>
-html,body{background:#05060a!important;color:#eef0f4;margin:0;font-family:system-ui,sans-serif;color-scheme:dark}
+html,body{background:#05060a!important;color:#eef0f4;margin:0;font-family:system-ui,sans-serif;color-scheme:dark;height:100%}
 *{box-sizing:border-box}
 a{color:#d4a017;text-decoration:none}
-.top{padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;background:rgba(5,6,10,.92);backdrop-filter:blur(12px);z-index:10}
+.top{padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(5,6,10,.95);backdrop-filter:blur(12px);z-index:10}
 .brand{font-weight:800}.brand span{color:#d4a017}
 .back{font-size:.88rem;color:#8b92a5}
-.wrap{max-width:440px;margin:0 auto;padding:24px 20px 48px}
-h1{font-size:1.45rem;margin:0 0 8px}
-.sub{color:#8b92a5;font-size:.95rem;margin:0 0 20px;line-height:1.55}
-.player{border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.1);background:#0a0c12;box-shadow:0 20px 50px rgba(0,0,0,.4)}
-video{display:block;width:100%;background:#000;min-height:200px}
-.actions{display:flex;flex-direction:column;gap:10px;margin-top:20px}
-.btn{display:flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:999px;font-weight:600;font-size:.92rem;border:1px solid rgba(255,255,255,.1)}
-.btn.primary{background:linear-gradient(135deg,#d4a017,#e8c547);color:#0c0a04;border:none}
-.btn.ghost{background:rgba(255,255,255,.04);color:#eef0f4}
-.note{margin-top:16px;font-size:.8rem;color:#5c6478;text-align:center}
+.frame-wrap{height:calc(100vh - 54px);width:100%}
+iframe{width:100%;height:100%;border:0;background:#05060a}
 </style>
 </head>
 <body>
 <div class="top">
   <a href="https://renolt.vercel.app/" class="brand">RENOLT<span>.</span></a>
-  <a href="https://renolt.vercel.app/" class="back">← Back</a>
+  <a href="https://renolt.vercel.app/" class="back">← Back to site</a>
 </div>
-<div class="wrap">
-  <h1>Lead System demo</h1>
-  <p class="sub">How Renolt catches every enquiry — from missed messages to closed leads.</p>
-  <div class="player">
-    <video controls playsinline preload="auto" id="v">
-      <source src="lead-system-demo.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="actions">
-    <a class="btn primary" href="https://wa.me/923074136536?text=Hello%20Renolt%2C%20I%20saw%20the%20Lead%20System%20demo." target="_blank" rel="noopener">Talk on WhatsApp</a>
-    <a class="btn ghost" href="lead-system.html">Open interactive demo →</a>
-    <a class="btn ghost" href="https://renolt.vercel.app/">Back to homepage</a>
-  </div>
-  <p class="note">22s overview · Real estate · Services · Trades</p>
+<div class="frame-wrap">
+  <iframe src="lead-system.html" title="Lead System interactive demo" allow="autoplay"></iframe>
 </div>
 <script>
 window.addEventListener('pageshow',function(){
