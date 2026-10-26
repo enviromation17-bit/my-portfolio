@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>html,body{background:#05060a!important;color:#eef0f4;margin:0}html{color-scheme:dark}</style>
+<script>!function(){function d(){document.documentElement.style.background="#05060a";if(document.body)document.body.style.background="#05060a"}d();window.addEventListener("pageshow",function(e){if(e.persisted)d()});document.addEventListener("DOMContentLoaded",d)}()</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Renolt Agents — Automation systems for real businesses</title>
+<meta name="description" content="Renolt designs and installs automation systems that capture enquiries, reply fast, and follow up until deals close.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+.ag-hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:120px 0 72px}
+.ag-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.ag-chip{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 10px;border-radius:999px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.28);color:#7dd3fc;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:22px}
+.ag-chip-dot{width:7px;height:7px;border-radius:50%;background:#38bdf8;box-shadow:0 0 10px rgba(56,189,248,.7)}
+.ag-hero h1{font-size:clamp(2.2rem,4.8vw,3.6rem);margin-bottom:18px}
+.ag-hero h1 .grad{background:linear-gradient(135deg,#38bdf8,#818cf8 50%,#d4a017);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ag-lead{font-size:1.08rem;color:var(--muted);font-weight:300;line-height:1.65;max-width:520px;margin-bottom:28px}
+.ag-mascot-wrap{position:relative;display:flex;justify-content:center;align-items:center}
+.ag-mascot-glow{position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.22),transparent 70%);filter:blur(20px);animation:agPulse 4s ease-in-out infinite}
+@keyframes agPulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+.ag-mascot{position:relative;width:min(320px,80vw);filter:drop-shadow(0 20px 50px rgba(56,189,248,.25))}
+.ag-mascot svg{width:100%;height:auto;display:block}
+.ag-float{animation:agFloat 5s ease-in-out infinite}
+@keyframes agFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.ag-bubble{position:absolute;bottom:8%;left:0;max-width:220px;background:rgba(14,16,22,.92);border:1px solid rgba(255,255,255,.1);border-radius:16px 16px 16px 4px;padding:12px 14px;font-size:.85rem;line-height:1.45;box-shadow:0 12px 32px rgba(0,0,0,.4)}
+.ag-bubble strong{display:block;color:#7dd3fc;font-size:.72rem;letter-spacing:.04em;margin-bottom:4px}
+.honest-bar{padding:18px 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);background:rgba(8,10,14,.55)}
+.honest-bar p{text-align:center;font-size:.92rem;color:var(--muted);font-weight:300;max-width:720px;margin:0 auto}
+.honest-bar strong{color:var(--text);font-weight:500}
+.orch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.orch-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px 22px;backdrop-filter:blur(16px);transition:border-color .25s,transform .25s}
+.orch-card:hover{border-color:rgba(56,189,248,.35);transform:translateY(-3px)}
+.orch-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.25);margin-bottom:16px;font-size:1.1rem}
+.orch-card h3{font-size:1.05rem;margin-bottom:8px}
+.orch-card p{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.55}
+.flow-strip{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;margin-top:40px;padding:28px;border-radius:20px;background:rgba(14,16,22,.7);border:1px solid var(--line)}
+.flow-node{padding:10px 16px;border-radius:999px;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.22);font-size:.85rem;font-weight:500;color:#e0f2fe}
+.flow-arrow{color:var(--dim);font-size:1.1rem}
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.who-card{padding:22px;border-radius:16px;background:var(--panel);border:1px solid var(--line)}
+.who-card h3{font-size:1rem;margin-bottom:8px;color:var(--amber)}
+.who-card p{font-size:.9rem;color:var(--muted);font-weight:300;margin:0}
+.avatar-note{margin-top:28px;padding:20px 22px;border-radius:16px;border:1px dashed rgba(56,189,248,.3);background:rgba(56,189,248,.04);font-size:.9rem;color:var(--muted);line-height:1.55}
+.avatar-note strong{color:#7dd3fc}
+@media(max-width:900px){.ag-grid{grid-template-columns:1fr}.ag-mascot-wrap{order:-1;margin-bottom:12px}.orch-grid{grid-template-columns:1fr}.who-grid{grid-template-columns:1fr}.ag-bubble{left:50%;transform:translateX(-50%);bottom:0}}
+</style>
+</head>
+<body>
+<canvas id="bgCanvas" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="content">
+<header class="nav" id="nav">
+  <div class="wrap navin">
+    <a href="/" class="brand">RENOLT<span>.</span></a>
+    <nav class="links" id="navLinks">
+      <a href="/#system">Lead System</a>
+      <a href="agents.html">Agents</a>
+      <a href="/#work">Website</a>
+      <a href="https://enviromation17-bit.github.io/my-portfolio/demos/">Demos</a>
+    </nav>
+    <a href="contact.html" class="navcta">Let's talk</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+<section class="ag-hero">
+  <div class="wrap ag-grid">
+    <div>
+      <div class="ag-chip"><span class="ag-chip-dot"></span> Automation systems · Built for operators</div>
+      <h1>Your business needs a system that <span class="grad">never drops a lead.</span></h1>
+      <p class="ag-lead">Renolt designs and installs the automation layer behind real service businesses — capture every enquiry, reply in seconds, follow up until it’s closed. The character you see is our guide. The work is the system we build for you.</p>
+      <div class="actions" style="opacity:1">
+        <a href="#" class="btn primary js-wa-open">WhatsApp 0307 4136536</a>
+        <a href="/#work" class="btn ghost">See our work</a>
+      </div>
+    </div>
+    <div class="ag-mascot-wrap">
+      <div class="ag-mascot-glow" aria-hidden="true"></div>
+      <div class="ag-mascot ag-float" aria-hidden="true">
+        <svg viewBox="0 0 320 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="body" x1="60" y1="40" x2="260" y2="320" gradientUnits="userSpaceOnUse"><stop stop-color="#f8fafc"/><stop offset="1" stop-color="#e2e8f0"/></linearGradient>
+            <linearGradient id="glow" x1="160" y1="80" x2="160" y2="280" gradientUnits="userSpaceOnUse"><stop stop-color="#38bdf8" stop-opacity=".9"/><stop offset="1" stop-color="#6366f1" stop-opacity=".4"/></linearGradient>
+            <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <ellipse cx="160" cy="210" rx="118" ry="28" stroke="url(#glow)" stroke-width="3" opacity=".45"/>
+          <path d="M100 175c0-48 27-88 60-88s60 40 60 88v55c0 38-27 62-60 62s-60-24-60-62v-55z" fill="url(#body)" stroke="#94a3b8" stroke-width="1.5"/>
+          <ellipse cx="160" cy="175" rx="52" ry="48" fill="#0f172a"/>
+          <ellipse cx="160" cy="175" rx="52" ry="48" stroke="#38bdf8" stroke-width="3" opacity=".8" filter="url(#soft)"/>
+          <path d="M135 172c6 10 16 14 25 14s19-4 25-14" stroke="#38bdf8" stroke-width="5" stroke-linecap="round" fill="none"/>
+          <path d="M160 87c0-18 8-32 18-40" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="180" cy="44" r="10" fill="#38bdf8" filter="url(#soft)"/>
+          <circle cx="100" cy="170" r="14" fill="#e2e8f0" stroke="#38bdf8" stroke-width="3"/>
+          <circle cx="220" cy="170" r="14" fill="#e2e8f0" stroke="#38bdf8" stroke-width="3"/>
+          <circle cx="160" cy="268" r="18" fill="#0f172a" stroke="#38bdf8" stroke-width="2.5"/>
+          <text x="160" y="274" text-anchor="middle" font-family="Syne,sans-serif" font-weight="800" font-size="16" fill="#38bdf8">R</text>
+          <path d="M100 200c-28 12-42 38-38 58" stroke="#e2e8f0" stroke-width="14" stroke-linecap="round"/>
+          <path d="M220 200c28 12 42 38 38 58" stroke="#e2e8f0" stroke-width="14" stroke-linecap="round"/>
+          <circle cx="62" cy="258" r="12" fill="#38bdf8" opacity=".85"/>
+          <circle cx="258" cy="258" r="12" fill="#38bdf8" opacity=".85"/>
+        </svg>
+      </div>
+      <div class="ag-bubble"><strong>RENOLT CORE</strong>We build the system. You run the business.</div>
+    </div>
+  </div>
+</section>
+<div class="honest-bar"><div class="wrap"><p><strong>Straight talk:</strong> Renolt Core is our face for the brand — not a live AI you chat with today. What we deliver is the <strong>automation system</strong> behind your enquiries, replies, and follow-ups.</p></div></div>
+<section class="section block" id="orchestra">
+  <div class="wrap">
+    <p class="section-label">What we actually install</p>
+    <h2 class="section-title">The Enquiry Orchestra</h2>
+    <p class="section-sub">Most businesses don’t need another dashboard. They need every WhatsApp, form, and call to land in one place — answered fast, tracked until closed.</p>
+    <div class="orch-grid">
+      <article class="orch-card"><div class="orch-icon">📥</div><h3>Capture layer</h3><p>WhatsApp, website forms, and calls funnel into one queue so nothing sits unread while the team is on a job.</p></article>
+      <article class="orch-card"><div class="orch-icon">⚡</div><h3>First-reply engine</h3><p>An immediate, on-brand response confirms you got the message — before the lead goes cold or messages a competitor.</p></article>
+      <article class="orch-card"><div class="orch-icon">🔁</div><h3>Follow-up rhythm</h3><p>Reminders and status so someone on your team always knows who still needs a human close.</p></article>
+      <article class="orch-card"><div class="orch-icon">🧭</div><h3>Operator queue</h3><p>A simple list your staff will actually use — not a complex CRM that dies after week two.</p></article>
+      <article class="orch-card"><div class="orch-icon">📊</div><h3>Visibility</h3><p>See volume, response times, and open leads without exporting spreadsheets every Friday.</p></article>
+      <article class="orch-card"><div class="orch-icon">🔗</div><h3>Site + system</h3><p>Conversion websites (like Brick & Build) wired into the same enquiry path — one story from click to close.</p></article>
+    </div>
+    <div class="flow-strip">
+      <span class="flow-node">Enquiry in</span><span class="flow-arrow">→</span>
+      <span class="flow-node">Logged</span><span class="flow-arrow">→</span>
+      <span class="flow-node">Auto first reply</span><span class="flow-arrow">→</span>
+      <span class="flow-node">Human queue</span><span class="flow-arrow">→</span>
+      <span class="flow-node">Follow-up</span><span class="flow-arrow">→</span>
+      <span class="flow-node">Closed</span>
+    </div>
+  </div>
+</section>
+<section class="section block" id="who">
+  <div class="wrap">
+    <p class="section-label">Built for</p>
+    <h2 class="section-title">Operators who can’t afford missed enquiries.</h2>
+    <div class="who-grid">
+      <div class="who-card"><h3>Real estate teams</h3><p>Plot and project enquiries arrive on WhatsApp while agents are on site. The system holds the line until someone can close.</p></div>
+      <div class="who-card"><h3>Home & field services</h3><p>Bookings and “are you available?” messages shouldn’t disappear into a personal phone. One queue. Clear ownership.</p></div>
+      <div class="who-card"><h3>Local service brands</h3><p>If growth depends on speed-to-lead, we wire capture and reply into how you already work — not a tool you abandon.</p></div>
+      <div class="who-card"><h3>Teams adding a website</h3><p>A new site without a follow-up path is a brochure. We connect forms and WhatsApp into the same orchestra.</p></div>
+    </div>
+    <div class="avatar-note"><strong>Why the avatar?</strong> People remember a face. Renolt Core is how we show up in demos, pitch decks, and this site — so visitors instantly know who we are. The product you buy is the system: capture, reply, follow-up, and the websites that feed it.</div>
+  </div>
+</section>
+<section class="section block">
+  <div class="wrap">
+    <div class="cta-box">
+      <div>
+        <p class="section-label">Start here</p>
+        <h2 class="section-title" style="margin-bottom:12px">Tell us where enquiries get lost.</h2>
+        <p class="section-sub" style="margin-bottom:0">Message on WhatsApp. We’ll map your channels and propose a clear install path — no fake AI chat, real systems.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="#" class="btn primary js-wa-open">WhatsApp us</a>
+        <a href="contact.html" class="btn ghost">Contact form</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="wrap foot">
+    <div><strong class="brand">RENOLT<span class="amber">.</span></strong><p style="margin-top:8px;max-width:300px;color:var(--muted);font-weight:300">Lead System and automation for real estate and service businesses.</p></div>
+    <div class="foot-links">
+      <a href="/" class="social-link">Home</a>
+      <a href="agents.html" class="social-link">Agents</a>
+      <a href="https://enviromation17-bit.github.io/my-portfolio/demos/" class="social-link">Demos</a>
+      <a href="https://wa.me/923074136536" class="social-link" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="mailto:hellorenolt@gmail.com" class="social-link">Email</a>
+      <a href="contact.html" class="social-link">Contact</a>
+    </div>
+  </div>
+</footer>
+</div>
+<div class="wa-widget" aria-label="WhatsApp">
+  <span class="wa-widget-label">Chat on WhatsApp · 0307 4136536</span>
+  <button type="button" class="wa-widget-btn js-wa-open" aria-label="Open WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </button>
+</div>
+<div id="waModal" class="wa-modal" hidden>
+  <div class="wa-modal-backdrop js-wa-close"></div>
+  <div class="wa-modal-panel" role="dialog">
+    <div class="wa-modal-head"><div><h2>Chat with us on WhatsApp</h2><p>Share your name and number — then continue on WhatsApp.</p></div><button type="button" class="wa-modal-x js-wa-close">&times;</button></div>
+    <form id="waForm" class="wa-modal-form">
+      <label for="wa-name">Name *</label><input id="wa-name" required placeholder="Your name">
+      <label for="wa-phone">Phone / WhatsApp *</label><input id="wa-phone" type="tel" required placeholder="03XX XXXXXXX">
+      <label for="wa-interest">What do you need?</label>
+      <select id="wa-interest"><option value="">Select…</option><option>Lead System / automation</option><option>Real estate website</option><option>Website + enquiry system</option><option>Something else</option></select>
+      <button type="submit" class="wa-modal-submit">Continue to WhatsApp</button>
+      <button type="button" class="wa-modal-skip" id="waSkip">Skip — open WhatsApp only</button>
+    </form>
+    <p class="wa-modal-foot">Business WhatsApp · 0307 4136536</p>
+  </div>
+</div>
+<script>
+(function(){
+  const WA_NUM='923074136536';
+  const modal=document.getElementById('waModal'),form=document.getElementById('waForm');
+  function openModal(e){if(e)e.preventDefault();modal.hidden=false;document.body.style.overflow='hidden'}
+  function closeModal(){modal.hidden=true;document.body.style.overflow=''}
+  function openWA(name,phone,interest){
+    let msg='Hello Renolt, I want to discuss automation / Lead System.';
+    if(name||phone||interest){msg='Hello Renolt.';if(name)msg+=' My name is '+name+'.';if(phone)msg+=' Phone: '+phone+'.';if(interest)msg+=' I am interested in: '+interest+'.';}
+    window.open('https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(msg),'_blank','noopener');
+  }
+  document.querySelectorAll('.js-wa-open').forEach(el=>el.addEventListener('click',openModal));
+  modal.querySelectorAll('.js-wa-close').forEach(el=>el.addEventListener('click',closeModal));
+  form.addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('wa-name').value.trim(),phone=document.getElementById('wa-phone').value.trim(),interest=(document.getElementById('wa-interest').value||'').trim();if(!name||!phone)return;openWA(name,phone,interest);closeModal()});
+  document.getElementById('waSkip').onclick=()=>{openWA('','','');closeModal()};
+  const nav=document.getElementById('nav'),burger=document.getElementById('burger'),links=document.getElementById('navLinks');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+  if(burger&&links)burger.addEventListener('click',()=>links.classList.toggle('open'));
+})();
+</script>
+<script>
+(function(){
+  var canvas=document.getElementById('bgCanvas');
+  if(!canvas||!canvas.getContext)return;
+  var ctx=canvas.getContext('2d'),w,h,particles=[];
+  function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight}
+  function init(){particles=[];var count=Math.min(80,Math.floor((w*h)/14000));for(var i=0;i<count;i++)particles.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+.3,vx:(Math.random()-.5)*.45,vy:(Math.random()-.5)*.45,a:Math.random()*.35+.1})}
+  function draw(){ctx.clearRect(0,0,w,h);for(var i=0;i<particles.length;i++){var p=particles[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(56,189,248,'+p.a+')';ctx.fill()}requestAnimationFrame(draw)}
+  resize();init();draw();addEventListener('resize',function(){resize();init()});
+})();
+</script>
+</body>
+</html>
