@@ -130,27 +130,26 @@
           <div class="story-mascot-wrap">
             <div class="story-mascot" id="storyMascot" aria-hidden="true">
               <svg viewBox="0 0 80 96" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="40" cy="88" rx="22" ry="5" fill="#38bdf8" opacity=".25"/>
-                <path d="M24 64c3-8 8-12 16-12s13 4 16 12v16c0 5-6 8-16 8s-16-3-16-8V64z" fill="#38bdf8" opacity=".9"/>
-                <rect x="34" y="52" width="12" height="12" rx="3" fill="#e8b896"/>
-                <ellipse cx="40" cy="36" rx="20" ry="22" fill="#f5d0b0"/>
-                <path d="M18 34c0-14 10-22 22-22s22 8 22 22c-4-6-12-9-22-9s-18 3-22 9z" fill="#1e293b"/>
-                <path d="M22 22c6-8 12-10 18-10s12 2 18 10" fill="#334155"/>
-                <ellipse cx="19" cy="38" rx="3" ry="4" fill="#e8b896"/>
-                <ellipse cx="61" cy="38" rx="3" ry="4" fill="#e8b896"/>
-                <ellipse cx="32" cy="36" rx="4.5" ry="5" fill="#fff"/>
-                <ellipse cx="48" cy="36" rx="4.5" ry="5" fill="#fff"/>
-                <circle cx="33" cy="37" r="2.2" fill="#1e293b"/>
-                <circle cx="49" cy="37" r="2.2" fill="#1e293b"/>
-                <circle cx="33.8" cy="36" r=".7" fill="#fff"/>
-                <circle cx="49.8" cy="36" r=".7" fill="#fff"/>
-                <path d="M27 30c3-2 7-2 10 0" stroke="#78350f" stroke-width="1.4" stroke-linecap="round" fill="none" opacity=".5"/>
-                <path d="M43 30c3-2 7-2 10 0" stroke="#78350f" stroke-width="1.4" stroke-linecap="round" fill="none" opacity=".5"/>
-                <path id="mSmile" d="M33 44c3 4 6 5.5 7 5.5s4-1.5 7-5.5" stroke="#c2410c" stroke-width="2" stroke-linecap="round" fill="none"/>
-                <circle cx="24" cy="42" r="3" fill="#f9a8a8" opacity=".4"/>
-                <circle cx="56" cy="42" r="3" fill="#f9a8a8" opacity=".4"/>
-                <circle cx="40" cy="74" r="6" fill="#0f172a"/>
-                <text x="40" y="76.5" text-anchor="middle" font-size="7" font-family="Syne,sans-serif" font-weight="800" fill="#38bdf8">R</text>
+                <ellipse cx="40" cy="90" rx="22" ry="5" fill="#38bdf8" opacity=".25"/>
+                <path d="M40 10v8" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+                <ellipse cx="40" cy="8" rx="10" ry="4.5" fill="#38bdf8"/>
+                <ellipse cx="40" cy="7" rx="7" ry="2.5" fill="#e0f2fe" opacity=".45"/>
+                <ellipse cx="40" cy="42" rx="28" ry="28" fill="#f1f5f9"/>
+                <ellipse cx="40" cy="42" rx="28" ry="28" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity=".3"/>
+                <ellipse cx="40" cy="44" rx="20" ry="18" fill="#0b1220"/>
+                <ellipse cx="31" cy="41" rx="5.5" ry="6.5" fill="#38bdf8"/>
+                <ellipse cx="49" cy="41" rx="5.5" ry="6.5" fill="#38bdf8"/>
+                <ellipse cx="29.5" cy="39" rx="1.8" ry="2.2" fill="#e0f2fe" opacity=".9"/>
+                <ellipse cx="47.5" cy="39" rx="1.8" ry="2.2" fill="#e0f2fe" opacity=".9"/>
+                <path id="mSmile" d="M32 52c3 4.5 6.5 6.5 8 6.5s5-2 8-6.5" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <ellipse cx="12" cy="52" rx="5" ry="6" fill="#e2e8f0"/>
+                <ellipse cx="68" cy="52" rx="5" ry="6" fill="#e2e8f0"/>
+                <circle cx="12" cy="52" r="2.5" fill="#38bdf8" opacity=".75"/>
+                <circle cx="68" cy="52" r="2.5" fill="#38bdf8" opacity=".75"/>
+                <path d="M22 64c3 10 8 14 18 14s15-4 18-14" fill="#f1f5f9" stroke="#38bdf8" stroke-width="1" opacity=".95"/>
+                <circle cx="40" cy="72" r="7" fill="#0b1220"/>
+                <circle cx="40" cy="72" r="7" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+                <text x="40" y="75" text-anchor="middle" font-size="8" font-family="Syne,sans-serif" font-weight="800" fill="#38bdf8">R</text>
               </svg>
             </div>
             <span class="story-mood" id="storyMood">😟</span>
@@ -317,7 +316,7 @@
   const smile=document.getElementById('mSmile');
   const nextBtn=document.getElementById('storyNext');
   let si=0,timer;
-  const smiles=['M34 45c2 1 4 1.5 6 1.5s4-.5 6-1.5','M33 44c3 4 6 5.5 7 5.5s4-1.5 7-5.5','M32 43c3.5 5.5 7 7 8 7s4.5-1.5 8-7','M32 43c3.5 5.5 7 7 8 7s4.5-1.5 8-7'];
+  const smiles=['M34 53c2 1.5 4 2 6 2s4-.5 6-2','M32 52c3 4.5 6.5 6.5 8 6.5s5-2 8-6.5','M31 51c3.5 5.5 7 7.5 9 7.5s5.5-2 9-7.5','M31 51c3.5 5.5 7 7.5 9 7.5s5.5-2 9-7.5'];
 
   panels.forEach((_,i)=>{const b=document.createElement('button');b.type='button';b.className='story-dot'+(i===0?' is-active':'');b.onclick=()=>{go(i);reset()};dotsWrap.appendChild(b)});
   const dots=[...dotsWrap.querySelectorAll('.story-dot')];
