@@ -21,13 +21,18 @@
 .office{background:rgba(14,16,22,.75);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:28px 20px 20px;position:relative;overflow:hidden}
 .office-label{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#7dd3fc;text-align:center;margin-bottom:18px;font-weight:600}
 .office-row{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
-.office-bot{width:72px;text-align:center;cursor:pointer;transition:transform .25s}
-.office-bot:hover{transform:translateY(-6px)}
+.office-bot{width:72px;text-align:center;cursor:pointer;transition:transform .25s;opacity:0;transform:translateY(18px) scale(.85);position:relative}
+.office-bot:hover{transform:translateY(-6px) scale(1)}
+.office-bot.is-in{opacity:1;transform:translateY(0) scale(1);transition:opacity .45s ease,transform .5s cubic-bezier(.22,1,.36,1)}
 .office-bot svg{width:64px;height:70px;display:block;margin:0 auto 6px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.35))}
 .office-bot span{font-size:.72rem;color:var(--muted)}
 .office-bot strong{display:block;font-size:.8rem;color:var(--text);font-weight:600}
+.office-bot .hi-bubble{position:absolute;top:-8px;left:50%;transform:translateX(-50%) translateY(6px) scale(.6);background:rgba(14,16,22,.95);border:1px solid rgba(56,189,248,.35);color:#e0f2fe;font-size:.68rem;font-weight:600;padding:4px 8px;border-radius:999px;white-space:nowrap;opacity:0;pointer-events:none;z-index:5;box-shadow:0 6px 16px rgba(0,0,0,.35);transition:opacity .3s,transform .35s cubic-bezier(.22,1,.36,1)}
+.office-bot .hi-bubble::after{content:"";position:absolute;bottom:-5px;left:50%;margin-left:-4px;border:4px solid transparent;border-top-color:rgba(14,16,22,.95)}
+.office-bot.is-hi .hi-bubble{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}
 .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
-.agent-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px 18px;transition:border-color .25s,transform .25s,box-shadow .25s;position:relative}
+.agent-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px 18px;transition:border-color .25s,transform .25s,box-shadow .25s;position:relative;opacity:0;transform:translateY(24px)}
+.agent-card.is-in{opacity:1;transform:translateY(0);transition:opacity .5s ease,transform .55s cubic-bezier(.22,1,.36,1),border-color .25s,box-shadow .25s}
 .agent-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
 .agent-card[data-c="core"]:hover{border-color:rgba(56,189,248,.45)}
 .agent-card[data-c="pulse"]:hover{border-color:rgba(52,211,153,.45)}
@@ -41,6 +46,8 @@
 .agent-name{font-size:1.05rem;margin:0 0 2px}
 .agent-role{font-size:.78rem;color:#7dd3fc;font-weight:500;margin:0}
 .agent-card p{font-size:.88rem;color:var(--muted);font-weight:300;line-height:1.55;margin:0 0 12px}
+.agent-card .hi-line{font-size:.78rem;color:#7dd3fc;font-weight:500;margin:0 0 8px;opacity:0;max-height:0;overflow:hidden;transition:opacity .35s,max-height .35s}
+.agent-card.is-hi .hi-line{opacity:1;max-height:40px}
 .agent-skills{display:flex;flex-wrap:wrap;gap:6px}
 .agent-skills span{font-size:.7rem;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--muted)}
 .agent-emoji{position:absolute;top:14px;right:14px;font-size:1.2rem;opacity:0;transition:opacity .25s,transform .25s;transform:scale(.8)}
@@ -87,7 +94,7 @@
       </div>
     </div>
     <div class="office" id="office">
-      <p class="office-label">Renolt office · hover a desk</p>
+      <p class="office-label">Renolt office · agents checking in…</p>
       <div class="office-row" id="officeRow"></div>
     </div>
   </div>
@@ -185,29 +192,66 @@
 <script>
 (function(){
   const agents=[
-    {id:'core',name:'Core',role:'Lead System lead',emoji:'🎯',color:'#38bdf8',blurb:'Owns capture, first reply, and the operator queue. The first agent almost every client needs.',skills:['WhatsApp','Forms','Follow-up','Queue']},
-    {id:'pulse',name:'Pulse',role:'Omni multi-channel',emoji:'📡',color:'#34d399',blurb:'Keeps WhatsApp, web, and inbox on the same rules so no channel is left orphaned.',skills:['Multi-channel','Routing','One queue']},
-    {id:'sched',name:'Sched',role:'Post scheduler',emoji:'📅',color:'#fbbf24',blurb:'Plans and queues social posts so the brand stays visible while the team is on jobs.',skills:['Calendar','Social queue','Reminders']},
-    {id:'mail',name:'Mail',role:'Email marketing',emoji:'✉️',color:'#a78bfa',blurb:'Sequences for warm leads and past clients — nurture that matches how you sell.',skills:['Sequences','Broadcasts','Nurture']},
-    {id:'forge',name:'Forge',role:'Custom orchestra',emoji:'🧩',color:'#fb7185',blurb:'When the process doesn’t fit a template — designs the flow the client asked for.',skills:['Custom flows','Integrations','On request']},
-    {id:'web',name:'Web',role:'Site + system',emoji:'🌐',color:'#d4a017',blurb:'Conversion sites (Brick & Build style) wired into the same enquiry path as Core.',skills:['Websites','Forms','CTA path']}
+    {id:'core',name:'Core',role:'Lead System lead',emoji:'🎯',color:'#38bdf8',hi:'Hi! I am Core.',blurb:'Owns capture, first reply, and the operator queue. The first agent almost every client needs.',skills:['WhatsApp','Forms','Follow-up','Queue']},
+    {id:'pulse',name:'Pulse',role:'Omni multi-channel',emoji:'📡',color:'#34d399',hi:'Hey — Pulse here.',blurb:'Keeps WhatsApp, web, and inbox on the same rules so no channel is left orphaned.',skills:['Multi-channel','Routing','One queue']},
+    {id:'sched',name:'Sched',role:'Post scheduler',emoji:'📅',color:'#fbbf24',hi:'Hi! Sched online.',blurb:'Plans and queues social posts so the brand stays visible while the team is on jobs.',skills:['Calendar','Social queue','Reminders']},
+    {id:'mail',name:'Mail',role:'Email marketing',emoji:'✉️',color:'#a78bfa',hi:'Hello from Mail.',blurb:'Sequences for warm leads and past clients — nurture that matches how you sell.',skills:['Sequences','Broadcasts','Nurture']},
+    {id:'forge',name:'Forge',role:'Custom orchestra',emoji:'🧩',color:'#fb7185',hi:'Hi — Forge ready.',blurb:'When the process does not fit a template — designs the flow the client asked for.',skills:['Custom flows','Integrations','On request']},
+    {id:'web',name:'Web',role:'Site + system',emoji:'🌐',color:'#d4a017',hi:'Web here. Hi!',blurb:'Conversion sites (Brick and Build style) wired into the same enquiry path as Core.',skills:['Websites','Forms','CTA path']}
   ];
   function face(color,wink){
     var eyes=wink?'<circle cx="22" cy="24" r="2.2" fill="'+color+'"/><path d="M30 23c1.5 2 3.5 2.5 5 0" stroke="'+color+'" stroke-width="2" stroke-linecap="round" fill="none"/>':'<circle cx="22" cy="24" r="2.2" fill="'+color+'"/><circle cx="32" cy="24" r="2.2" fill="'+color+'"/>';
     return '<svg viewBox="0 0 54 60"><ellipse cx="27" cy="42" rx="20" ry="5" stroke="'+color+'" stroke-width="1.2" opacity=".35"/><path d="M14 32c0-10 6-18 13-18s13 8 13 18v10c0 8-6 13-13 13s-13-5-13-13V32z" fill="#f1f5f9" stroke="#94a3b8" stroke-width=".7"/><ellipse cx="27" cy="26" rx="11" ry="10" fill="#0f172a"/><ellipse cx="27" cy="26" rx="11" ry="10" stroke="'+color+'" stroke-width="1.5" opacity=".95"/>'+eyes+'<path d="M21 30c2 3.5 4.5 5 6 5s4-1.5 6-5" stroke="'+color+'" stroke-width="2.2" stroke-linecap="round" fill="none"/><path d="M27 14c0-4 2-7 5-9" stroke="'+color+'" stroke-width="1.6" stroke-linecap="round"/><circle cx="33" cy="5" r="2.8" fill="'+color+'"/><circle cx="27" cy="48" r="3.5" fill="#0f172a" stroke="'+color+'" stroke-width="1"/><text x="27" y="49.5" text-anchor="middle" font-size="4" font-family="Syne,sans-serif" font-weight="800" fill="'+color+'">R</text></svg>';
   }
   var grid=document.getElementById('teamGrid'),office=document.getElementById('officeRow');
+  var desks=[],cards=[];
   agents.forEach(function(a){
     var card=document.createElement('article');
     card.className='agent-card';card.dataset.c=a.id;
-    card.innerHTML='<span class="agent-emoji">'+a.emoji+'</span><div class="agent-top"><div class="agent-avatar">'+face(a.color,a.id==='sched')+'</div><div><h3 class="agent-name">'+a.name+'</h3><p class="agent-role">'+a.role+'</p></div></div><p>'+a.blurb+'</p><div class="agent-skills">'+a.skills.map(function(s){return '<span>'+s+'</span>'}).join('')+'</div>';
+    card.innerHTML='<span class="agent-emoji">'+a.emoji+'</span><div class="agent-top"><div class="agent-avatar">'+face(a.color,a.id==='sched')+'</div><div><h3 class="agent-name">'+a.name+'</h3><p class="agent-role">'+a.role+'</p></div></div><p class="hi-line">'+a.hi+'</p><p>'+a.blurb+'</p><div class="agent-skills">'+a.skills.map(function(s){return '<span>'+s+'</span>'}).join('')+'</div>';
     grid.appendChild(card);
+    cards.push(card);
     var desk=document.createElement('div');
     desk.className='office-bot';
-    desk.innerHTML=face(a.color,false)+'<strong>'+a.name+'</strong><span>'+a.role.split('—')[0].trim().slice(0,16)+'</span>';
-    desk.onmouseenter=function(){card.scrollIntoView({behavior:'smooth',block:'nearest'})};
+    desk.innerHTML='<span class="hi-bubble">'+a.hi+'</span>'+face(a.color,false)+'<strong>'+a.name+'</strong><span>'+a.role.split('—')[0].trim().slice(0,16)+'</span>';
+    desk.onmouseenter=function(){card.scrollIntoView({behavior:'smooth',block:'nearest'});card.classList.add('is-hi')};
+    desk.onmouseleave=function(){card.classList.remove('is-hi')};
     office.appendChild(desk);
+    desks.push(desk);
   });
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function revealOffice(){
+    desks.forEach(function(desk,i){
+      var delay=reduce?0:(180+i*320);
+      setTimeout(function(){
+        desk.classList.add('is-in');
+        setTimeout(function(){
+          desk.classList.add('is-hi');
+          setTimeout(function(){desk.classList.remove('is-hi')},1400);
+        },280);
+      },delay);
+    });
+  }
+  setTimeout(revealOffice,400);
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting)return;
+        cards.forEach(function(card,i){
+          setTimeout(function(){
+            card.classList.add('is-in');
+            setTimeout(function(){card.classList.add('is-hi')},200);
+            setTimeout(function(){card.classList.remove('is-hi')},1800);
+          },reduce?0:i*180);
+        });
+        io.disconnect();
+      });
+    },{threshold:0.15});
+    var teamSec=document.getElementById('team');
+    if(teamSec)io.observe(teamSec);
+  } else {
+    cards.forEach(function(c){c.classList.add('is-in')});
+  }
 })();
 </script>
 <script>
