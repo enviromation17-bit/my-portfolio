@@ -6,46 +6,55 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Renolt Agents — Automation systems for real businesses</title>
-<meta name="description" content="Renolt designs and installs automation systems that capture enquiries, reply fast, and follow up until deals close.">
+<meta name="description" content="Renolt designs and installs automation systems: Lead System, multi-channel, post scheduling, email marketing, and custom orchestras.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-.ag-hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:120px 0 72px}
-.ag-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.ag-hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:120px 0 64px}
+.ag-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
 .ag-chip{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 10px;border-radius:999px;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.28);color:#7dd3fc;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:22px}
-.ag-chip-dot{width:7px;height:7px;border-radius:50%;background:#38bdf8;box-shadow:0 0 10px rgba(56,189,248,.7)}
-.ag-hero h1{font-size:clamp(2.2rem,4.8vw,3.6rem);margin-bottom:18px}
-.ag-hero h1 .grad{background:linear-gradient(135deg,#38bdf8,#818cf8 50%,#d4a017);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.ag-lead{font-size:1.08rem;color:var(--muted);font-weight:300;line-height:1.65;max-width:520px;margin-bottom:28px}
-.ag-mascot-wrap{position:relative;display:flex;justify-content:center;align-items:center}
-.ag-mascot-glow{position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.22),transparent 70%);filter:blur(20px);animation:agPulse 4s ease-in-out infinite}
-@keyframes agPulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
-.ag-mascot{position:relative;width:min(320px,80vw);filter:drop-shadow(0 20px 50px rgba(56,189,248,.25))}
-.ag-mascot svg{width:100%;height:auto;display:block}
-.ag-float{animation:agFloat 5s ease-in-out infinite}
-@keyframes agFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.ag-bubble{position:absolute;bottom:8%;left:0;max-width:220px;background:rgba(14,16,22,.92);border:1px solid rgba(255,255,255,.1);border-radius:16px 16px 16px 4px;padding:12px 14px;font-size:.85rem;line-height:1.45;box-shadow:0 12px 32px rgba(0,0,0,.4)}
-.ag-bubble strong{display:block;color:#7dd3fc;font-size:.72rem;letter-spacing:.04em;margin-bottom:4px}
-.honest-bar{padding:18px 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);background:rgba(8,10,14,.55)}
-.honest-bar p{text-align:center;font-size:.92rem;color:var(--muted);font-weight:300;max-width:720px;margin:0 auto}
+.ag-chip-dot{width:7px;height:7px;border-radius:50%;background:#38bdf8;box-shadow:0 0 10px rgba(56,189,248,.7);animation:blink 1.8s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.ag-hero h1{font-size:clamp(2.1rem,4.6vw,3.4rem);margin-bottom:16px}
+.ag-hero h1 .grad{background:linear-gradient(135deg,#38bdf8,#818cf8 45%,#d4a017);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ag-lead{font-size:1.05rem;color:var(--muted);font-weight:300;line-height:1.65;max-width:520px;margin-bottom:26px}
+.ag-stage{position:relative;display:flex;flex-direction:column;align-items:center;gap:20px}
+.ag-hero-bot{position:relative;width:min(280px,72vw);cursor:pointer}
+.ag-hero-bot svg{width:100%;height:auto;display:block;filter:drop-shadow(0 18px 40px rgba(56,189,248,.28));transition:transform .35s ease}
+.ag-hero-bot:hover svg{transform:scale(1.04)}
+.ag-glow{position:absolute;inset:15% 10%;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.28),transparent 70%);filter:blur(24px);pointer-events:none;animation:gPulse 3.5s ease-in-out infinite}
+@keyframes gPulse{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
+.ag-bubble{background:rgba(14,16,22,.94);border:1px solid rgba(255,255,255,.1);border-radius:16px 16px 16px 6px;padding:12px 14px;font-size:.86rem;line-height:1.45;max-width:240px;box-shadow:0 12px 28px rgba(0,0,0,.35)}
+.ag-bubble strong{display:block;color:#7dd3fc;font-size:.7rem;letter-spacing:.05em;margin-bottom:4px}
+.honest-bar{padding:16px 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);background:rgba(8,10,14,.55)}
+.honest-bar p{text-align:center;font-size:.9rem;color:var(--muted);font-weight:300;max-width:740px;margin:0 auto}
 .honest-bar strong{color:var(--text);font-weight:500}
-.orch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
-.orch-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px 22px;backdrop-filter:blur(16px);transition:border-color .25s,transform .25s}
-.orch-card:hover{border-color:rgba(56,189,248,.35);transform:translateY(-3px)}
-.orch-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.25);margin-bottom:16px;font-size:1.1rem}
-.orch-card h3{font-size:1.05rem;margin-bottom:8px}
-.orch-card p{font-size:.9rem;color:var(--muted);font-weight:300;line-height:1.55}
-.flow-strip{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;margin-top:40px;padding:28px;border-radius:20px;background:rgba(14,16,22,.7);border:1px solid var(--line)}
-.flow-node{padding:10px 16px;border-radius:999px;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.22);font-size:.85rem;font-weight:500;color:#e0f2fe}
-.flow-arrow{color:var(--dim);font-size:1.1rem}
-.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
-.who-card{padding:22px;border-radius:16px;background:var(--panel);border:1px solid var(--line)}
-.who-card h3{font-size:1rem;margin-bottom:8px;color:var(--amber)}
-.who-card p{font-size:.9rem;color:var(--muted);font-weight:300;margin:0}
-.avatar-note{margin-top:28px;padding:20px 22px;border-radius:16px;border:1px dashed rgba(56,189,248,.3);background:rgba(56,189,248,.04);font-size:.9rem;color:var(--muted);line-height:1.55}
-.avatar-note strong{color:#7dd3fc}
-@media(max-width:900px){.ag-grid{grid-template-columns:1fr}.ag-mascot-wrap{order:-1;margin-bottom:12px}.orch-grid{grid-template-columns:1fr}.who-grid{grid-template-columns:1fr}.ag-bubble{left:50%;transform:translateX(-50%);bottom:0}}
+.family-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px}
+.fam-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px 14px 18px;text-align:center;cursor:pointer;transition:border-color .25s,transform .25s,box-shadow .25s;position:relative;overflow:hidden}
+.fam-card:hover{border-color:rgba(56,189,248,.4);transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.35)}
+.fam-bot{width:100px;height:110px;margin:0 auto 12px;position:relative}
+.fam-bot svg{width:100%;height:100%}
+.fam-emoji{position:absolute;top:-4px;right:8px;font-size:1.35rem;opacity:0;transform:scale(.5) translateY(6px);transition:opacity .25s,transform .25s;pointer-events:none}
+.fam-card:hover .fam-emoji,.fam-card.is-active .fam-emoji{opacity:1;transform:scale(1) translateY(0)}
+.fam-card h3{font-size:.95rem;margin-bottom:4px}
+.fam-card p{font-size:.78rem;color:var(--muted);font-weight:300;margin:0}
+.fam-role{display:inline-block;margin-top:8px;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:#7dd3fc;font-weight:600}
+.orch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+.orch-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px 18px;transition:border-color .25s,transform .25s}
+.orch-card:hover{border-color:rgba(56,189,248,.32);transform:translateY(-2px)}
+.orch-card.featured{border-color:rgba(212,160,23,.3);background:rgba(212,160,23,.04)}
+.orch-icon{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.22);margin-bottom:12px;font-size:1.05rem}
+.orch-card.featured .orch-icon{background:rgba(212,160,23,.12);border-color:rgba(212,160,23,.3)}
+.orch-card h3{font-size:1rem;margin-bottom:6px}
+.orch-card p{font-size:.86rem;color:var(--muted);font-weight:300;line-height:1.5;margin:0}
+.pill-tag{display:inline-block;margin-top:10px;font-size:.68rem;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.06);color:var(--muted)}
+.flow-strip{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin-top:36px;padding:24px;border-radius:18px;background:rgba(14,16,22,.7);border:1px solid var(--line)}
+.flow-node{padding:9px 14px;border-radius:999px;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);font-size:.8rem;font-weight:500;color:#e0f2fe}
+.flow-arrow{color:var(--dim)}
+.note-box{margin-top:28px;padding:18px 20px;border-radius:14px;border:1px dashed rgba(56,189,248,.28);background:rgba(56,189,248,.04);font-size:.88rem;color:var(--muted);line-height:1.55}
+.note-box strong{color:#7dd3fc}
+@media(max-width:900px){.ag-grid{grid-template-columns:1fr}.ag-stage{order:-1}.family-grid{grid-template-columns:1fr 1fr}.orch-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -71,79 +80,86 @@
 <section class="ag-hero">
   <div class="wrap ag-grid">
     <div>
-      <div class="ag-chip"><span class="ag-chip-dot"></span> Automation systems · Built for operators</div>
-      <h1>Your business needs a system that <span class="grad">never drops a lead.</span></h1>
-      <p class="ag-lead">Renolt designs and installs the automation layer behind real service businesses — capture every enquiry, reply in seconds, follow up until it’s closed. The character you see is our guide. The work is the system we build for you.</p>
+      <div class="ag-chip"><span class="ag-chip-dot"></span> Agents · Systems we install</div>
+      <h1>Meet the crew that <span class="grad">represents the work.</span></h1>
+      <p class="ag-lead">Cute faces. Serious systems. Renolt designs automation for real operators — Lead System first, then multi-channel, scheduling, email, and custom orchestras when the business needs them.</p>
       <div class="actions" style="opacity:1">
         <a href="#" class="btn primary js-wa-open">WhatsApp 0307 4136536</a>
-        <a href="/#work" class="btn ghost">See our work</a>
+        <a href="#orchestra" class="btn ghost">See systems</a>
       </div>
     </div>
-    <div class="ag-mascot-wrap">
-      <div class="ag-mascot-glow" aria-hidden="true"></div>
-      <div class="ag-mascot ag-float" aria-hidden="true">
-        <svg viewBox="0 0 320 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div class="ag-stage">
+      <div class="ag-glow" aria-hidden="true"></div>
+      <div class="ag-hero-bot" id="heroBot" aria-label="Renolt Core avatar">
+        <svg viewBox="0 0 280 320" id="coreSvg">
           <defs>
-            <linearGradient id="body" x1="60" y1="40" x2="260" y2="320" gradientUnits="userSpaceOnUse"><stop stop-color="#f8fafc"/><stop offset="1" stop-color="#e2e8f0"/></linearGradient>
-            <linearGradient id="glow" x1="160" y1="80" x2="160" y2="280" gradientUnits="userSpaceOnUse"><stop stop-color="#38bdf8" stop-opacity=".9"/><stop offset="1" stop-color="#6366f1" stop-opacity=".4"/></linearGradient>
-            <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <linearGradient id="bd" x1="40" y1="20" x2="240" y2="300"><stop stop-color="#f8fafc"/><stop offset="1" stop-color="#e2e8f0"/></linearGradient>
+            <linearGradient id="gl" x1="140" y1="60" x2="140" y2="260"><stop stop-color="#38bdf8" stop-opacity=".9"/><stop offset="1" stop-color="#6366f1" stop-opacity=".35"/></linearGradient>
+            <filter id="sf"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
           </defs>
-          <ellipse cx="160" cy="210" rx="118" ry="28" stroke="url(#glow)" stroke-width="3" opacity=".45"/>
-          <path d="M100 175c0-48 27-88 60-88s60 40 60 88v55c0 38-27 62-60 62s-60-24-60-62v-55z" fill="url(#body)" stroke="#94a3b8" stroke-width="1.5"/>
-          <ellipse cx="160" cy="175" rx="52" ry="48" fill="#0f172a"/>
-          <ellipse cx="160" cy="175" rx="52" ry="48" stroke="#38bdf8" stroke-width="3" opacity=".8" filter="url(#soft)"/>
-          <path d="M135 172c6 10 16 14 25 14s19-4 25-14" stroke="#38bdf8" stroke-width="5" stroke-linecap="round" fill="none"/>
-          <path d="M160 87c0-18 8-32 18-40" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/>
-          <circle cx="180" cy="44" r="10" fill="#38bdf8" filter="url(#soft)"/>
-          <circle cx="100" cy="170" r="14" fill="#e2e8f0" stroke="#38bdf8" stroke-width="3"/>
-          <circle cx="220" cy="170" r="14" fill="#e2e8f0" stroke="#38bdf8" stroke-width="3"/>
-          <circle cx="160" cy="268" r="18" fill="#0f172a" stroke="#38bdf8" stroke-width="2.5"/>
-          <text x="160" y="274" text-anchor="middle" font-family="Syne,sans-serif" font-weight="800" font-size="16" fill="#38bdf8">R</text>
-          <path d="M100 200c-28 12-42 38-38 58" stroke="#e2e8f0" stroke-width="14" stroke-linecap="round"/>
-          <path d="M220 200c28 12 42 38 38 58" stroke="#e2e8f0" stroke-width="14" stroke-linecap="round"/>
-          <circle cx="62" cy="258" r="12" fill="#38bdf8" opacity=".85"/>
-          <circle cx="258" cy="258" r="12" fill="#38bdf8" opacity=".85"/>
+          <ellipse cx="140" cy="195" rx="100" ry="24" stroke="url(#gl)" stroke-width="2.5" opacity=".4"/>
+          <path d="M85 155c0-42 24-78 55-78s55 36 55 78v48c0 34-24 55-55 55s-55-21-55-55v-48z" fill="url(#bd)" stroke="#94a3b8" stroke-width="1.2"/>
+          <ellipse cx="140" cy="155" rx="46" ry="42" fill="#0f172a"/>
+          <ellipse cx="140" cy="155" rx="46" ry="42" stroke="#38bdf8" stroke-width="2.5" opacity=".85" filter="url(#sf)"/>
+          <g id="eyes">
+            <circle id="eyeL" cx="124" cy="152" r="6" fill="#38bdf8"/>
+            <circle id="eyeR" cx="156" cy="152" r="6" fill="#38bdf8"/>
+            <circle cx="122" cy="150" r="2" fill="#e0f2fe"/>
+            <circle cx="154" cy="150" r="2" fill="#e0f2fe"/>
+          </g>
+          <path id="smile" d="M122 168c5 9 14 13 18 13s13-4 18-13" stroke="#38bdf8" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+          <path d="M140 77c0-16 7-28 16-36" stroke="#38bdf8" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="158" cy="38" r="9" fill="#38bdf8" filter="url(#sf)"/>
+          <circle cx="88" cy="150" r="12" fill="#e2e8f0" stroke="#38bdf8" stroke-width="2.5"/>
+          <circle cx="192" cy="150" r="12" fill="#e2e8f0" stroke="#38bdf8" stroke-width="2.5"/>
+          <circle cx="140" cy="248" r="15" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+          <text x="140" y="253" text-anchor="middle" font-family="Syne,sans-serif" font-weight="800" font-size="13" fill="#38bdf8">R</text>
+          <path d="M85 178c-24 10-36 32-32 50" stroke="#e2e8f0" stroke-width="12" stroke-linecap="round"/>
+          <path d="M195 178c24 10 36 32 32 50" stroke="#e2e8f0" stroke-width="12" stroke-linecap="round"/>
+          <circle cx="53" cy="228" r="10" fill="#38bdf8" opacity=".9"/>
+          <circle cx="227" cy="228" r="10" fill="#38bdf8" opacity=".9"/>
         </svg>
       </div>
-      <div class="ag-bubble"><strong>RENOLT CORE</strong>We build the system. You run the business.</div>
+      <div class="ag-bubble" id="heroBubble"><strong>RENOLT CORE</strong><span id="bubbleText">Move your mouse — I follow.</span></div>
     </div>
   </div>
 </section>
-<div class="honest-bar"><div class="wrap"><p><strong>Straight talk:</strong> Renolt Core is our face for the brand — not a live AI you chat with today. What we deliver is the <strong>automation system</strong> behind your enquiries, replies, and follow-ups.</p></div></div>
+<div class="honest-bar"><div class="wrap"><p><strong>Straight talk:</strong> These characters are our brand faces — not live AI you chat with. We install the <strong>systems</strong> (Lead System, channels, schedules, email, custom) that run behind your team.</p></div></div>
+<section class="section block" id="family">
+  <div class="wrap">
+    <p class="section-label">Agent family</p>
+    <h2 class="section-title">Same language. Different moods.</h2>
+    <p class="section-sub">Hover each one — emoji reaction + a little bounce. Use them in decks, reels, and this site so people remember Renolt in one second.</p>
+    <div class="family-grid" id="familyGrid">
+      <div class="fam-card" data-line="Ready when you are."><span class="fam-emoji">😊</span><div class="fam-bot" data-variant="core"></div><h3>Core</h3><p>Main guide</p><span class="fam-role">Default</span></div>
+      <div class="fam-card" data-line="Business mode on."><span class="fam-emoji">💼</span><div class="fam-bot" data-variant="pro"></div><h3>Pro</h3><p>Client meetings</p><span class="fam-role">Business</span></div>
+      <div class="fam-card" data-line="Got your back."><span class="fam-emoji">😉</span><div class="fam-bot" data-variant="buddy"></div><h3>Buddy</h3><p>Friendly demos</p><span class="fam-role">Casual</span></div>
+      <div class="fam-card" data-line="Ideas loading…"><span class="fam-emoji">✨</span><div class="fam-bot" data-variant="spark"></div><h3>Spark</h3><p>Campaigns & posts</p><span class="fam-role">Creative</span></div>
+    </div>
+  </div>
+</section>
 <section class="section block" id="orchestra">
   <div class="wrap">
-    <p class="section-label">What we actually install</p>
-    <h2 class="section-title">The Enquiry Orchestra</h2>
-    <p class="section-sub">Most businesses don’t need another dashboard. They need every WhatsApp, form, and call to land in one place — answered fast, tracked until closed.</p>
+    <p class="section-label">Orchestral systems</p>
+    <h2 class="section-title">What we actually build for clients.</h2>
+    <p class="section-sub">Start with the Lead System. Add channels, scheduling, email, or a fully custom orchestra when the business is ready — not before.</p>
     <div class="orch-grid">
-      <article class="orch-card"><div class="orch-icon">📥</div><h3>Capture layer</h3><p>WhatsApp, website forms, and calls funnel into one queue so nothing sits unread while the team is on a job.</p></article>
-      <article class="orch-card"><div class="orch-icon">⚡</div><h3>First-reply engine</h3><p>An immediate, on-brand response confirms you got the message — before the lead goes cold or messages a competitor.</p></article>
-      <article class="orch-card"><div class="orch-icon">🔁</div><h3>Follow-up rhythm</h3><p>Reminders and status so someone on your team always knows who still needs a human close.</p></article>
-      <article class="orch-card"><div class="orch-icon">🧭</div><h3>Operator queue</h3><p>A simple list your staff will actually use — not a complex CRM that dies after week two.</p></article>
-      <article class="orch-card"><div class="orch-icon">📊</div><h3>Visibility</h3><p>See volume, response times, and open leads without exporting spreadsheets every Friday.</p></article>
-      <article class="orch-card"><div class="orch-icon">🔗</div><h3>Site + system</h3><p>Conversion websites (like Brick & Build) wired into the same enquiry path — one story from click to close.</p></article>
+      <article class="orch-card featured"><div class="orch-icon">🎯</div><h3>Lead System</h3><p>Capture WhatsApp, forms, and calls. Fast first reply. Follow-up until closed. The core product for operators.</p><span class="pill-tag">Primary · Start here</span></article>
+      <article class="orch-card"><div class="orch-icon">📡</div><h3>Omni multi-channel</h3><p>One assistant layer across WhatsApp, web forms, and inbox — same rules, one queue, no channel left orphaned.</p><span class="pill-tag">Channels</span></article>
+      <article class="orch-card"><div class="orch-icon">📅</div><h3>Post scheduler</h3><p>Plan and queue social posts so the brand stays visible while the team is on jobs — tied to your content calendar.</p><span class="pill-tag">Content</span></article>
+      <article class="orch-card"><div class="orch-icon">✉️</div><h3>Email marketing</h3><p>Sequences and broadcasts for warm leads and past clients — follow-ups that match how you sell.</p><span class="pill-tag">Nurture</span></article>
+      <article class="orch-card"><div class="orch-icon">🧩</div><h3>Custom orchestra</h3><p>When the client’s process doesn’t fit a template: we design the flow they asked for and wire the tools they already use.</p><span class="pill-tag">On request</span></article>
+      <article class="orch-card"><div class="orch-icon">🌐</div><h3>Site + system</h3><p>Conversion websites (Brick & Build style) connected to the same enquiry path — click to close, one story.</p><span class="pill-tag">Websites</span></article>
     </div>
     <div class="flow-strip">
-      <span class="flow-node">Enquiry in</span><span class="flow-arrow">→</span>
+      <span class="flow-node">Enquiry</span><span class="flow-arrow">→</span>
+      <span class="flow-node">Any channel</span><span class="flow-arrow">→</span>
       <span class="flow-node">Logged</span><span class="flow-arrow">→</span>
-      <span class="flow-node">Auto first reply</span><span class="flow-arrow">→</span>
-      <span class="flow-node">Human queue</span><span class="flow-arrow">→</span>
-      <span class="flow-node">Follow-up</span><span class="flow-arrow">→</span>
-      <span class="flow-node">Closed</span>
+      <span class="flow-node">Reply</span><span class="flow-arrow">→</span>
+      <span class="flow-node">Nurture</span><span class="flow-arrow">→</span>
+      <span class="flow-node">Close</span>
     </div>
-  </div>
-</section>
-<section class="section block" id="who">
-  <div class="wrap">
-    <p class="section-label">Built for</p>
-    <h2 class="section-title">Operators who can’t afford missed enquiries.</h2>
-    <div class="who-grid">
-      <div class="who-card"><h3>Real estate teams</h3><p>Plot and project enquiries arrive on WhatsApp while agents are on site. The system holds the line until someone can close.</p></div>
-      <div class="who-card"><h3>Home & field services</h3><p>Bookings and “are you available?” messages shouldn’t disappear into a personal phone. One queue. Clear ownership.</p></div>
-      <div class="who-card"><h3>Local service brands</h3><p>If growth depends on speed-to-lead, we wire capture and reply into how you already work — not a tool you abandon.</p></div>
-      <div class="who-card"><h3>Teams adding a website</h3><p>A new site without a follow-up path is a brochure. We connect forms and WhatsApp into the same orchestra.</p></div>
-    </div>
-    <div class="avatar-note"><strong>Why the avatar?</strong> People remember a face. Renolt Core is how we show up in demos, pitch decks, and this site — so visitors instantly know who we are. The product you buy is the system: capture, reply, follow-up, and the websites that feed it.</div>
+    <div class="note-box"><strong>Should you build more?</strong> Not yet as separate products. Nail Lead System installs first. Multi-channel, scheduler, and email are natural add-ons for clients who already trust you — list them as available modules, deliver when requested, and grow the avatars for marketing, not ten unfinished apps.</div>
   </div>
 </section>
 <section class="section block">
@@ -151,8 +167,8 @@
     <div class="cta-box">
       <div>
         <p class="section-label">Start here</p>
-        <h2 class="section-title" style="margin-bottom:12px">Tell us where enquiries get lost.</h2>
-        <p class="section-sub" style="margin-bottom:0">Message on WhatsApp. We’ll map your channels and propose a clear install path — no fake AI chat, real systems.</p>
+        <h2 class="section-title" style="margin-bottom:12px">Where are enquiries getting lost?</h2>
+        <p class="section-sub" style="margin-bottom:0">WhatsApp us. We’ll map channels and propose a clear path — Lead System first, extras when they earn their place.</p>
       </div>
       <div class="cta-actions">
         <a href="#" class="btn primary js-wa-open">WhatsApp us</a>
@@ -189,7 +205,7 @@
       <label for="wa-name">Name *</label><input id="wa-name" required placeholder="Your name">
       <label for="wa-phone">Phone / WhatsApp *</label><input id="wa-phone" type="tel" required placeholder="03XX XXXXXXX">
       <label for="wa-interest">What do you need?</label>
-      <select id="wa-interest"><option value="">Select…</option><option>Lead System / automation</option><option>Real estate website</option><option>Website + enquiry system</option><option>Something else</option></select>
+      <select id="wa-interest"><option value="">Select…</option><option>Lead System</option><option>Multi-channel automation</option><option>Post scheduler / email</option><option>Custom orchestra</option><option>Website + system</option></select>
       <button type="submit" class="wa-modal-submit">Continue to WhatsApp</button>
       <button type="button" class="wa-modal-skip" id="waSkip">Skip — open WhatsApp only</button>
     </form>
@@ -203,7 +219,7 @@
   function openModal(e){if(e)e.preventDefault();modal.hidden=false;document.body.style.overflow='hidden'}
   function closeModal(){modal.hidden=true;document.body.style.overflow=''}
   function openWA(name,phone,interest){
-    let msg='Hello Renolt, I want to discuss automation / Lead System.';
+    let msg='Hello Renolt, I want to discuss automation systems.';
     if(name||phone||interest){msg='Hello Renolt.';if(name)msg+=' My name is '+name+'.';if(phone)msg+=' Phone: '+phone+'.';if(interest)msg+=' I am interested in: '+interest+'.';}
     window.open('https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(msg),'_blank','noopener');
   }
@@ -218,11 +234,73 @@
 </script>
 <script>
 (function(){
+  function botSvg(variant){
+    var accent=variant==='pro'?'#d4a017':variant==='buddy'?'#34d399':variant==='spark'?'#c084fc':'#38bdf8';
+    var eyeL=variant==='buddy'
+      ?'<circle cx="42" cy="44" r="3.5" fill="'+accent+'"/><path d="M52 42c2 3 5 4 7 0" stroke="'+accent+'" stroke-width="2.5" stroke-linecap="round" fill="none"/>'
+      :'<circle cx="42" cy="44" r="3.5" fill="'+accent+'"/><circle cx="58" cy="44" r="3.5" fill="'+accent+'"/>';
+    return '<svg viewBox="0 0 100 110">'+'
+      <ellipse cx="50" cy="72" rx="36" ry="9" stroke="'+accent+'" stroke-width="1.5" opacity=".35"/>'+'
+      <path d="M28 55c0-16 10-30 22-30s22 14 22 30v18c0 13-10 21-22 21s-22-8-22-21V55z" fill="#f1f5f9" stroke="#94a3b8" stroke-width=".8"/>'+'
+      <ellipse cx="50" cy="48" rx="18" ry="16" fill="#0f172a"/>'+'
+      <ellipse cx="50" cy="48" rx="18" ry="16" stroke="'+accent+'" stroke-width="1.8" opacity=".9"/>'+'
+      '+eyeL+'
+      <path d="M38 52c3 6 8 9 12 9s9-3 12-9" stroke="'+accent+'" stroke-width="3.2" stroke-linecap="round" fill="none"/>'+'
+      <path d="M50 25c0-6 3-11 7-14" stroke="'+accent+'" stroke-width="2" stroke-linecap="round"/>'+'
+      <circle cx="58" cy="10" r="4" fill="'+accent+'"/>'+'
+      <circle cx="50" cy="82" r="6" fill="#0f172a" stroke="'+accent+'" stroke-width="1.2"/>'+'
+      <text x="50" y="84.5" text-anchor="middle" font-size="6" font-family="Syne,sans-serif" font-weight="800" fill="'+accent+'">R</text></svg>';
+  }
+  document.querySelectorAll('.fam-bot').forEach(function(el){el.innerHTML=botSvg(el.dataset.variant||'core')});
+  var bubble=document.getElementById('bubbleText');
+  document.querySelectorAll('.fam-card').forEach(function(card){
+    card.addEventListener('mouseenter',function(){
+      card.classList.add('is-active');
+      if(bubble)bubble.textContent=card.dataset.line||'Hi!';
+      card.animate([{transform:'translateY(0)'},{transform:'translateY(-8px)'},{transform:'translateY(0)'}],{duration:420,easing:'ease-out'});
+    });
+    card.addEventListener('mouseleave',function(){
+      card.classList.remove('is-active');
+      if(bubble)bubble.textContent='Move your mouse — I follow.';
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  var bot=document.getElementById('heroBot');
+  var smile=document.getElementById('smile');
+  var eyeL=document.getElementById('eyeL'),eyeR=document.getElementById('eyeR');
+  if(!bot||!eyeL)return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var baseLX=124,baseLY=152,baseRX=156,baseRY=152;
+  function onMove(e){
+    if(reduce)return;
+    var r=bot.getBoundingClientRect();
+    var cx=r.left+r.width/2,cy=r.top+r.height*0.42;
+    var dx=Math.max(-1,Math.min(1,(e.clientX-cx)/(r.width*0.6)));
+    var dy=Math.max(-1,Math.min(1,(e.clientY-cy)/(r.height*0.6)));
+    var ox=dx*5,oy=dy*4;
+    eyeL.setAttribute('cx',baseLX+ox);eyeL.setAttribute('cy',baseLY+oy);
+    eyeR.setAttribute('cx',baseRX+ox);eyeR.setAttribute('cy',baseRY+oy);
+    var dist=Math.hypot(e.clientX-cx,e.clientY-cy);
+    if(smile)smile.setAttribute('d',dist<180?'M118 166c6 12 16 16 22 16s16-4 22-16':'M122 168c5 9 14 13 18 13s13-4 18-13');
+  }
+  window.addEventListener('mousemove',onMove,{passive:true});
+  if(!reduce){
+    var t0=performance.now();
+    function float(t){var y=Math.sin((t-t0)/900)*8;bot.style.transform='translateY('+y.toFixed(2)+'px)';requestAnimationFrame(float)}
+    requestAnimationFrame(float);
+  }
+})();
+</script>
+<script>
+(function(){
   var canvas=document.getElementById('bgCanvas');
   if(!canvas||!canvas.getContext)return;
   var ctx=canvas.getContext('2d'),w,h,particles=[];
   function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight}
-  function init(){particles=[];var count=Math.min(80,Math.floor((w*h)/14000));for(var i=0;i<count;i++)particles.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+.3,vx:(Math.random()-.5)*.45,vy:(Math.random()-.5)*.45,a:Math.random()*.35+.1})}
+  function init(){particles=[];var n=Math.min(70,Math.floor((w*h)/16000));for(var i=0;i<n;i++)particles.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+.3,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,a:Math.random()*.3+.1})}
   function draw(){ctx.clearRect(0,0,w,h);for(var i=0;i<particles.length;i++){var p=particles[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(56,189,248,'+p.a+')';ctx.fill()}requestAnimationFrame(draw)}
   resize();init();draw();addEventListener('resize',function(){resize();init()});
 })();
