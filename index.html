@@ -5,78 +5,13 @@
 <script>!function(){function d(){document.documentElement.style.background="#05060a";if(document.body)document.body.style.background="#05060a"}d();window.addEventListener("pageshow",function(e){if(e.persisted)d()});document.addEventListener("DOMContentLoaded",d)}()</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Renolt — Lead System for Growing Service Businesses</title>
-<meta name="description" content="Renolt builds Lead Systems that capture every enquiry, reply fast, and follow up until closed. WhatsApp 0307 4136536.">
+<title>Renolt — Lead System & Omni for Service Businesses</title>
+<meta name="description" content="Lead System and Omni: capture enquiries, multi-channel messaging, booking, FAQ, language. WhatsApp 0307 4136536.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<style>
-.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:110px 0 56px;position:relative}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
-.hero-chip{display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 10px;border-radius:999px;background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.28);color:#e8c547;font-size:.72rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin-bottom:20px;opacity:0;transform:translateY(12px)}
-.chip-dot{width:7px;height:7px;border-radius:50%;background:#d4a017;box-shadow:0 0 12px rgba(212,160,23,.8);animation:pulseDot 1.6s ease-in-out infinite}
-@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.85)}}
-.hero h1{font-size:clamp(2.35rem,5.2vw,3.85rem);margin-bottom:18px}
-.hero h1 .line{display:block;overflow:hidden}
-.hero h1 .word{display:inline-block;opacity:0;transform:translateY(110%)}
-.hero h1 .accent{background:linear-gradient(135deg,#e8c547 0%,#d4a017 40%,#f0d78c 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero h1 .soft{color:var(--muted);font-weight:600}
-.lead{color:var(--muted);font-weight:300;font-size:1.08rem;line-height:1.65;max-width:480px;margin-bottom:26px;opacity:0}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px;opacity:0}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:999px;font-weight:600;font-size:.92rem;transition:transform .2s,box-shadow .2s,border-color .2s}
-.btn.primary{background:linear-gradient(135deg,#d4a017,#e8c547);color:#0c0a04;box-shadow:0 8px 28px rgba(212,160,23,.35)}
-.btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(212,160,23,.45)}
-.btn.ghost{border:1px solid rgba(255,255,255,.14);color:var(--text);background:rgba(255,255,255,.03)}
-.btn.ghost:hover{border-color:rgba(212,160,23,.4);color:#e8c547}
-.hero-trust{display:flex;flex-wrap:wrap;gap:8px;opacity:0}
-.trust-pill{font-size:.75rem;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--muted)}
-.hero-visual{opacity:0;transform:translateY(20px)}
-.story-stage{position:relative;min-height:420px;background:linear-gradient(160deg,rgba(18,20,28,.95),rgba(10,12,18,.98));border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:28px 24px 20px;box-shadow:0 32px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.06);overflow:hidden}
-.story-stage::before{content:"";position:absolute;inset:-40% -20% auto auto;width:280px;height:280px;background:radial-gradient(circle,rgba(56,189,248,.18),transparent 65%);pointer-events:none;animation:glowDrift 8s ease-in-out infinite}
-.story-stage::after{content:"";position:absolute;inset:auto auto -30% -15%;width:240px;height:240px;background:radial-gradient(circle,rgba(212,160,23,.12),transparent 65%);pointer-events:none;animation:glowDrift 10s ease-in-out infinite reverse}
-@keyframes glowDrift{0%,100%{transform:translate(0,0)}50%{transform:translate(-20px,15px)}}
-.story-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;position:relative;z-index:2}
-.story-live{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#7dd3fc}
-.story-live i{width:6px;height:6px;border-radius:50%;background:#38bdf8;box-shadow:0 0 8px #38bdf8;animation:pulseDot 1.4s ease-in-out infinite;display:block}
-.story-progress-ring{font-size:.75rem;color:var(--dim);font-variant-numeric:tabular-nums}
-.story-body-row{display:grid;grid-template-columns:88px 1fr;gap:16px;align-items:start;position:relative;z-index:2;min-height:220px}
-.story-mascot-wrap{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px}
-.story-mascot{width:80px;height:96px;cursor:pointer;transition:transform .4s cubic-bezier(.22,1,.36,1);filter:drop-shadow(0 12px 28px rgba(56,189,248,.35))}
-.story-mascot.is-bounce{animation:mascotBounce .55s ease}
-@keyframes mascotBounce{0%,100%{transform:translateY(0) scale(1)}40%{transform:translateY(-10px) scale(1.06)}70%{transform:translateY(2px) scale(.98)}}
-.story-mascot svg{width:100%;height:100%;display:block}
-.story-mood{font-size:1.25rem;line-height:1;opacity:0;transform:scale(.5);transition:opacity .3s,transform .3s}
-.story-mood.show{opacity:1;transform:scale(1)}
-.story-panel{display:none}
-.story-panel.is-active{display:block;animation:panelIn .5s cubic-bezier(.22,1,.36,1)}
-@keyframes panelIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.story-kicker{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.story-kicker .step-num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:7px;font-size:.7rem;background:rgba(212,160,23,.15);color:#e8c547;border:1px solid rgba(212,160,23,.3)}
-.story-title{font-size:1.4rem;margin-bottom:10px;line-height:1.22;letter-spacing:-.02em}
-.story-text{color:var(--muted);font-weight:300;font-size:.95rem;line-height:1.6;margin-bottom:14px}
-.story-points{list-style:none;padding:0;margin:0}
-.story-points li{position:relative;padding:7px 0 7px 18px;font-size:.88rem;opacity:0;transform:translateX(-8px)}
-.story-panel.is-active .story-points li{animation:liIn .4s ease forwards}
-.story-panel.is-active .story-points li:nth-child(1){animation-delay:.15s}
-.story-panel.is-active .story-points li:nth-child(2){animation-delay:.28s}
-.story-panel.is-active .story-points li:nth-child(3){animation-delay:.4s}
-@keyframes liIn{to{opacity:1;transform:translateX(0)}}
-.story-points li:before{content:"";position:absolute;left:0;top:14px;width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,#d4a017,#38bdf8);box-shadow:0 0 8px rgba(212,160,23,.4)}
-.story-cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-.story-cta-row .btn.primary{animation:ctaPulse 2s ease-in-out infinite}
-@keyframes ctaPulse{0%,100%{box-shadow:0 8px 28px rgba(212,160,23,.35)}50%{box-shadow:0 8px 36px rgba(212,160,23,.55),0 0 0 8px rgba(212,160,23,.08)}}
-.story-nav{display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.07);position:relative;z-index:2}
-.story-dots{display:flex;gap:8px;align-items:center}
-.story-dot{height:6px;width:6px;border-radius:999px;border:none;cursor:pointer;background:rgba(255,255,255,.15);padding:0;transition:width .35s,background .35s}
-.story-dot.is-active{width:28px;background:linear-gradient(90deg,#d4a017,#38bdf8)}
-.story-next,.story-prev{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--text);border-radius:999px;padding:9px 16px;font-size:.8rem;cursor:pointer;font-family:inherit;transition:border-color .2s,color .2s,transform .2s}
-.story-next:hover,.story-prev:hover{border-color:rgba(212,160,23,.45);color:#e8c547;transform:translateY(-1px)}
-.story-next.is-final{background:linear-gradient(135deg,#d4a017,#e8c547);color:#0c0a04;border:none;font-weight:700}
-.bar-track{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.05)}
-.bar-fill{height:100%;width:0%;background:linear-gradient(90deg,#d4a017,#38bdf8);transition:width .4s linear}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:32px}.hero-visual{order:-1}.story-stage{min-height:auto}.story-body-row{grid-template-columns:64px 1fr;gap:12px}.story-mascot{width:60px;height:72px}.hero h1{font-size:clamp(2rem,8vw,2.75rem)}}
-</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
 <canvas id="bgCanvas" aria-hidden="true"></canvas>
@@ -92,6 +27,7 @@
     <a href="/" class="brand">RENOLT<span>.</span></a>
     <nav class="links" id="navLinks">
       <a href="#system">Lead System</a>
+      <a href="#omni">Omni</a>
       <a href="agents.html">Agents</a>
       <a href="#work">Website</a>
       <a href="https://enviromation17-bit.github.io/my-portfolio/demos/">Demos</a>
@@ -100,154 +36,189 @@
     <button class="burger" id="burger" aria-label="Menu">☰</button>
   </div>
 </header>
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <div class="hero-chip"><span class="chip-dot"></span> Lead System · Live for clients</div>
-      <h1>
-        <span class="line"><span class="word">Stop losing</span></span>
-        <span class="line"><span class="word accent">enquiries</span></span>
-        <span class="line"><span class="word soft">to slow replies.</span></span>
-      </h1>
-      <p class="lead">Every WhatsApp, form, and call — captured, answered fast, followed up until closed. Built for real estate and service operators.</p>
-      <div class="actions">
-        <a href="#" class="btn primary js-wa-open">WhatsApp 0307 4136536</a>
-        <a href="contact.html" class="btn ghost">Book a call</a>
+<section class="pin-hero" id="pinHero">
+  <div class="pin-hero-inner">
+    <div class="pin-grid">
+      <div class="pin-copy">
+        <div class="chip"><span class="chip-dot"></span> Lead System · Omni · Built for operators</div>
+        <h1>Stop losing<br><span class="accent">enquiries</span><br><span class="soft">to slow replies.</span></h1>
+        <p class="pin-lead">Every WhatsApp, form, and call — captured, answered fast, followed up until closed. Multi-channel Omni when you need Facebook, Instagram, booking, and language.</p>
+        <div class="actions">
+          <a href="#" class="btn primary js-wa-open">WhatsApp 0307 4136536</a>
+          <a href="contact.html" class="btn ghost">Book a call</a>
+        </div>
+        <div class="trust">
+          <span>Lead System</span>
+          <span>Omni multi-channel</span>
+          <span>Real estate &amp; services</span>
+        </div>
       </div>
-      <div class="hero-trust">
-        <span class="trust-pill">WhatsApp-first</span>
-        <span class="trust-pill">Real estate priority</span>
-        <span class="trust-pill">Built for operators</span>
-      </div>
-    </div>
-    <div class="hero-visual">
       <div class="story-stage" id="storyStage">
         <div class="story-top">
-          <span class="story-live"><i></i> Core guiding</span>
-          <span class="story-progress-ring" id="storyLabel">01 / 04</span>
+          <span class="story-live"><i></i> Scroll to explore</span>
+          <span class="story-pct" id="storyPct">01 / 04</span>
         </div>
-        <div class="story-body-row">
-          <div class="story-mascot-wrap">
-            <div class="story-mascot" id="storyMascot" aria-hidden="true">
-              <svg viewBox="0 0 80 96" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="40" cy="90" rx="22" ry="5" fill="#38bdf8" opacity=".25"/>
-                <path d="M40 10v8" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
-                <ellipse cx="40" cy="8" rx="10" ry="4.5" fill="#38bdf8"/>
-                <ellipse cx="40" cy="7" rx="7" ry="2.5" fill="#e0f2fe" opacity=".45"/>
-                <ellipse cx="40" cy="42" rx="28" ry="28" fill="#f1f5f9"/>
-                <ellipse cx="40" cy="42" rx="28" ry="28" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity=".3"/>
-                <ellipse cx="40" cy="44" rx="20" ry="18" fill="#0b1220"/>
-                <ellipse cx="31" cy="41" rx="5.5" ry="6.5" fill="#38bdf8"/>
-                <ellipse cx="49" cy="41" rx="5.5" ry="6.5" fill="#38bdf8"/>
-                <ellipse cx="29.5" cy="39" rx="1.8" ry="2.2" fill="#e0f2fe" opacity=".9"/>
-                <ellipse cx="47.5" cy="39" rx="1.8" ry="2.2" fill="#e0f2fe" opacity=".9"/>
-                <path id="mSmile" d="M32 52c3 4.5 6.5 6.5 8 6.5s5-2 8-6.5" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-                <ellipse cx="12" cy="52" rx="5" ry="6" fill="#e2e8f0"/>
-                <ellipse cx="68" cy="52" rx="5" ry="6" fill="#e2e8f0"/>
-                <circle cx="12" cy="52" r="2.5" fill="#38bdf8" opacity=".75"/>
-                <circle cx="68" cy="52" r="2.5" fill="#38bdf8" opacity=".75"/>
-                <path d="M22 64c3 10 8 14 18 14s15-4 18-14" fill="#f1f5f9" stroke="#38bdf8" stroke-width="1" opacity=".95"/>
-                <circle cx="40" cy="72" r="7" fill="#0b1220"/>
-                <circle cx="40" cy="72" r="7" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
-                <text x="40" y="75" text-anchor="middle" font-size="8" font-family="Syne,sans-serif" font-weight="800" fill="#38bdf8">R</text>
-              </svg>
-            </div>
-            <span class="story-mood" id="storyMood">😟</span>
+        <div class="story-body">
+          <div class="story-mascot" id="storyMascot" aria-hidden="true">
+            <svg viewBox="0 0 80 96" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="40" cy="90" rx="22" ry="5" fill="#38bdf8" opacity=".25"/>
+              <path d="M40 10v8" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+              <ellipse cx="40" cy="8" rx="10" ry="4.5" fill="#38bdf8"/>
+              <ellipse cx="40" cy="7" rx="7" ry="2.5" fill="#e0f2fe" opacity=".45"/>
+              <ellipse cx="40" cy="42" rx="28" ry="28" fill="#f1f5f9"/>
+              <ellipse cx="40" cy="42" rx="28" ry="28" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity=".3"/>
+              <ellipse cx="40" cy="44" rx="20" ry="18" fill="#0b1220"/>
+              <ellipse cx="31" cy="41" rx="5.5" ry="6.5" fill="#38bdf8"/>
+              <ellipse cx="49" cy="41" rx="5.5" ry="6.5" fill="#38bdf8"/>
+              <ellipse cx="29.5" cy="39" rx="1.8" ry="2.2" fill="#e0f2fe" opacity=".9"/>
+              <ellipse cx="47.5" cy="39" rx="1.8" ry="2.2" fill="#e0f2fe" opacity=".9"/>
+              <path id="mSmile" d="M32 52c3 4.5 6.5 6.5 8 6.5s5-2 8-6.5" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <ellipse cx="12" cy="52" rx="5" ry="6" fill="#e2e8f0"/>
+              <ellipse cx="68" cy="52" rx="5" ry="6" fill="#e2e8f0"/>
+              <circle cx="12" cy="52" r="2.5" fill="#38bdf8" opacity=".75"/>
+              <circle cx="68" cy="52" r="2.5" fill="#38bdf8" opacity=".75"/>
+              <path d="M22 64c3 10 8 14 18 14s15-4 18-14" fill="#f1f5f9" stroke="#38bdf8" stroke-width="1" opacity=".95"/>
+              <circle cx="40" cy="72" r="7" fill="#0b1220"/>
+              <circle cx="40" cy="72" r="7" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+              <text x="40" y="75" text-anchor="middle" font-size="8" font-family="Syne,sans-serif" font-weight="800" fill="#38bdf8">R</text>
+            </svg>
           </div>
           <div class="story-panels">
-            <div class="story-panel is-active" data-i="0" data-mood="😟">
-              <p class="story-kicker"><span class="step-num">1</span> The problem</p>
+            <div class="story-panel is-on" data-i="0">
+              <p class="story-kicker"><span class="n">1</span> The problem</p>
               <h3 class="story-title">Leads message. You’re on a job.</h3>
               <p class="story-text">Enquiries pile up on WhatsApp while the team is out. By the time someone replies, the client has already moved on.</p>
               <ul class="story-points"><li>Missed first replies</li><li>No single place for every lead</li><li>Follow-ups depend on memory</li></ul>
             </div>
-            <div class="story-panel" data-i="1" data-mood="💡">
-              <p class="story-kicker"><span class="step-num">2</span> The solution</p>
-              <h3 class="story-title">One system. Fast first reply.</h3>
-              <p class="story-text">Every enquiry lands in one queue. An instant reply goes out. Your team sees who needs a human next.</p>
+            <div class="story-panel" data-i="1">
+              <p class="story-kicker"><span class="n">2</span> The solution</p>
+              <h3 class="story-title">One queue. Fast first reply.</h3>
+              <p class="story-text">Every enquiry lands in one place. An instant reply goes out. Your team sees who needs a human next.</p>
               <ul class="story-points"><li>WhatsApp + forms + calls logged</li><li>Auto first reply in seconds</li><li>Clear ownership until closed</li></ul>
             </div>
-            <div class="story-panel" data-i="2" data-mood="🤝">
-              <p class="story-kicker"><span class="step-num">3</span> How Renolt helps</p>
-              <h3 class="story-title">We design it. You run the business.</h3>
-              <p class="story-text">Audit channels, install the Lead System, train the team — then tighten reply times with you. Not another CRM you’ll abandon.</p>
-              <ul class="story-points"><li>Real estate & service focus</li><li>Sites wired to the same path</li><li>Optional modules when ready</li></ul>
+            <div class="story-panel" data-i="2">
+              <p class="story-kicker"><span class="n">3</span> How Renolt helps</p>
+              <h3 class="story-title">Lead System. Omni. Or both.</h3>
+              <p class="story-text">We install the system your team will actually use — queue, multi-channel chat, FAQ, booking, language — then tighten it with you.</p>
+              <ul class="story-points"><li>Real estate &amp; service focus</li><li>Sites wired to the same path</li><li>Modules when you need them</li></ul>
             </div>
-            <div class="story-panel" data-i="3" data-mood="🚀">
-              <p class="story-kicker"><span class="step-num">4</span> Next step</p>
+            <div class="story-panel" data-i="3">
+              <p class="story-kicker"><span class="n">4</span> Next step</p>
               <h3 class="story-title">Tell us where enquiries get lost.</h3>
               <p class="story-text">One WhatsApp message is enough. We’ll map your channels and propose a clear path forward.</p>
-              <div class="story-cta-row">
+              <div class="actions" style="margin-top:8px">
                 <a href="#" class="btn primary js-wa-open" style="padding:12px 20px;font-size:.88rem">WhatsApp us now</a>
                 <a href="contact.html" class="btn ghost" style="padding:12px 16px;font-size:.88rem">Contact form</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="story-nav">
-          <button type="button" class="story-prev" id="storyPrev">← Back</button>
-          <div class="story-dots" id="storyDots"></div>
-          <button type="button" class="story-next" id="storyNext">Next →</button>
-        </div>
-        <div class="bar-track"><div class="bar-fill" id="barFill"></div></div>
+        <div class="story-bar"><i id="storyBar"></i></div>
       </div>
     </div>
   </div>
 </section>
 <section class="stats-bar">
   <div class="wrap stats-grid">
-    <div class="stat"><strong>1 system</strong><span>for every enquiry channel</span></div>
-    <div class="stat"><strong>< 60s</strong><span>target first reply</span></div>
+    <div class="stat"><strong>2 systems</strong><span>Lead System · Omni</span></div>
+    <div class="stat"><strong>&lt; 60s</strong><span>target first reply</span></div>
     <div class="stat"><strong>Real estate</strong><span>primary vertical</span></div>
     <div class="stat"><strong>WhatsApp</strong><span>where clients already are</span></div>
   </div>
 </section>
-<section class="section block" id="system">
+<section class="section" id="system">
   <div class="wrap">
-    <p class="section-label">What we build</p>
-    <h2 class="section-title">A Lead System your team actually uses.</h2>
-    <p class="section-sub">Not another generic CRM. Capture, reply, follow up, close.</p>
-    <div class="feature-grid">
-      <article class="feature-card"><span class="feature-num">01</span><h3>Capture</h3><p>WhatsApp, forms, and calls in one queue.</p></article>
-      <article class="feature-card"><span class="feature-num">02</span><h3>Reply</h3><p>Immediate first message so leads don’t go cold.</p></article>
-      <article class="feature-card"><span class="feature-num">03</span><h3>Follow up</h3><p>Reminders until someone closes the deal.</p></article>
-      <article class="feature-card"><span class="feature-num">04</span><h3>Report</h3><p>Volume and response times without spreadsheets.</p></article>
+    <p class="section-label">Two systems. Equal weight.</p>
+    <h2 class="section-title">Lead System and Omni — pick what fits.</h2>
+    <p class="section-sub">Not the same product. Lead System owns the enquiry queue. Omni runs the conversation across channels.</p>
+    <div class="product-pair">
+      <article class="product-card lead">
+        <p class="tag">Product 01</p>
+        <h3>Lead System</h3>
+        <p>Capture every enquiry, first reply, operator queue, follow-up until closed. Built for teams that lose leads on WhatsApp, forms, and phone.</p>
+        <ul>
+          <li>• Intake from WhatsApp, forms, phone</li>
+          <li>• Fast first reply + ownership queue</li>
+          <li>• Follow-up until closed</li>
+          <li>• Owner alerts &amp; status tracking</li>
+        </ul>
+      </article>
+      <article class="product-card omni" id="omni">
+        <p class="tag">Product 02</p>
+        <h3>Omni</h3>
+        <p>Multi-channel on WhatsApp, Facebook, and Instagram. Answers FAQs, books, detects language, and hands off to a human when needed.</p>
+        <ul>
+          <li>• WhatsApp + Facebook + Instagram</li>
+          <li>• Booking from the conversation</li>
+          <li>• Business FAQ answers</li>
+          <li>• Language detect → reply in their language</li>
+          <li>• Alert human when a person is needed</li>
+        </ul>
+      </article>
     </div>
   </div>
 </section>
-<section class="section block" id="process">
+<section class="section" id="omni-detail">
+  <div class="wrap">
+    <p class="section-label">Omni in detail</p>
+    <h2 class="section-title">Not a simple chat bot. A channel system.</h2>
+    <p class="section-sub">Omni is separate from Lead System. It lives where your clients already message — and behaves like trained staff until a human should take over.</p>
+    <div class="feature-grid">
+      <article class="feature-card"><span class="feature-num">01</span><h3>Channels</h3><p>WhatsApp, Facebook Messenger, and Instagram in one conversation layer.</p></article>
+      <article class="feature-card"><span class="feature-num">02</span><h3>Language first</h3><p>Detects the client’s language, then replies in that language — not English by default.</p></article>
+      <article class="feature-card"><span class="feature-num">03</span><h3>FAQ + booking</h3><p>Answers business FAQs and can take bookings from the same thread.</p></article>
+      <article class="feature-card"><span class="feature-num">04</span><h3>Human handoff</h3><p>When the request needs a person, Omni alerts your team instead of guessing.</p></article>
+    </div>
+  </div>
+</section>
+<section class="section" id="process">
   <div class="wrap">
     <p class="section-label">How engagement works</p>
     <h2 class="section-title">From first message to closed deal.</h2>
     <div class="process-track">
-      <div class="process-step"><span class="process-n">1</span><div><h3>Audit your channels</h3><p>Where enquiries come in and where they get lost.</p></div></div>
-      <div class="process-step"><span class="process-n">2</span><div><h3>Install the Lead System</h3><p>Connect WhatsApp and forms. Set first-reply rules.</p></div></div>
-      <div class="process-step"><span class="process-n">3</span><div><h3>Train the team</h3><p>A simple queue — not a CRM they’ll abandon.</p></div></div>
-      <div class="process-step"><span class="process-n">4</span><div><h3>Measure & tighten</h3><p>Review reply times and open leads with you.</p></div></div>
+      <div class="process-step"><span class="process-n">1</span><div><h3>Audit your channels</h3><p>WhatsApp, forms, Facebook, Instagram — where messages arrive and stall.</p></div></div>
+      <div class="process-step"><span class="process-n">2</span><div><h3>Choose Lead System, Omni, or both</h3><p>Lead System for the queue. Omni for multi-channel chat, FAQ, booking, and language.</p></div></div>
+      <div class="process-step"><span class="process-n">3</span><div><h3>Install &amp; train</h3><p>Your team gets a clear path — not a CRM they’ll abandon.</p></div></div>
+      <div class="process-step"><span class="process-n">4</span><div><h3>Measure &amp; tighten</h3><p>Reply times, open leads, and handoffs reviewed with you.</p></div></div>
     </div>
   </div>
 </section>
-<section class="section block" id="work">
+<section class="section" id="work">
   <div class="wrap">
     <p class="section-label">Websites</p>
     <h2 class="section-title">Sites that turn enquiries into follow-ups.</h2>
     <div class="work-grid">
-      <article class="work-card featured"><div class="work-meta"><span class="tag">Real estate</span><span class="pill">Live</span></div><h3>Brick & Build Developers</h3><p>Developer site with plot enquiry path and WhatsApp conversion.</p><a class="work-link" href="https://bricksandbuiltdevelopers.com/" target="_blank" rel="noopener">View project →</a></article>
-      <article class="work-card"><div class="work-meta"><span class="tag">Home services</span><span class="pill">Demo</span></div><h3>AeroFlow HVAC</h3><p>Service lead capture into one follow-up path.</p><a class="work-link" href="https://enviromation17-bit.github.io/aeroflow-hvac/index.html" target="_blank" rel="noopener">Open demo →</a></article>
-      <article class="work-card"><div class="work-meta"><span class="tag">Lead System</span><span class="pill">Core</span></div><h3>Lead System walkthrough</h3><p>Capture, reply, and follow-up together.</p><a class="work-link" href="https://enviromation17-bit.github.io/my-portfolio/demos/lead-system-video.html" target="_blank" rel="noopener">Watch demo →</a></article>
+      <article class="work-card featured">
+        <div class="work-meta"><span class="tag-sm">Real estate</span><span class="pill">Live</span></div>
+        <h3>Brick &amp; Build Developers</h3>
+        <p>Developer site with plot enquiry path and WhatsApp conversion.</p>
+        <a class="work-link" href="https://bricksandbuiltdevelopers.com/" target="_blank" rel="noopener">View project →</a>
+      </article>
+      <article class="work-card">
+        <div class="work-meta"><span class="tag-sm">Lead System</span><span class="pill">Demo</span></div>
+        <h3>Lead System walkthrough</h3>
+        <p>Capture, reply, and follow-up together.</p>
+        <a class="work-link" href="https://enviromation17-bit.github.io/my-portfolio/demos/lead-system-video.html" target="_blank" rel="noopener">Watch demo →</a>
+      </article>
+      <article class="work-card">
+        <div class="work-meta"><span class="tag-sm">Agents</span><span class="pill">Family</span></div>
+        <h3>Renolt companions</h3>
+        <p>Core, Omni, and modules — how we represent the systems we install.</p>
+        <a class="work-link" href="agents.html">Meet the team →</a>
+      </article>
     </div>
   </div>
 </section>
-<section class="section block">
+<section class="section">
   <div class="wrap">
     <div class="cta-box">
       <div>
-        <p class="section-label">Next step</p>
-        <h2 class="section-title" style="margin-bottom:12px">Ready to stop losing the next enquiry?</h2>
-        <p class="section-sub" style="margin-bottom:0">Tell us about your channels. We’ll reply on WhatsApp.</p>
+        <p class="section-label">Ready</p>
+        <h2 class="section-title" style="margin-bottom:10px">Stop losing the next enquiry.</h2>
+        <p class="section-sub" style="margin:0">Message us on WhatsApp — Lead System, Omni, or both.</p>
       </div>
       <div class="cta-actions">
-        <a href="#" class="btn primary js-wa-open">WhatsApp us</a>
+        <a href="#" class="btn primary js-wa-open">WhatsApp 0307 4136536</a>
         <a href="contact.html" class="btn ghost">Contact form</a>
       </div>
     </div>
@@ -255,14 +226,17 @@
 </section>
 <footer class="footer">
   <div class="wrap foot">
-    <div><strong class="brand">RENOLT<span class="amber">.</span></strong><p style="margin-top:8px;max-width:300px;color:var(--muted);font-weight:300">Lead System for real estate and service businesses.</p></div>
+    <div>
+      <strong class="brand">RENOLT<span>.</span></strong>
+      <p style="margin-top:8px;max-width:300px;color:var(--muted);font-weight:300">Lead System and Omni for real estate and service businesses.</p>
+    </div>
     <div class="foot-links">
-      <a href="https://www.facebook.com/profile.php?id=61595390537255" class="social-link" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://x.com/hellorenolt" class="social-link" target="_blank" rel="noopener">X</a>
+      <a href="/" class="social-link">Home</a>
+      <a href="agents.html" class="social-link">Agents</a>
+      <a href="https://enviromation17-bit.github.io/my-portfolio/demos/" class="social-link">Demos</a>
       <a href="https://wa.me/923074136536" class="social-link" target="_blank" rel="noopener">WhatsApp</a>
       <a href="mailto:hellorenolt@gmail.com" class="social-link">Email</a>
       <a href="contact.html" class="social-link">Contact</a>
-      <a href="agents.html" class="social-link">Agents</a>
     </div>
   </div>
 </footer>
@@ -281,7 +255,7 @@
       <label for="wa-name">Name *</label><input id="wa-name" required placeholder="Your name">
       <label for="wa-phone">Phone / WhatsApp *</label><input id="wa-phone" type="tel" required placeholder="03XX XXXXXXX">
       <label for="wa-interest">What do you need?</label>
-      <select id="wa-interest"><option value="">Select…</option><option>Lead System</option><option>Real estate website</option><option>Website that converts</option><option>Custom automation</option></select>
+      <select id="wa-interest"><option value="">Select…</option><option>Lead System</option><option>Omni (WhatsApp + FB + IG)</option><option>Lead System + Omni</option><option>Real estate website</option><option>Custom system</option></select>
       <button type="submit" class="wa-modal-submit">Continue to WhatsApp</button>
       <button type="button" class="wa-modal-skip" id="waSkip">Skip — open WhatsApp only</button>
     </form>
@@ -290,75 +264,65 @@
 </div>
 <script>
 (function(){
-  const WA_NUM='923074136536';
+  const WA='923074136536';
   const modal=document.getElementById('waModal'),form=document.getElementById('waForm');
-  function openModal(e){if(e)e.preventDefault();modal.hidden=false;document.body.style.overflow='hidden'}
-  function closeModal(){modal.hidden=true;document.body.style.overflow=''}
-  function openWA(name,phone,interest){
-    let msg='Hello Renolt, I want to discuss Lead System.';
-    if(name||phone||interest){msg='Hello Renolt.';if(name)msg+=' My name is '+name+'.';if(phone)msg+=' Phone: '+phone+'.';if(interest)msg+=' I am interested in: '+interest+'.';}
-    window.open('https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(msg),'_blank','noopener');
+  function openM(e){if(e)e.preventDefault();modal.hidden=false;document.body.style.overflow='hidden'}
+  function closeM(){modal.hidden=true;document.body.style.overflow=''}
+  function openWA(n,p,i){
+    let m='Hello Renolt, I want to discuss Lead System or Omni.';
+    if(n||p||i){m='Hello Renolt.';if(n)m+=' My name is '+n+'.';if(p)m+=' Phone: '+p+'.';if(i)m+=' I am interested in: '+i+'.';}
+    window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(m),'_blank','noopener');
   }
-  document.querySelectorAll('.js-wa-open').forEach(el=>el.addEventListener('click',openModal));
-  modal.querySelectorAll('.js-wa-close').forEach(el=>el.addEventListener('click',closeModal));
-  form.addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('wa-name').value.trim(),phone=document.getElementById('wa-phone').value.trim(),interest=(document.getElementById('wa-interest').value||'').trim();if(!name||!phone)return;openWA(name,phone,interest);closeModal()});
-  document.getElementById('waSkip').onclick=()=>{openWA('','','');closeModal()};
-  const nav=document.getElementById('nav'),progress=document.getElementById('scrollProgress'),burger=document.getElementById('burger'),links=document.getElementById('navLinks');
-  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);const hh=document.documentElement.scrollHeight-window.innerHeight;if(progress)progress.style.width=(hh?(window.scrollY/hh)*100:0)+'%'});
+  document.querySelectorAll('.js-wa-open').forEach(el=>el.addEventListener('click',openM));
+  modal.querySelectorAll('.js-wa-close').forEach(el=>el.addEventListener('click',closeM));
+  form.addEventListener('submit',e=>{e.preventDefault();const n=document.getElementById('wa-name').value.trim(),p=document.getElementById('wa-phone').value.trim(),i=(document.getElementById('wa-interest').value||'').trim();if(!n||!p)return;openWA(n,p,i);closeM()});
+  document.getElementById('waSkip').onclick=()=>{openWA('','','');closeM()};
+  const nav=document.getElementById('nav'),burger=document.getElementById('burger'),links=document.getElementById('navLinks');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
   if(burger&&links)burger.addEventListener('click',()=>links.classList.toggle('open'));
-
-  const panels=[...document.querySelectorAll('.story-panel')];
-  const dotsWrap=document.getElementById('storyDots');
-  const bar=document.getElementById('barFill');
-  const label=document.getElementById('storyLabel');
-  const mascot=document.getElementById('storyMascot');
-  const moodEl=document.getElementById('storyMood');
-  const smile=document.getElementById('mSmile');
-  const nextBtn=document.getElementById('storyNext');
-  let si=0,timer;
-  const smiles=['M34 53c2 1.5 4 2 6 2s4-.5 6-2','M32 52c3 4.5 6.5 6.5 8 6.5s5-2 8-6.5','M31 51c3.5 5.5 7 7.5 9 7.5s5.5-2 9-7.5','M31 51c3.5 5.5 7 7.5 9 7.5s5.5-2 9-7.5'];
-
-  panels.forEach((_,i)=>{const b=document.createElement('button');b.type='button';b.className='story-dot'+(i===0?' is-active':'');b.onclick=()=>{go(i);reset()};dotsWrap.appendChild(b)});
-  const dots=[...dotsWrap.querySelectorAll('.story-dot')];
-
-  function go(i){
-    si=(i+panels.length)%panels.length;
-    panels.forEach((p,n)=>p.classList.toggle('is-active',n===si));
-    dots.forEach((d,n)=>d.classList.toggle('is-active',n===si));
-    if(label)label.textContent=String(si+1).padStart(2,'0')+' / 0'+panels.length;
-    const panel=panels[si];
-    if(moodEl){moodEl.classList.remove('show');moodEl.textContent=panel.dataset.mood||'';requestAnimationFrame(()=>moodEl.classList.add('show'))}
-    if(smile)smile.setAttribute('d',smiles[si]||smiles[1]);
-    if(mascot){mascot.classList.remove('is-bounce');void mascot.offsetWidth;mascot.classList.add('is-bounce')}
-    if(nextBtn){if(si===panels.length-1){nextBtn.textContent='WhatsApp →';nextBtn.classList.add('is-final')}else{nextBtn.textContent='Next →';nextBtn.classList.remove('is-final')}}
-    if(bar){bar.style.transition='none';bar.style.width='0%';void bar.offsetWidth;bar.style.transition='width 5.2s linear';bar.style.width='100%'}
-  }
-  document.getElementById('storyNext').onclick=()=>{if(si===panels.length-1){document.querySelector('.js-wa-open').click();return}go(si+1);reset()};
-  document.getElementById('storyPrev').onclick=()=>{go(si-1);reset()};
-  mascot.addEventListener('click',()=>{go(si+1);reset()});
-  function reset(){clearInterval(timer);timer=setInterval(()=>go(si+1),5200)}
-  go(0);reset();
-
-  if(window.gsap){
-    gsap.to('.hero-chip',{opacity:1,y:0,duration:.55,ease:'power2.out'});
-    gsap.to('.hero h1 .word',{y:0,opacity:1,duration:.75,stagger:.1,delay:.12,ease:'power3.out'});
-    gsap.to('.lead',{opacity:1,y:0,duration:.55,delay:.45});
-    gsap.to('.actions',{opacity:1,y:0,duration:.5,delay:.55});
-    gsap.to('.hero-trust',{opacity:1,y:0,duration:.5,delay:.65});
-    gsap.to('.hero-visual',{opacity:1,y:0,duration:.7,delay:.35,ease:'power2.out'});
-  } else {
-    document.querySelectorAll('.hero-chip,.lead,.actions,.hero-trust,.hero-visual,.hero h1 .word').forEach(el=>{el.style.opacity=1;el.style.transform='none'});
-  }
+  const bar=document.getElementById('scrollProgress');
+  window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;bar.style.width=(h>0?(window.scrollY/h)*100:0)+'%'});
 })();
 </script>
 <script>
 (function(){
-  var canvas=document.getElementById('bgCanvas');
-  if(!canvas||!canvas.getContext)return;
-  var ctx=canvas.getContext('2d'),w,h,particles=[];
-  function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight}
-  function init(){particles=[];var c=Math.min(90,Math.floor((w*h)/12000));for(var i=0;i<c;i++)particles.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+.3,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,a:Math.random()*.35+.1})}
-  function draw(){ctx.clearRect(0,0,w,h);for(var i=0;i<particles.length;i++){var p=particles[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(212,160,23,'+p.a+')';ctx.fill()}requestAnimationFrame(draw)}
+  if(typeof gsap==='undefined'||typeof ScrollTrigger==='undefined')return;
+  gsap.registerPlugin(ScrollTrigger);
+  const panels=document.querySelectorAll('.story-panel');
+  const pct=document.getElementById('storyPct');
+  const bar=document.getElementById('storyBar');
+  const mascot=document.getElementById('storyMascot');
+  let last=-1;
+  function setPanel(i){
+    if(i===last)return;last=i;
+    panels.forEach((p,idx)=>p.classList.toggle('is-on',idx===i));
+    if(pct)pct.textContent=String(i+1).padStart(2,'0')+' / 04';
+    if(mascot){mascot.style.transform='translateY('+(i*-4)+'px) scale('+(1+i*0.02)+')'}
+  }
+  ScrollTrigger.create({
+    trigger:'#pinHero',
+    start:'top top',
+    end:'bottom bottom',
+    pin:'.pin-hero-inner',
+    scrub:1.1,
+    anticipatePin:1,
+    onUpdate:self=>{
+      const p=self.progress;
+      if(bar)bar.style.width=(p*100)+'%';
+      const i=Math.min(3,Math.floor(p*4));
+      setPanel(i);
+    }
+  });
+  setPanel(0);
+})();
+</script>
+<script>
+(function(){
+  var c=document.getElementById('bgCanvas');if(!c||!c.getContext)return;
+  var ctx=c.getContext('2d'),w,h,ps=[];
+  function resize(){w=c.width=innerWidth;h=c.height=innerHeight}
+  function init(){ps=[];var n=Math.min(70,Math.floor((w*h)/14000));for(var i=0;i<n;i++)ps.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+.25,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,a:Math.random()*.25+.06})}
+  function draw(){ctx.clearRect(0,0,w,h);for(var i=0;i<ps.length;i++){var p=ps[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(56,189,248,'+p.a+')';ctx.fill()}requestAnimationFrame(draw)}
   resize();init();draw();addEventListener('resize',function(){resize();init()});
 })();
 </script>
