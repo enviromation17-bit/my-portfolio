@@ -5,20 +5,16 @@
 <script>!function(){function d(){document.documentElement.style.background="#05060a";if(document.body)document.body.style.background="#05060a"}d();window.addEventListener("pageshow",function(e){if(e.persisted)d()});document.addEventListener("DOMContentLoaded",d)}()</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Renolt — Lead System & Omni for Service Businesses</title>
-<meta name="description" content="Lead System and Omni: capture enquiries, multi-channel messaging, booking, FAQ, language. WhatsApp 0307 4136536.">
+<title>Renolt — Stop losing enquiries</title>
+<meta name="description" content="Lead System and Omni for service businesses. Capture every enquiry, reply fast, follow up until closed. WhatsApp 0307 4136536.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
 <canvas id="bgCanvas" aria-hidden="true"></canvas>
-<div class="grain" aria-hidden="true"></div>
 <div class="orb orb-1" aria-hidden="true"></div>
 <div class="orb orb-2" aria-hidden="true"></div>
-<div class="orb orb-3" aria-hidden="true"></div>
 <div class="vignette" aria-hidden="true"></div>
 <div class="scroll-progress" id="scrollProgress"></div>
 <div class="content">
@@ -26,167 +22,144 @@
   <div class="wrap navin">
     <a href="/" class="brand">RENOLT<span>.</span></a>
     <nav class="links" id="navLinks">
-      <a href="#system">Lead System</a>
-      <a href="#omni">Omni</a>
+      <a href="#system">Products</a>
       <a href="agents.html">Agents</a>
-      <a href="#work">Website</a>
+      <a href="#work">Work</a>
       <a href="https://enviromation17-bit.github.io/my-portfolio/demos/">Demos</a>
     </nav>
-    <a href="contact.html" class="navcta">Let's talk</a>
+    <a href="#" class="navcta js-wa-open">WhatsApp</a>
     <button class="burger" id="burger" aria-label="Menu">☰</button>
   </div>
 </header>
-<section class="pin-hero" id="pinHero">
-  <div class="pin-hero-inner">
-    <div class="pin-grid">
-      <div class="pin-copy">
-        <div class="chip"><span class="chip-dot"></span> Lead System · Omni · Built for operators</div>
-        <h1>Stop losing<br><span class="accent">enquiries</span><br><span class="soft">to slow replies.</span></h1>
-        <p class="pin-lead">Every WhatsApp, form, and call — captured, answered fast, followed up until closed. Multi-channel Omni when you need Facebook, Instagram, booking, and language.</p>
-        <div class="actions">
-          <a href="#" class="btn primary js-wa-open">WhatsApp 0307 4136536</a>
-          <a href="contact.html" class="btn ghost">Book a call</a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="chip"><span class="chip-dot"></span> Lead System · Omni</div>
+      <h1>Stop losing<br><span class="accent">enquiries</span><br><span class="soft">to slow replies.</span></h1>
+      <p class="lead">Every WhatsApp, form, and call — captured, answered fast, followed up until closed. Multi-channel Omni when you need Facebook, Instagram, booking, and language.</p>
+      <div class="actions">
+        <a href="#" class="btn primary js-wa-open">WhatsApp 0307 4136536</a>
+        <a href="contact.html" class="btn ghost">Book a call</a>
+      </div>
+      <div class="trust">
+        <span>Real estate</span>
+        <span>Service operators</span>
+        <span>WhatsApp-first</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="product-frame">
+        <div class="pf-top">
+          <span class="pf-title">Lead queue · live</span>
+          <span class="pf-live"><i></i> 3 open</span>
         </div>
-        <div class="trust">
-          <span>Lead System</span>
-          <span>Omni multi-channel</span>
-          <span>Real estate &amp; services</span>
+        <div class="pf-row hot">
+          <div class="pf-avatar">A</div>
+          <div class="pf-meta"><strong>Plot enquiry · DHA</strong><span>WhatsApp · 12s ago</span></div>
+          <span class="pf-tag">New</span>
+        </div>
+        <div class="pf-row">
+          <div class="pf-avatar" style="background:linear-gradient(135deg,#d4a017,#e8c547);color:#0c0a04">B</div>
+          <div class="pf-meta"><strong>Site visit request</strong><span>Form · replied 2m</span></div>
+          <span class="pf-tag">Owned</span>
+        </div>
+        <div class="pf-row">
+          <div class="pf-avatar" style="background:linear-gradient(135deg,#34d399,#059669)">C</div>
+          <div class="pf-meta"><strong>Price follow-up</strong><span>Call logged · due today</span></div>
+          <span class="pf-tag warn">Follow up</span>
         </div>
       </div>
-      <div class="story-stage" id="storyStage">
-        <div class="story-top">
-          <span class="story-live"><i></i> Scroll to explore</span>
-          <span class="story-pct" id="storyPct">01 / 04</span>
-        </div>
-        <div class="story-body">
-          <div class="story-mascot" id="storyMascot" aria-hidden="true">
-            <svg viewBox="0 0 80 96" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="40" cy="90" rx="22" ry="5" fill="#38bdf8" opacity=".25"/>
-              <path d="M40 10v8" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
-              <ellipse cx="40" cy="8" rx="10" ry="4.5" fill="#38bdf8"/>
-              <ellipse cx="40" cy="7" rx="7" ry="2.5" fill="#e0f2fe" opacity=".45"/>
-              <ellipse cx="40" cy="42" rx="28" ry="28" fill="#f1f5f9"/>
-              <ellipse cx="40" cy="42" rx="28" ry="28" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity=".3"/>
-              <ellipse cx="40" cy="44" rx="20" ry="18" fill="#0b1220"/>
-              <ellipse cx="31" cy="41" rx="5.5" ry="6.5" fill="#38bdf8"/>
-              <ellipse cx="49" cy="41" rx="5.5" ry="6.5" fill="#38bdf8"/>
-              <ellipse cx="29.5" cy="39" rx="1.8" ry="2.2" fill="#e0f2fe" opacity=".9"/>
-              <ellipse cx="47.5" cy="39" rx="1.8" ry="2.2" fill="#e0f2fe" opacity=".9"/>
-              <path id="mSmile" d="M32 52c3 4.5 6.5 6.5 8 6.5s5-2 8-6.5" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-              <ellipse cx="12" cy="52" rx="5" ry="6" fill="#e2e8f0"/>
-              <ellipse cx="68" cy="52" rx="5" ry="6" fill="#e2e8f0"/>
-              <circle cx="12" cy="52" r="2.5" fill="#38bdf8" opacity=".75"/>
-              <circle cx="68" cy="52" r="2.5" fill="#38bdf8" opacity=".75"/>
-              <path d="M22 64c3 10 8 14 18 14s15-4 18-14" fill="#f1f5f9" stroke="#38bdf8" stroke-width="1" opacity=".95"/>
-              <circle cx="40" cy="72" r="7" fill="#0b1220"/>
-              <circle cx="40" cy="72" r="7" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
-              <text x="40" y="75" text-anchor="middle" font-size="8" font-family="Syne,sans-serif" font-weight="800" fill="#38bdf8">R</text>
-            </svg>
-          </div>
-          <div class="story-panels">
-            <div class="story-panel is-on" data-i="0">
-              <p class="story-kicker"><span class="n">1</span> The problem</p>
-              <h3 class="story-title">Leads message. You’re on a job.</h3>
-              <p class="story-text">Enquiries pile up on WhatsApp while the team is out. By the time someone replies, the client has already moved on.</p>
-              <ul class="story-points"><li>Missed first replies</li><li>No single place for every lead</li><li>Follow-ups depend on memory</li></ul>
-            </div>
-            <div class="story-panel" data-i="1">
-              <p class="story-kicker"><span class="n">2</span> The solution</p>
-              <h3 class="story-title">One queue. Fast first reply.</h3>
-              <p class="story-text">Every enquiry lands in one place. An instant reply goes out. Your team sees who needs a human next.</p>
-              <ul class="story-points"><li>WhatsApp + forms + calls logged</li><li>Auto first reply in seconds</li><li>Clear ownership until closed</li></ul>
-            </div>
-            <div class="story-panel" data-i="2">
-              <p class="story-kicker"><span class="n">3</span> How Renolt helps</p>
-              <h3 class="story-title">Lead System. Omni. Or both.</h3>
-              <p class="story-text">We install the system your team will actually use — queue, multi-channel chat, FAQ, booking, language — then tighten it with you.</p>
-              <ul class="story-points"><li>Real estate &amp; service focus</li><li>Sites wired to the same path</li><li>Modules when you need them</li></ul>
-            </div>
-            <div class="story-panel" data-i="3">
-              <p class="story-kicker"><span class="n">4</span> Next step</p>
-              <h3 class="story-title">Tell us where enquiries get lost.</h3>
-              <p class="story-text">One WhatsApp message is enough. We’ll map your channels and propose a clear path forward.</p>
-              <div class="actions" style="margin-top:8px">
-                <a href="#" class="btn primary js-wa-open" style="padding:12px 20px;font-size:.88rem">WhatsApp us now</a>
-                <a href="contact.html" class="btn ghost" style="padding:12px 16px;font-size:.88rem">Contact form</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="story-bar"><i id="storyBar"></i></div>
-      </div>
+      <div class="float-pill a">First reply &lt; 60s</div>
+      <div class="float-pill b">Queue · not memory</div>
+      <div class="float-pill c">WhatsApp + forms + calls</div>
     </div>
   </div>
 </section>
 <section class="stats-bar">
   <div class="wrap stats-grid">
-    <div class="stat"><strong>2 systems</strong><span>Lead System · Omni</span></div>
-    <div class="stat"><strong>&lt; 60s</strong><span>target first reply</span></div>
-    <div class="stat"><strong>Real estate</strong><span>primary vertical</span></div>
-    <div class="stat"><strong>WhatsApp</strong><span>where clients already are</span></div>
+    <div class="stat"><strong>2 systems</strong><span>Lead · Omni</span></div>
+    <div class="stat"><strong>&lt; 60s</strong><span>first reply target</span></div>
+    <div class="stat"><strong>Real estate</strong><span>primary focus</span></div>
+    <div class="stat"><strong>WhatsApp</strong><span>where clients are</span></div>
+  </div>
+</section>
+<section class="section" id="compare">
+  <div class="wrap">
+    <p class="section-label">The shift</p>
+    <h2 class="section-title">Before Renolt vs after.</h2>
+    <p class="section-sub">Most teams lose deals to chaos — not to competition.</p>
+    <div class="compare">
+      <div class="compare-col old">
+        <h3>Without a system</h3>
+        <ul>
+          <li>WhatsApp threads scattered across phones</li>
+          <li>First reply hours later — or never</li>
+          <li>Follow-up depends on memory</li>
+          <li>No single place for every lead</li>
+          <li>Facebook / IG messages ignored</li>
+        </ul>
+      </div>
+      <div class="compare-col new">
+        <h3>With Lead System + Omni</h3>
+        <ul>
+          <li>One queue for every enquiry</li>
+          <li>Instant first reply, clear ownership</li>
+          <li>Follow-up until closed</li>
+          <li>WhatsApp + forms + calls logged</li>
+          <li>Omni: FB, IG, FAQ, booking, language</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 <section class="section" id="system">
   <div class="wrap">
-    <p class="section-label">Two systems. Equal weight.</p>
-    <h2 class="section-title">Lead System and Omni — pick what fits.</h2>
-    <p class="section-sub">Not the same product. Lead System owns the enquiry queue. Omni runs the conversation across channels.</p>
+    <p class="section-label">Products</p>
+    <h2 class="section-title">Two systems. Equal weight.</h2>
+    <p class="section-sub">Lead System owns the enquiry queue. Omni runs multi-channel conversation. Use one or both.</p>
     <div class="product-pair">
       <article class="product-card lead">
         <p class="tag">Product 01</p>
         <h3>Lead System</h3>
-        <p>Capture every enquiry, first reply, operator queue, follow-up until closed. Built for teams that lose leads on WhatsApp, forms, and phone.</p>
+        <p>Capture every enquiry, first reply, operator queue, follow-up until closed.</p>
         <ul>
-          <li>• Intake from WhatsApp, forms, phone</li>
-          <li>• Fast first reply + ownership queue</li>
-          <li>• Follow-up until closed</li>
-          <li>• Owner alerts &amp; status tracking</li>
+          <li>WhatsApp, forms, phone intake</li>
+          <li>Fast first reply + ownership</li>
+          <li>Follow-up until closed</li>
+          <li>Owner alerts &amp; status</li>
         </ul>
       </article>
       <article class="product-card omni" id="omni">
         <p class="tag">Product 02</p>
         <h3>Omni</h3>
-        <p>Multi-channel on WhatsApp, Facebook, and Instagram. Answers FAQs, books, detects language, and hands off to a human when needed.</p>
+        <p>WhatsApp + Facebook + Instagram. FAQ, booking, language detect, human handoff.</p>
         <ul>
-          <li>• WhatsApp + Facebook + Instagram</li>
-          <li>• Booking from the conversation</li>
-          <li>• Business FAQ answers</li>
-          <li>• Language detect → reply in their language</li>
-          <li>• Alert human when a person is needed</li>
+          <li>Three channels, one layer</li>
+          <li>Booking from the thread</li>
+          <li>Business FAQ answers</li>
+          <li>Reply in the client’s language</li>
+          <li>Alert human when needed</li>
         </ul>
       </article>
     </div>
   </div>
 </section>
-<section class="section" id="omni-detail">
+<section class="section" id="how">
   <div class="wrap">
-    <p class="section-label">Omni in detail</p>
-    <h2 class="section-title">Not a simple chat bot. A channel system.</h2>
-    <p class="section-sub">Omni is separate from Lead System. It lives where your clients already message — and behaves like trained staff until a human should take over.</p>
+    <p class="section-label">How it works</p>
+    <h2 class="section-title">Four steps. No CRM theatre.</h2>
     <div class="feature-grid">
-      <article class="feature-card"><span class="feature-num">01</span><h3>Channels</h3><p>WhatsApp, Facebook Messenger, and Instagram in one conversation layer.</p></article>
-      <article class="feature-card"><span class="feature-num">02</span><h3>Language first</h3><p>Detects the client’s language, then replies in that language — not English by default.</p></article>
-      <article class="feature-card"><span class="feature-num">03</span><h3>FAQ + booking</h3><p>Answers business FAQs and can take bookings from the same thread.</p></article>
-      <article class="feature-card"><span class="feature-num">04</span><h3>Human handoff</h3><p>When the request needs a person, Omni alerts your team instead of guessing.</p></article>
-    </div>
-  </div>
-</section>
-<section class="section" id="process">
-  <div class="wrap">
-    <p class="section-label">How engagement works</p>
-    <h2 class="section-title">From first message to closed deal.</h2>
-    <div class="process-track">
-      <div class="process-step"><span class="process-n">1</span><div><h3>Audit your channels</h3><p>WhatsApp, forms, Facebook, Instagram — where messages arrive and stall.</p></div></div>
-      <div class="process-step"><span class="process-n">2</span><div><h3>Choose Lead System, Omni, or both</h3><p>Lead System for the queue. Omni for multi-channel chat, FAQ, booking, and language.</p></div></div>
-      <div class="process-step"><span class="process-n">3</span><div><h3>Install &amp; train</h3><p>Your team gets a clear path — not a CRM they’ll abandon.</p></div></div>
-      <div class="process-step"><span class="process-n">4</span><div><h3>Measure &amp; tighten</h3><p>Reply times, open leads, and handoffs reviewed with you.</p></div></div>
+      <article class="feature-card"><span class="feature-num">01</span><h3>Audit</h3><p>Where messages arrive and stall — WhatsApp, forms, Facebook, Instagram.</p></article>
+      <article class="feature-card"><span class="feature-num">02</span><h3>Choose</h3><p>Lead System, Omni, or both — smallest install that fits.</p></article>
+      <article class="feature-card"><span class="feature-num">03</span><h3>Install</h3><p>Your team gets a clear path they will actually use.</p></article>
+      <article class="feature-card"><span class="feature-num">04</span><h3>Tighten</h3><p>Reply times and open leads reviewed with you.</p></article>
     </div>
   </div>
 </section>
 <section class="section" id="work">
   <div class="wrap">
-    <p class="section-label">Websites</p>
-    <h2 class="section-title">Sites that turn enquiries into follow-ups.</h2>
+    <p class="section-label">Work</p>
+    <h2 class="section-title">Sites and systems that convert.</h2>
     <div class="work-grid">
       <article class="work-card featured">
         <div class="work-meta"><span class="tag-sm">Real estate</span><span class="pill">Live</span></div>
@@ -203,7 +176,7 @@
       <article class="work-card">
         <div class="work-meta"><span class="tag-sm">Agents</span><span class="pill">Family</span></div>
         <h3>Renolt companions</h3>
-        <p>Core, Omni, and modules — how we represent the systems we install.</p>
+        <p>Core, Omni, and modules — how we represent the systems.</p>
         <a class="work-link" href="agents.html">Meet the team →</a>
       </article>
     </div>
@@ -213,9 +186,9 @@
   <div class="wrap">
     <div class="cta-box">
       <div>
-        <p class="section-label">Ready</p>
-        <h2 class="section-title" style="margin-bottom:10px">Stop losing the next enquiry.</h2>
-        <p class="section-sub" style="margin:0">Message us on WhatsApp — Lead System, Omni, or both.</p>
+        <p class="section-label">Next step</p>
+        <h2 class="section-title" style="margin-bottom:8px">Tell us where enquiries get lost.</h2>
+        <p class="section-sub" style="margin:0">One WhatsApp message is enough.</p>
       </div>
       <div class="cta-actions">
         <a href="#" class="btn primary js-wa-open">WhatsApp 0307 4136536</a>
@@ -228,7 +201,7 @@
   <div class="wrap foot">
     <div>
       <strong class="brand">RENOLT<span>.</span></strong>
-      <p style="margin-top:8px;max-width:300px;color:var(--muted);font-weight:300">Lead System and Omni for real estate and service businesses.</p>
+      <p style="margin-top:8px;max-width:280px;color:var(--muted);font-weight:300;font-size:.9rem">Lead System and Omni for real estate and service businesses.</p>
     </div>
     <div class="foot-links">
       <a href="/" class="social-link">Home</a>
@@ -242,7 +215,7 @@
 </footer>
 </div>
 <div class="wa-widget" aria-label="WhatsApp">
-  <span class="wa-widget-label">Chat on WhatsApp · 0307 4136536</span>
+  <span class="wa-widget-label">Chat · 0307 4136536</span>
   <button type="button" class="wa-widget-btn js-wa-open" aria-label="Open WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </button>
@@ -250,12 +223,12 @@
 <div id="waModal" class="wa-modal" hidden>
   <div class="wa-modal-backdrop js-wa-close"></div>
   <div class="wa-modal-panel" role="dialog">
-    <div class="wa-modal-head"><div><h2>Chat with us on WhatsApp</h2><p>Share your name and number — then continue on WhatsApp.</p></div><button type="button" class="wa-modal-x js-wa-close">&times;</button></div>
+    <div class="wa-modal-head"><div><h2>Chat on WhatsApp</h2><p>Name and number — then continue.</p></div><button type="button" class="wa-modal-x js-wa-close">&times;</button></div>
     <form id="waForm" class="wa-modal-form">
       <label for="wa-name">Name *</label><input id="wa-name" required placeholder="Your name">
       <label for="wa-phone">Phone / WhatsApp *</label><input id="wa-phone" type="tel" required placeholder="03XX XXXXXXX">
       <label for="wa-interest">What do you need?</label>
-      <select id="wa-interest"><option value="">Select…</option><option>Lead System</option><option>Omni (WhatsApp + FB + IG)</option><option>Lead System + Omni</option><option>Real estate website</option><option>Custom system</option></select>
+      <select id="wa-interest"><option value="">Select…</option><option>Lead System</option><option>Omni</option><option>Lead System + Omni</option><option>Website</option><option>Custom</option></select>
       <button type="submit" class="wa-modal-submit">Continue to WhatsApp</button>
       <button type="button" class="wa-modal-skip" id="waSkip">Skip — open WhatsApp only</button>
     </form>
@@ -268,11 +241,7 @@
   const modal=document.getElementById('waModal'),form=document.getElementById('waForm');
   function openM(e){if(e)e.preventDefault();modal.hidden=false;document.body.style.overflow='hidden'}
   function closeM(){modal.hidden=true;document.body.style.overflow=''}
-  function openWA(n,p,i){
-    let m='Hello Renolt, I want to discuss Lead System or Omni.';
-    if(n||p||i){m='Hello Renolt.';if(n)m+=' My name is '+n+'.';if(p)m+=' Phone: '+p+'.';if(i)m+=' I am interested in: '+i+'.';}
-    window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(m),'_blank','noopener');
-  }
+  function openWA(n,p,i){let m='Hello Renolt, I want to discuss Lead System or Omni.';if(n||p||i){m='Hello Renolt.';if(n)m+=' My name is '+n+'.';if(p)m+=' Phone: '+p+'.';if(i)m+=' I am interested in: '+i+'.';}window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(m),'_blank','noopener')}
   document.querySelectorAll('.js-wa-open').forEach(el=>el.addEventListener('click',openM));
   modal.querySelectorAll('.js-wa-close').forEach(el=>el.addEventListener('click',closeM));
   form.addEventListener('submit',e=>{e.preventDefault();const n=document.getElementById('wa-name').value.trim(),p=document.getElementById('wa-phone').value.trim(),i=(document.getElementById('wa-interest').value||'').trim();if(!n||!p)return;openWA(n,p,i);closeM()});
@@ -286,43 +255,11 @@
 </script>
 <script>
 (function(){
-  if(typeof gsap==='undefined'||typeof ScrollTrigger==='undefined')return;
-  gsap.registerPlugin(ScrollTrigger);
-  const panels=document.querySelectorAll('.story-panel');
-  const pct=document.getElementById('storyPct');
-  const bar=document.getElementById('storyBar');
-  const mascot=document.getElementById('storyMascot');
-  let last=-1;
-  function setPanel(i){
-    if(i===last)return;last=i;
-    panels.forEach((p,idx)=>p.classList.toggle('is-on',idx===i));
-    if(pct)pct.textContent=String(i+1).padStart(2,'0')+' / 04';
-    if(mascot){mascot.style.transform='translateY('+(i*-4)+'px) scale('+(1+i*0.02)+')'}
-  }
-  ScrollTrigger.create({
-    trigger:'#pinHero',
-    start:'top top',
-    end:'bottom bottom',
-    pin:'.pin-hero-inner',
-    scrub:1.1,
-    anticipatePin:1,
-    onUpdate:self=>{
-      const p=self.progress;
-      if(bar)bar.style.width=(p*100)+'%';
-      const i=Math.min(3,Math.floor(p*4));
-      setPanel(i);
-    }
-  });
-  setPanel(0);
-})();
-</script>
-<script>
-(function(){
   var c=document.getElementById('bgCanvas');if(!c||!c.getContext)return;
   var ctx=c.getContext('2d'),w,h,ps=[];
   function resize(){w=c.width=innerWidth;h=c.height=innerHeight}
-  function init(){ps=[];var n=Math.min(70,Math.floor((w*h)/14000));for(var i=0;i<n;i++)ps.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+.25,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,a:Math.random()*.25+.06})}
-  function draw(){ctx.clearRect(0,0,w,h);for(var i=0;i<ps.length;i++){var p=ps[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(56,189,248,'+p.a+')';ctx.fill()}requestAnimationFrame(draw)}
+  function init(){ps=[];var n=Math.min(40,Math.floor((w*h)/18000));for(var i=0;i<n;i++)ps.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5+.2,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2,a:Math.random()*.15+.04})}
+  function draw(){ctx.clearRect(0,0,w,h);for(var i=0;i<ps.length;i++){var p=ps[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(79,184,255,'+p.a+')';ctx.fill()}requestAnimationFrame(draw)}
   resize();init();draw();addEventListener('resize',function(){resize();init()});
 })();
 </script>
