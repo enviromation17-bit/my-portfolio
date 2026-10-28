@@ -2,38 +2,191 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Omni assistant demo — Renolt</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Omni demo — Renolt</title>
+<meta name="description" content="Interactive demo: WhatsApp + Facebook + Instagram, FAQ, booking, language, human handoff.">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#08090c;--panel:#101218;--panel2:#161a22;--line:rgba(255,255,255,.08);--text:#eef0f4;--muted:#8b92a5;--dim:#5c6478;--amber:#d4a017;--red:#e0715f;--green:#3dd68c;--max:960px}
-*{box-sizing:border-box;margin:0;padding:0}body{font-family:Outfit,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}h1,h3{font-family:Syne,sans-serif;font-weight:700}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.nav{border-bottom:1px solid var(--line);padding:16px 0;position:sticky;top:0;background:rgba(8,9,12,.92)}.navin{display:flex;justify-content:space-between}.brand{font-family:Syne,sans-serif;font-weight:800}.brand span{color:var(--amber)}.muted{color:var(--muted);font-size:.88rem}.hero{padding:48px 0 28px}.stamp{display:inline-flex;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(212,160,23,.3);background:rgba(212,160,23,.08);padding:7px 12px;border-radius:999px;margin-bottom:16px}h1{font-size:clamp(1.7rem,3.8vw,2.5rem);margin-bottom:12px}.sub{color:var(--muted);font-weight:300}.problem-box{background:rgba(224,113,95,.08);border:1px solid rgba(224,113,95,.25);border-radius:14px;padding:18px 20px;margin:20px 0}.problem-box h3{font-size:.85rem;color:var(--red);margin-bottom:8px;text-transform:uppercase}.problem-box p,.solution-box p{color:var(--muted);font-weight:300}.solution-box{background:rgba(61,214,140,.07);border:1px solid rgba(61,214,140,.25);border-radius:14px;padding:18px 20px;margin:12px 0 28px}.solution-box h3{font-size:.85rem;color:var(--green);margin-bottom:8px;text-transform:uppercase}.mock{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:28px}.mock-bar{display:flex;gap:8px;padding:12px 16px;background:var(--panel2);border-bottom:1px solid var(--line)}.dot{width:10px;height:10px;border-radius:50%}.dot.r{background:#ff5f57}.dot.y{background:#febc2e}.dot.g{background:#28c840}.mock-title{font-size:.8rem;color:var(--muted)}.mock-body{padding:18px}.chat{display:flex;flex-direction:column;gap:10px}.bubble{max-width:85%;padding:10px 14px;border-radius:14px;font-size:.9rem}.bubble.in{background:var(--panel2);border:1px solid var(--line);align-self:flex-start}.bubble.out{background:rgba(212,160,23,.15);border:1px solid rgba(212,160,23,.3);align-self:flex-end}.bubble .meta{font-size:.7rem;color:var(--dim);margin-top:6px}.btn{display:inline-flex;padding:12px 20px;border-radius:999px;font-weight:600;font-size:.88rem;border:1px solid var(--line)}.btn.primary{background:var(--amber);color:#0c0a04}.btn.ghost{background:transparent}.actions{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 40px}footer{padding:28px 0;border-top:1px solid var(--line);color:var(--dim);font-size:.82rem}
+:root{--bg:#05060a;--panel:#0c0e12;--panel2:#12151c;--line:rgba(255,255,255,.08);--text:#eef0f4;--muted:#8b92a5;--dim:#5c6478;--amber:#d4a017;--gold:#e8c547;--red:#e0715f;--green:#3dd68c;--cyan:#4FB8FF;--max:720px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font-family:'Outfit',system-ui,sans-serif;line-height:1.55;min-height:100%;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Syne',sans-serif;font-weight:700;letter-spacing:-.03em;line-height:1.12}
+a{color:inherit;text-decoration:none}
+.shell{min-height:100vh;display:flex;flex-direction:column}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--line)}
+.topbar .brand{font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;color:var(--gold)}
+.topbar .center{font-size:.8rem;color:var(--dim)}
+.topbar .back{font-size:.85rem;color:var(--muted)}
+.topbar .back:hover{color:var(--text)}
+.stage{flex:1;display:flex;justify-content:center;padding:24px 16px 40px}
+.card{width:min(var(--max),100%);background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.45)}
+.card-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
+.card-nav .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem}
+.card-nav .logo span{color:var(--amber)}
+.card-nav .links{display:flex;gap:16px;font-size:.85rem;color:var(--muted)}
+.card-nav .links a:hover{color:var(--text)}
+.card-body{padding:28px 24px 32px;max-height:min(78vh,900px);overflow-y:auto}
+.stamp{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);border:1px solid rgba(79,184,255,.35);background:rgba(79,184,255,.1);padding:6px 12px 6px 10px;border-radius:999px;margin-bottom:16px}
+.stamp i{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px rgba(79,184,255,.5)}
+h1{font-size:clamp(1.65rem,3.5vw,2.15rem);margin-bottom:10px}
+.sub{color:var(--muted);font-weight:300;margin-bottom:20px;max-width:540px}
+.problem-box{background:rgba(224,113,95,.08);border:1px solid rgba(224,113,95,.28);border-radius:14px;padding:16px 18px;margin-bottom:12px}
+.problem-box h3{font-size:.72rem;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;font-weight:700}
+.problem-box p{color:var(--muted);font-size:.92rem;font-weight:300}
+.solution-box{background:rgba(61,214,140,.07);border:1px solid rgba(61,214,140,.28);border-radius:14px;padding:16px 18px;margin-bottom:28px}
+.solution-box h3{font-size:.72rem;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;font-weight:700}
+.solution-box p{color:var(--muted);font-size:.92rem;font-weight:300}
+.demo-label{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:12px;font-weight:600}
+.ch-tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.ch-tab{padding:7px 12px;border-radius:999px;font-size:.78rem;font-weight:600;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--muted);cursor:pointer;font-family:inherit}
+.ch-tab.on{border-color:rgba(79,184,255,.4);background:rgba(79,184,255,.12);color:var(--cyan)}
+.sim{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;margin-bottom:20px}
+@media(max-width:640px){.sim{grid-template-columns:1fr}}
+.panel{background:var(--panel2);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.panel-h{padding:12px 14px;border-bottom:1px solid var(--line);font-size:.8rem;font-weight:600;color:var(--muted);display:flex;justify-content:space-between}
+.chat{height:220px;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.bubble{max-width:88%;padding:10px 12px;border-radius:14px;font-size:.88rem;line-height:1.4}
+.bubble.in{background:rgba(255,255,255,.06);align-self:flex-start;border-bottom-left-radius:4px}
+.bubble.out{background:rgba(79,184,255,.12);border:1px solid rgba(79,184,255,.25);align-self:flex-end;border-bottom-right-radius:4px}
+.bubble .meta{font-size:.7rem;color:var(--dim);margin-top:4px}
+.leads{padding:8px;max-height:220px;overflow-y:auto}
+.lead-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.03);margin-bottom:6px;border:1px solid transparent}
+.lead-row.hot{border-color:rgba(79,184,255,.3);background:rgba(79,184,255,.06)}
+.lead-row b{font-size:.88rem;font-weight:600;display:block}
+.lead-row .src{font-size:.72rem;color:var(--dim)}
+.badge{font-size:.68rem;padding:3px 8px;border-radius:999px;font-weight:600}
+.badge.owned{background:rgba(79,184,255,.12);color:var(--cyan)}
+.sim-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;border-radius:999px;font-weight:600;font-size:.9rem;border:none;cursor:pointer;font-family:inherit}
+.btn.primary{background:linear-gradient(135deg,#d4a017,#e8c547);color:#0c0a04}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.14);color:var(--text)}
+.btn.sim{background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--text);font-size:.85rem;padding:10px 16px}
+.steps{display:grid;gap:10px;margin-bottom:28px}
+.step{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+.step .n{flex-shrink:0;width:28px;height:28px;border-radius:8px;background:rgba(79,184,255,.15);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700}
+.step b{display:block;font-size:.9rem;margin-bottom:2px}
+.step span{font-size:.82rem;color:var(--muted);font-weight:300}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;padding-top:8px}
 </style>
 </head>
 <body>
-<header class="nav"><div class="wrap navin"><a class="brand" href="../index.html">RENOLT<span>.</span></a><div style="display:flex;gap:16px"><a class="muted" href="index.html">All demos</a><a class="muted" href="../index.html">Site</a></div></div></header>
-<main class="wrap">
-  <div class="hero">
-    <div class="stamp">Omni assistant</div>
-    <h1>Same answers on every channel</h1>
-    <p class="sub">High-volume questions answered with scripts you approve.</p>
-    <div class="problem-box"><h3>Problem</h3><p>The same questions flood WhatsApp and the website all day.</p></div>
-    <div class="solution-box"><h3>What Renolt builds</h3><p>Omni uses your approved answers and escalates urgent cases to a human.</p></div>
+<div class="shell">
+  <div class="topbar">
+    <a href="https://renolt.vercel.app/" class="brand">RENOLT<span>.</span></a>
+    <span class="center">Interactive demo</span>
+    <a href="https://renolt.vercel.app/" class="back">← Back to site</a>
   </div>
-  <div class="mock">
-    <div class="mock-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="mock-title">Omni · sample replies</span></div>
-    <div class="mock-body"><div class="chat">
-      <div class="bubble in">Are you open on Sunday?<div class="meta">WhatsApp</div></div>
-      <div class="bubble out">We’re open Sun 11am–6pm. For emergencies after hours, leave a message — we’ll prioritise in the morning.<div class="meta">Omni · approved script</div></div>
-      <div class="bubble in">How much for a standard AC service?<div class="meta">Website</div></div>
-      <div class="bubble out">Standard visits start from [your price]. Share your area and unit type and we’ll confirm the quote.<div class="meta">Omni · same policy</div></div>
-    </div></div>
+  <div class="stage">
+    <div class="card">
+      <div class="card-nav">
+        <a href="https://renolt.vercel.app/" class="logo">RENOLT<span>.</span></a>
+        <div class="links">
+          <a href="index.html">All demos</a>
+          <a href="https://renolt.vercel.app/">Site</a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="stamp"><i></i> Omni</div>
+        <h1>One inbox. Every channel.</h1>
+        <p class="sub">WhatsApp, Facebook, and Instagram in one layer — with FAQ, booking, language detect, and human handoff.</p>
+        <div class="problem-box">
+          <h3>Problem</h3>
+          <p>Clients message on three apps. Your team answers late, mixes languages, and loses bookings in the thread.</p>
+        </div>
+        <div class="solution-box">
+          <h3>What Renolt builds</h3>
+          <p>Omni answers FAQs, can take bookings, replies in the client’s language, and alerts a human when a person is needed.</p>
+        </div>
+        <p class="demo-label">Try it — switch channel and send a message</p>
+        <div class="ch-tabs" id="tabs">
+          <button type="button" class="ch-tab on" data-ch="WhatsApp">WhatsApp</button>
+          <button type="button" class="ch-tab" data-ch="Facebook">Facebook</button>
+          <button type="button" class="ch-tab" data-ch="Instagram">Instagram</button>
+        </div>
+        <div class="sim">
+          <div class="panel">
+            <div class="panel-h"><span id="chLabel">WhatsApp</span><span style="color:var(--dim);font-size:.75rem">Client thread</span></div>
+            <div class="chat" id="chat"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-h"><span>System log</span><span style="color:var(--cyan);font-size:.75rem">Omni</span></div>
+            <div class="leads" id="log"></div>
+          </div>
+        </div>
+        <div class="sim-actions">
+          <button type="button" class="btn sim" id="simFaq">Ask FAQ</button>
+          <button type="button" class="btn sim" id="simBook">Request booking</button>
+          <button type="button" class="btn sim" id="simHuman">Need human</button>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="n">1</div><div><b>Channel in</b><span>WhatsApp, Facebook, or Instagram</span></div></div>
+          <div class="step"><div class="n">2</div><div><b>Language first</b><span>Detect language → reply in that language</span></div></div>
+          <div class="step"><div class="n">3</div><div><b>FAQ or book</b><span>Answer business questions or take a booking</span></div></div>
+          <div class="step"><div class="n">4</div><div><b>Handoff</b><span>Alert your team when a person is needed</span></div></div>
+        </div>
+        <div class="cta-row">
+          <a class="btn primary" href="https://wa.me/923074136536?text=Hi%20Renolt%2C%20I%20looked%20at%20the%20Omni%20demo.%20I%20need%20multi-channel%20for%20my%20business." target="_blank" rel="noopener">WhatsApp about this</a>
+          <a class="btn ghost" href="https://renolt.vercel.app/contact.html">Let's talk</a>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="actions">
-    <a class="btn primary" href="https://wa.me/923207289443?text=Hi%20Renolt%2C%20I%20need%20the%20Omni%20assistant" target="_blank" rel="noopener">I need this for my business</a>
-    <a class="btn ghost" href="../contact.html">Send full request</a>
-  </div>
-</main>
-<footer><div class="wrap">© 2026 RENOLT · Demo only</div></footer>
+</div>
+<script>
+(function(){
+  let ch='WhatsApp';
+  const chat=document.getElementById('chat');
+  const log=document.getElementById('log');
+  const chLabel=document.getElementById('chLabel');
+  document.querySelectorAll('.ch-tab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('.ch-tab').forEach(function(x){x.classList.remove('on')});
+      t.classList.add('on');
+      ch=t.dataset.ch;
+      chLabel.textContent=ch;
+    };
+  });
+  function addBubble(text, out, meta){
+    const b=document.createElement('div');
+    b.className='bubble '+(out?'out':'in');
+    b.innerHTML=text+'<div class="meta">'+(meta||'')+'</div>';
+    chat.appendChild(b);
+    chat.scrollTop=chat.scrollHeight;
+  }
+  function addLog(title, detail){
+    const row=document.createElement('div');
+    row.className='lead-row hot';
+    row.innerHTML='<div><b>'+title+'</b><div class="src">'+detail+'</div></div><span class="badge owned">Omni</span>';
+    log.prepend(row);
+    setTimeout(function(){ row.classList.remove('hot'); }, 1000);
+  }
+  document.getElementById('simFaq').onclick=function(){
+    addBubble('What are your office hours?', false, 'Client · '+ch);
+    setTimeout(function(){
+      addBubble('We are open Mon–Sat, 10am–7pm. You can also book a visit from this chat.', true, 'Omni · FAQ · '+ch);
+      addLog('FAQ answered', ch+' · office hours');
+    }, 700);
+  };
+  document.getElementById('simBook').onclick=function(){
+    addBubble('Can I book a site visit tomorrow at 3pm?', false, 'Client · '+ch);
+    setTimeout(function(){
+      addBubble('Done — booked tomorrow 3:00pm. You will get a reminder on this chat.', true, 'Omni · Booking · '+ch);
+      addLog('Booking created', ch+' · tomorrow 3pm');
+    }, 700);
+  };
+  document.getElementById('simHuman').onclick=function(){
+    addBubble('I need a custom quote for 4 units — can someone call me?', false, 'Client · '+ch);
+    setTimeout(function(){
+      addBubble('Connecting you to the team. Someone will take this conversation shortly.', true, 'Omni · Handoff · '+ch);
+      addLog('Human alerted', ch+' · custom quote');
+    }, 700);
+  };
+  addBubble('Assalamualaikum — is the Bahria plot still available?', false, 'Client · WhatsApp');
+  setTimeout(function(){
+    addBubble('Walaikum assalam — yes. Sharing details in this chat. Prefer Urdu or English?', true, 'Omni · language detect');
+    addLog('Language: Urdu detected', 'WhatsApp · replied in client language');
+  }, 500);
+})();
+</script>
 </body>
 </html>
