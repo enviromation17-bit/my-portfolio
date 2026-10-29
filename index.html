@@ -6,10 +6,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Renolt — Stop losing enquiries</title>
-<meta name="description" content="Lead System and Omni for service businesses. Capture every enquiry, reply fast, follow up until closed. WhatsApp 0307 4136536.">
+<meta name="description" content="We set up Lead System and Omni for service businesses. Every enquiry answered, scored, and sorted. WhatsApp 0307 4136536.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
 <canvas id="bgCanvas" aria-hidden="true"></canvas>
@@ -22,74 +24,116 @@
   <div class="wrap navin">
     <a href="/" class="brand">RENOLT<span>.</span></a>
     <nav class="links" id="navLinks">
+      <a href="#desk">The desk</a>
       <a href="#system">Products</a>
       <a href="agents.html">Agents</a>
-      <a href="#work">Work</a>
       <a href="https://enviromation17-bit.github.io/my-portfolio/demos/">Demos</a>
     </nav>
     <a href="#" class="navcta js-wa-open">WhatsApp</a>
     <button class="burger" id="burger" aria-label="Menu">☰</button>
   </div>
 </header>
+
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="chip"><span class="chip-dot"></span> Lead System · Omni</div>
+      <div class="chip"><span class="chip-dot"></span> We install the system</div>
       <h1>Stop losing<br><span class="accent">enquiries</span><br><span class="soft">to slow replies.</span></h1>
-      <p class="lead">Every WhatsApp, form, and call — captured, answered fast, followed up until closed. Multi-channel Omni when you need Facebook, Instagram, booking, and language.</p>
+      <p class="lead">We set up a full desk for your business — every WhatsApp, form and call answered, scored, and sorted. You only see what needs you.</p>
       <div class="actions">
         <a href="#" class="btn primary js-wa-open">WhatsApp 0307 4136536</a>
-        <a href="contact.html" class="btn ghost">Book a call</a>
+        <a href="#desk" class="btn ghost">See the desk</a>
       </div>
       <div class="trust">
         <span>Real estate</span>
         <span>Service operators</span>
-        <span>WhatsApp-first</span>
+        <span>Built for you · not DIY SaaS</span>
       </div>
     </div>
     <div class="hero-visual">
-      <div class="product-frame">
-        <div class="pf-top">
-          <span class="pf-title">Lead queue · live</span>
-          <span class="pf-live"><i></i> 3 open</span>
+      <div class="desk-frame glass">
+        <div class="desk-banner">
+          <p>This week your system saved <strong>11 hours</strong>. Right now <strong>3</strong> leads need you.</p>
         </div>
-        <div class="pf-row hot">
-          <div class="pf-avatar">A</div>
-          <div class="pf-meta"><strong>Plot enquiry · DHA</strong><span>WhatsApp · 12s ago</span></div>
-          <span class="pf-tag">New</span>
+        <div class="desk-pipe">
+          <div class="pipe-cell"><b>0</b><span>New</span></div>
+          <div class="pipe-cell active"><b>3</b><span>Waiting for you</span></div>
+          <div class="pipe-cell"><b>2</b><span>Contacted</span></div>
+          <div class="pipe-cell"><b>1</b><span>Booked</span></div>
         </div>
-        <div class="pf-row">
-          <div class="pf-avatar" style="background:linear-gradient(135deg,#d4a017,#e8c547);color:#0c0a04">B</div>
-          <div class="pf-meta"><strong>Site visit request</strong><span>Form · replied 2m</span></div>
-          <span class="pf-tag">Owned</span>
-        </div>
-        <div class="pf-row">
-          <div class="pf-avatar" style="background:linear-gradient(135deg,#34d399,#059669)">C</div>
-          <div class="pf-meta"><strong>Price follow-up</strong><span>Call logged · due today</span></div>
-          <span class="pf-tag warn">Follow up</span>
+        <div class="desk-lead hot">
+          <div class="dl-top">
+            <strong>Marcus Reed</strong>
+            <span class="dl-badges"><i class="need">Needs you</i><i class="hot">Hot 88</i></span>
+          </div>
+          <p class="dl-sum"><b>AI analysis:</b> Ready in 3 weeks, budget set, wants viewing this week. Urgency high.</p>
+          <ul class="dl-tl">
+            <li>Enquiry received on WhatsApp</li>
+            <li>Scored hot · reply drafted</li>
+            <li>Owner notified</li>
+          </ul>
         </div>
       </div>
-      <div class="float-pill a">First reply &lt; 60s</div>
-      <div class="float-pill b">Queue · not memory</div>
-      <div class="float-pill c">WhatsApp + forms + calls</div>
+      <div class="float-pill a">Hours saved · live</div>
+      <div class="float-pill b">Only what needs you</div>
+      <div class="float-pill c">We set this up</div>
     </div>
   </div>
 </section>
+
+<section class="desk-scrub" id="desk">
+  <div class="desk-scrub-pin">
+    <div class="wrap desk-scrub-inner">
+      <div class="desk-scrub-copy">
+        <p class="section-label">The desk</p>
+        <h2 class="section-title" id="scrubTitle">What if every enquiry was already answered?</h2>
+        <p class="section-sub" id="scrubSub">No chasing. No missed WhatsApps. No leads going cold while you were on a job.</p>
+        <ul class="scrub-steps" id="scrubSteps">
+          <li class="on" data-i="0"><span>01</span> The problem</li>
+          <li data-i="1"><span>02</span> Your Renolt desk</li>
+          <li data-i="2"><span>03</span> Only what needs you</li>
+          <li data-i="3"><span>04</span> We set it up</li>
+        </ul>
+      </div>
+      <div class="desk-scrub-stage glass">
+        <div class="desk-video-wrap">
+          <video id="deskVideo" muted playsinline preload="auto">
+            <source src="assets/desk-hook.mp4" type="video/mp4">
+          </video>
+          <div class="desk-video-fallback" aria-hidden="true">
+            <div class="desk-frame mini">
+              <div class="desk-banner"><p>System online · 11 hrs saved this week</p></div>
+              <div class="desk-pipe">
+                <div class="pipe-cell"><b>0</b><span>New</span></div>
+                <div class="pipe-cell active"><b>3</b><span>Waiting</span></div>
+                <div class="pipe-cell"><b>2</b><span>Contacted</span></div>
+                <div class="pipe-cell"><b>1</b><span>Booked</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="scrub-progress"><i id="scrubBar"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="stats-bar">
   <div class="wrap stats-grid">
     <div class="stat"><strong>2 systems</strong><span>Lead · Omni</span></div>
     <div class="stat"><strong>&lt; 60s</strong><span>first reply target</span></div>
-    <div class="stat"><strong>Real estate</strong><span>primary focus</span></div>
+    <div class="stat"><strong>Service</strong><span>we install · you run</span></div>
     <div class="stat"><strong>WhatsApp</strong><span>where clients are</span></div>
   </div>
 </section>
+
 <section class="section" id="compare">
   <div class="wrap">
     <p class="section-label">The shift</p>
     <h2 class="section-title">Before Renolt vs after.</h2>
     <p class="section-sub">Most teams lose deals to chaos — not to competition.</p>
     <div class="compare">
-      <div class="compare-col old">
+      <div class="compare-col old glass-soft">
         <h3>Without a system</h3>
         <ul>
           <li>WhatsApp threads scattered across phones</li>
@@ -99,7 +143,7 @@
           <li>Facebook / IG messages ignored</li>
         </ul>
       </div>
-      <div class="compare-col new">
+      <div class="compare-col new glass">
         <h3>With Lead System + Omni</h3>
         <ul>
           <li>One queue for every enquiry</li>
@@ -112,13 +156,14 @@
     </div>
   </div>
 </section>
+
 <section class="section" id="system">
   <div class="wrap">
     <p class="section-label">Products</p>
     <h2 class="section-title">Two systems. Equal weight.</h2>
-    <p class="section-sub">Lead System owns the enquiry queue. Omni runs multi-channel conversation. Use one or both.</p>
+    <p class="section-sub">Lead System owns the enquiry queue. Omni runs multi-channel conversation. We install one or both for your business.</p>
     <div class="product-pair">
-      <article class="product-card lead">
+      <article class="product-card lead glass">
         <p class="tag">Product 01</p>
         <h3>Lead System</h3>
         <p>Capture every enquiry, first reply, operator queue, follow-up until closed.</p>
@@ -128,8 +173,9 @@
           <li>Follow-up until closed</li>
           <li>Owner alerts &amp; status</li>
         </ul>
+        <a class="card-link" href="https://enviromation17-bit.github.io/my-portfolio/demos/lead-system.html" target="_blank" rel="noopener">Interactive demo →</a>
       </article>
-      <article class="product-card omni" id="omni">
+      <article class="product-card omni glass" id="omni">
         <p class="tag">Product 02</p>
         <h3>Omni</h3>
         <p>WhatsApp + Facebook + Instagram. FAQ, booking, language detect, human handoff.</p>
@@ -140,40 +186,43 @@
           <li>Reply in the client’s language</li>
           <li>Alert human when needed</li>
         </ul>
+        <a class="card-link" href="https://enviromation17-bit.github.io/my-portfolio/demos/omni.html" target="_blank" rel="noopener">Interactive demo →</a>
       </article>
     </div>
   </div>
 </section>
+
 <section class="section" id="how">
   <div class="wrap">
     <p class="section-label">How it works</p>
     <h2 class="section-title">Four steps. No CRM theatre.</h2>
     <div class="feature-grid">
-      <article class="feature-card"><span class="feature-num">01</span><h3>Audit</h3><p>Where messages arrive and stall — WhatsApp, forms, Facebook, Instagram.</p></article>
-      <article class="feature-card"><span class="feature-num">02</span><h3>Choose</h3><p>Lead System, Omni, or both — smallest install that fits.</p></article>
-      <article class="feature-card"><span class="feature-num">03</span><h3>Install</h3><p>Your team gets a clear path they will actually use.</p></article>
-      <article class="feature-card"><span class="feature-num">04</span><h3>Tighten</h3><p>Reply times and open leads reviewed with you.</p></article>
+      <article class="feature-card glass-soft"><span class="feature-num">01</span><h3>Audit</h3><p>Where messages arrive and stall — WhatsApp, forms, Facebook, Instagram.</p></article>
+      <article class="feature-card glass-soft"><span class="feature-num">02</span><h3>Choose</h3><p>Lead System, Omni, or both — smallest install that fits.</p></article>
+      <article class="feature-card glass-soft"><span class="feature-num">03</span><h3>Install</h3><p>We build and hand over the desk. Your team gets a path they will use.</p></article>
+      <article class="feature-card glass-soft"><span class="feature-num">04</span><h3>Tighten</h3><p>Reply times and open leads reviewed with you.</p></article>
     </div>
   </div>
 </section>
+
 <section class="section" id="work">
   <div class="wrap">
     <p class="section-label">Work</p>
     <h2 class="section-title">Sites and systems that convert.</h2>
     <div class="work-grid">
-      <article class="work-card featured">
+      <article class="work-card featured glass">
         <div class="work-meta"><span class="tag-sm">Real estate</span><span class="pill">Live</span></div>
         <h3>Brick &amp; Build Developers</h3>
         <p>Developer site with plot enquiry path and WhatsApp conversion.</p>
         <a class="work-link" href="https://bricksandbuiltdevelopers.com/" target="_blank" rel="noopener">View project →</a>
       </article>
-      <article class="work-card">
+      <article class="work-card glass">
         <div class="work-meta"><span class="tag-sm">Lead System</span><span class="pill">Demo</span></div>
         <h3>Lead System walkthrough</h3>
-        <p>Capture, reply, and follow-up together.</p>
-        <a class="work-link" href="https://enviromation17-bit.github.io/my-portfolio/demos/lead-system-video.html" target="_blank" rel="noopener">Watch demo →</a>
+        <p>Capture, reply, and follow-up — interactive.</p>
+        <a class="work-link" href="https://enviromation17-bit.github.io/my-portfolio/demos/lead-system.html" target="_blank" rel="noopener">Open demo →</a>
       </article>
-      <article class="work-card">
+      <article class="work-card glass">
         <div class="work-meta"><span class="tag-sm">Agents</span><span class="pill">Family</span></div>
         <h3>Renolt companions</h3>
         <p>Core, Omni, and modules — how we represent the systems.</p>
@@ -182,13 +231,14 @@
     </div>
   </div>
 </section>
+
 <section class="section">
   <div class="wrap">
-    <div class="cta-box">
+    <div class="cta-box glass">
       <div>
         <p class="section-label">Next step</p>
-        <h2 class="section-title" style="margin-bottom:8px">Tell us where enquiries get lost.</h2>
-        <p class="section-sub" style="margin:0">One WhatsApp message is enough.</p>
+        <h2 class="section-title" style="margin-bottom:8px">Want a desk like this?</h2>
+        <p class="section-sub" style="margin:0">We set it up for your business. One WhatsApp is enough.</p>
       </div>
       <div class="cta-actions">
         <a href="#" class="btn primary js-wa-open">WhatsApp 0307 4136536</a>
@@ -197,11 +247,12 @@
     </div>
   </div>
 </section>
+
 <footer class="footer">
   <div class="wrap foot">
     <div>
       <strong class="brand">RENOLT<span>.</span></strong>
-      <p style="margin-top:8px;max-width:280px;color:var(--muted);font-weight:300;font-size:.9rem">Lead System and Omni for real estate and service businesses.</p>
+      <p style="margin-top:8px;max-width:280px;color:var(--muted);font-weight:300;font-size:.9rem">Lead System and Omni — installed for real estate and service businesses.</p>
     </div>
     <div class="foot-links">
       <a href="/" class="social-link">Home</a>
@@ -214,6 +265,7 @@
   </div>
 </footer>
 </div>
+
 <div class="wa-widget" aria-label="WhatsApp">
   <span class="wa-widget-label">Chat · 0307 4136536</span>
   <button type="button" class="wa-widget-btn js-wa-open" aria-label="Open WhatsApp">
@@ -222,7 +274,7 @@
 </div>
 <div id="waModal" class="wa-modal" hidden>
   <div class="wa-modal-backdrop js-wa-close"></div>
-  <div class="wa-modal-panel" role="dialog">
+  <div class="wa-modal-panel glass" role="dialog">
     <div class="wa-modal-head"><div><h2>Chat on WhatsApp</h2><p>Name and number — then continue.</p></div><button type="button" class="wa-modal-x js-wa-close">&times;</button></div>
     <form id="waForm" class="wa-modal-form">
       <label for="wa-name">Name *</label><input id="wa-name" required placeholder="Your name">
@@ -247,21 +299,86 @@
   form.addEventListener('submit',e=>{e.preventDefault();const n=document.getElementById('wa-name').value.trim(),p=document.getElementById('wa-phone').value.trim(),i=(document.getElementById('wa-interest').value||'').trim();if(!n||!p)return;openWA(n,p,i);closeM()});
   document.getElementById('waSkip').onclick=()=>{openWA('','','');closeM()};
   const nav=document.getElementById('nav'),burger=document.getElementById('burger'),links=document.getElementById('navLinks');
-  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40),{passive:true});
   if(burger&&links)burger.addEventListener('click',()=>links.classList.toggle('open'));
   const bar=document.getElementById('scrollProgress');
-  window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;bar.style.width=(h>0?(window.scrollY/h)*100:0)+'%'});
+  window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;bar.style.width=(h>0?(window.scrollY/h)*100:0)+'%'},{passive:true});
 })();
 </script>
 <script>
 (function(){
-  var c=document.getElementById('bgCanvas');if(!c||!c.getContext)return;
-  var ctx=c.getContext('2d'),w,h,ps=[];
-  function resize(){w=c.width=innerWidth;h=c.height=innerHeight}
-  function init(){ps=[];var n=Math.min(40,Math.floor((w*h)/18000));for(var i=0;i<n;i++)ps.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5+.2,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2,a:Math.random()*.15+.04})}
-  function draw(){ctx.clearRect(0,0,w,h);for(var i=0;i<ps.length;i++){var p=ps[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(79,184,255,'+p.a+')';ctx.fill()}requestAnimationFrame(draw)}
-  resize();init();draw();addEventListener('resize',function(){resize();init()});
+  const canvas=document.getElementById('bgCanvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let w,h,t=0;
+  function resize(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight}
+  function draw(){
+    t+=0.004;
+    ctx.clearRect(0,0,w,h);
+    const g=ctx.createRadialGradient(w*0.7,h*0.2,0,w*0.7,h*0.2,Math.max(w,h)*0.55);
+    g.addColorStop(0,'rgba(212,160,23,0.06)');
+    g.addColorStop(1,'transparent');
+    ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+    const g2=ctx.createRadialGradient(w*0.15,h*0.75,0,w*0.15,h*0.75,Math.max(w,h)*0.4);
+    g2.addColorStop(0,'rgba(79,184,255,0.04)');
+    g2.addColorStop(1,'transparent');
+    ctx.fillStyle=g2;ctx.fillRect(0,0,w,h);
+    requestAnimationFrame(draw);
+  }
+  resize();draw();
+  window.addEventListener('resize',resize,{passive:true});
 })();
+</script>
+<script>
+window.addEventListener('load',function(){
+  if(typeof gsap==='undefined'||typeof ScrollTrigger==='undefined')return;
+  gsap.registerPlugin(ScrollTrigger);
+  const video=document.getElementById('deskVideo');
+  const title=document.getElementById('scrubTitle');
+  const sub=document.getElementById('scrubSub');
+  const steps=document.querySelectorAll('#scrubSteps li');
+  const scrubBar=document.getElementById('scrubBar');
+  const copy=[
+    {t:'What if every enquiry was already answered?',s:'No chasing. No missed WhatsApps. No leads going cold while you were on a job.'},
+    {t:'This is your Renolt desk.',s:'Every message lands here automatically. The system reads it and replies in seconds.'},
+    {t:'Only what actually needs you.',s:'Hot leads are marked. Follow-ups are queued. Viewings get booked without you typing a line.'},
+    {t:'We set it up for your business.',s:'Real estate and home-service teams use this. You focus on people ready to buy or book.'}
+  ];
+  function setStep(i){
+    steps.forEach((el,n)=>el.classList.toggle('on',n===i));
+    if(title)title.textContent=copy[i].t;
+    if(sub)sub.textContent=copy[i].s;
+  }
+  function bindScrub(){
+    const dur=video&&video.duration&&isFinite(video.duration)?video.duration:1;
+    gsap.timeline({
+      scrollTrigger:{
+        trigger:'.desk-scrub',
+        start:'top top',
+        end:'+=220%',
+        pin:'.desk-scrub-pin',
+        scrub:1.1,
+        anticipatePin:1,
+        onUpdate:self=>{
+          const p=self.progress;
+          if(scrubBar)scrubBar.style.width=(p*100)+'%';
+          if(video&&dur>0){try{video.currentTime=Math.min(dur*0.98,p*dur)}catch(e){}}
+          setStep(Math.min(3,Math.floor(p*4)));
+        }
+      }
+    });
+  }
+  if(video){
+    video.addEventListener('loadedmetadata',bindScrub,{once:true});
+    if(video.readyState>=1)bindScrub();
+    setTimeout(bindScrub,800);
+  } else {
+    bindScrub();
+  }
+  gsap.utils.toArray('.glass, .glass-soft, .product-card, .feature-card, .work-card').forEach(el=>{
+    gsap.from(el,{scrollTrigger:{trigger:el,start:'top 88%'},y:28,opacity:0,duration:0.7,ease:'power2.out'});
+  });
+});
 </script>
 </body>
 </html>
