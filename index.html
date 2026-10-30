@@ -43,11 +43,7 @@
         <a href="#" class="btn primary js-wa-open">WhatsApp 0307 4136536</a>
         <a href="#desk" class="btn ghost">See the desk</a>
       </div>
-      <div class="trust">
-        <span>Real estate</span>
-        <span>Service operators</span>
-        <span>Built for you · not DIY SaaS</span>
-      </div>
+      <div class="trust"><span>Real estate</span><span>Service operators</span><span>Built for you · not DIY SaaS</span></div>
     </div>
     <div class="hero-visual">
       <div class="desk-frame glass">
@@ -70,34 +66,42 @@
     </div>
   </div>
 </section>
-<section class="desk-stage" id="desk">
-  <div class="wrap desk-stage-inner">
-    <div class="desk-copy">
-      <p class="section-label kinetic-label">The desk</p>
-      <h2 class="section-title kinetic-title" id="deskTitle">What if every enquiry was already answered?</h2>
-      <p class="section-sub kinetic-sub" id="deskSub">No chasing. No missed WhatsApps. No leads going cold while you were on a job.</p>
-      <ul class="desk-steps" id="deskSteps">
-        <li class="on" data-i="0"><span>01</span><div><b>The problem</b><small>Leads go cold while you’re on a job</small></div></li>
-        <li data-i="1"><span>02</span><div><b>Your Renolt desk</b><small>Every message lands and is answered</small></div></li>
-        <li data-i="2"><span>03</span><div><b>Only what needs you</b><small>Hot leads flagged · follow-ups queued</small></div></li>
-        <li data-i="3"><span>04</span><div><b>We set it up</b><small>Installed for your business — not DIY SaaS</small></div></li>
-      </ul>
-    </div>
-    <div class="desk-stage-visual glass">
-      <div class="desk-chrome">
-        <span class="dc-dots"><i></i><i></i><i></i></span>
-        <span class="dc-url">yourdesk · live</span>
-        <span class="dc-live"><i></i> Online</span>
+
+<section class="desk-scrub" id="desk">
+  <div class="desk-scrub-track">
+    <div class="desk-scrub-pin">
+      <div class="wrap desk-scrub-inner">
+        <div class="desk-scrub-copy">
+          <p class="section-label">The desk</p>
+          <h2 class="section-title" id="scrubTitle">What if every enquiry was already answered?</h2>
+          <p class="section-sub" id="scrubSub">No chasing. No missed WhatsApps. No leads going cold while you were on a job.</p>
+          <ul class="scrub-steps" id="scrubSteps">
+            <li class="on" data-i="0"><span>01</span><div><b>The problem</b><small>Leads go cold while you’re busy</small></div></li>
+            <li data-i="1"><span>02</span><div><b>Your Renolt desk</b><small>Messages land and get answered</small></div></li>
+            <li data-i="2"><span>03</span><div><b>Only what needs you</b><small>Hot leads flagged · follow-ups queued</small></div></li>
+            <li data-i="3"><span>04</span><div><b>We set it up</b><small>Installed for your business</small></div></li>
+          </ul>
+          <div class="scrub-hint">Scroll to play the story →</div>
+        </div>
+        <div class="desk-scrub-stage glass">
+          <div class="desk-chrome">
+            <span class="dc-dots"><i></i><i></i><i></i></span>
+            <span class="dc-url">yourdesk · Oakline Properties</span>
+            <span class="dc-live"><i></i> Scrub</span>
+          </div>
+          <div class="desk-video-wrap">
+            <video id="deskVideo" muted playsinline preload="auto">
+              <source src="https://litter.catbox.moe/yn8xws.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="scrub-progress"><i id="scrubBar"></i></div>
+          <p class="scrub-caption" id="scrubCaption">Scroll · the desk story plays with you</p>
+        </div>
       </div>
-      <div class="desk-video-wrap">
-        <video id="deskVideo" muted playsinline loop preload="auto" autoplay>
-          <source src="https://litter.catbox.moe/xi4wbj.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="desk-story-bar"><i id="deskBar"></i></div>
     </div>
   </div>
 </section>
+
 <section class="stats-bar">
   <div class="wrap stats-grid">
     <div class="stat"><strong>2 systems</strong><span>Lead · Omni</span></div>
@@ -170,6 +174,71 @@
 <div id="waModal" class="wa-modal" hidden><div class="wa-modal-backdrop js-wa-close"></div><div class="wa-modal-panel glass" role="dialog"><div class="wa-modal-head"><div><h2>Chat on WhatsApp</h2><p>Name and number — then continue.</p></div><button type="button" class="wa-modal-x js-wa-close">&times;</button></div><form id="waForm" class="wa-modal-form"><label for="wa-name">Name *</label><input id="wa-name" required placeholder="Your name"><label for="wa-phone">Phone / WhatsApp *</label><input id="wa-phone" type="tel" required placeholder="03XX XXXXXXX"><label for="wa-interest">What do you need?</label><select id="wa-interest"><option value="">Select…</option><option>Lead System</option><option>Omni</option><option>Lead System + Omni</option><option>Website</option><option>Custom</option></select><button type="submit" class="wa-modal-submit">Continue to WhatsApp</button><button type="button" class="wa-modal-skip" id="waSkip">Skip — open WhatsApp only</button></form><p class="wa-modal-foot">Business WhatsApp · 0307 4136536</p></div></div>
 <script>(function(){const WA='923074136536';const modal=document.getElementById('waModal'),form=document.getElementById('waForm');function openM(e){if(e)e.preventDefault();modal.hidden=false;document.body.style.overflow='hidden'}function closeM(){modal.hidden=true;document.body.style.overflow=''}function openWA(n,p,i){let m='Hello Renolt, I want to discuss Lead System or Omni.';if(n||p||i){m='Hello Renolt.';if(n)m+=' My name is '+n+'.';if(p)m+=' Phone: '+p+'.';if(i)m+=' I am interested in: '+i+'.';}window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(m),'_blank','noopener')}document.querySelectorAll('.js-wa-open').forEach(el=>el.addEventListener('click',openM));modal.querySelectorAll('.js-wa-close').forEach(el=>el.addEventListener('click',closeM));form.addEventListener('submit',e=>{e.preventDefault();const n=document.getElementById('wa-name').value.trim(),p=document.getElementById('wa-phone').value.trim(),i=(document.getElementById('wa-interest').value||'').trim();if(!n||!p)return;openWA(n,p,i);closeM()});document.getElementById('waSkip').onclick=()=>{openWA('','','');closeM()};const nav=document.getElementById('nav'),burger=document.getElementById('burger'),links=document.getElementById('navLinks');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40),{passive:true});if(burger&&links)burger.addEventListener('click',()=>links.classList.toggle('open'));const bar=document.getElementById('scrollProgress');window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;bar.style.width=(h>0?(window.scrollY/h)*100:0)+'%'},{passive:true});})();</script>
 <script>(function(){const canvas=document.getElementById('bgCanvas');if(!canvas)return;const ctx=canvas.getContext('2d');let w,h;function resize(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight}function draw(){ctx.clearRect(0,0,w,h);const g=ctx.createRadialGradient(w*0.7,h*0.2,0,w*0.7,h*0.2,Math.max(w,h)*0.55);g.addColorStop(0,'rgba(212,160,23,0.06)');g.addColorStop(1,'transparent');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);const g2=ctx.createRadialGradient(w*0.15,h*0.75,0,w*0.15,h*0.75,Math.max(w,h)*0.4);g2.addColorStop(0,'rgba(79,184,255,0.04)');g2.addColorStop(1,'transparent');ctx.fillStyle=g2;ctx.fillRect(0,0,w,h);requestAnimationFrame(draw)}resize();draw();window.addEventListener('resize',resize,{passive:true});})();</script>
-<script>window.addEventListener('load',function(){if(typeof gsap==='undefined'||typeof ScrollTrigger==='undefined')return;gsap.registerPlugin(ScrollTrigger);const easeOut='expo.out';const video=document.getElementById('deskVideo');const title=document.getElementById('deskTitle');const sub=document.getElementById('deskSub');const steps=document.querySelectorAll('#deskSteps li');const bar=document.getElementById('deskBar');const copy=[{t:'What if every enquiry was already answered?',s:'No chasing. No missed WhatsApps. No leads going cold while you were on a job.'},{t:'This is your Renolt desk.',s:'Every message lands here automatically. The system reads it and replies in seconds.'},{t:'Only what actually needs you.',s:'Hot leads are marked. Follow-ups are queued. Viewings get booked without you typing a line.'},{t:'We set it up for your business.',s:'Real estate and home-service teams use this. You focus on people ready to buy or book.'}];let last=-1;function setStep(i){if(i===last)return;last=i;steps.forEach((el,n)=>el.classList.toggle('on',n===i));if(title){gsap.to(title,{opacity:0,y:8,duration:0.15,onComplete:()=>{title.textContent=copy[i].t;gsap.to(title,{opacity:1,y:0,duration:0.35,ease:easeOut});}});}if(sub){gsap.to(sub,{opacity:0,duration:0.12,onComplete:()=>{sub.textContent=copy[i].s;gsap.to(sub,{opacity:1,duration:0.3,ease:easeOut});}});}if(bar)gsap.to(bar,{width:((i+1)/4*100)+'%',duration:0.45,ease:easeOut});}ScrollTrigger.create({trigger:'.desk-stage',start:'top 55%',end:'bottom 45%',onUpdate:self=>{const i=Math.min(3,Math.floor(self.progress*4));setStep(i);}});gsap.from('.desk-copy .kinetic-label',{scrollTrigger:{trigger:'.desk-stage',start:'top 75%'},y:20,opacity:0,duration:0.5,ease:easeOut});gsap.from('.desk-copy .kinetic-title',{scrollTrigger:{trigger:'.desk-stage',start:'top 75%'},y:40,opacity:0,duration:0.7,delay:0.05,ease:easeOut});gsap.from('.desk-copy .kinetic-sub',{scrollTrigger:{trigger:'.desk-stage',start:'top 75%'},y:24,opacity:0,duration:0.55,delay:0.12,ease:easeOut});gsap.from('#deskSteps li',{scrollTrigger:{trigger:'.desk-stage',start:'top 70%'},x:-28,opacity:0,duration:0.5,stagger:0.08,ease:easeOut});gsap.from('.desk-stage-visual',{scrollTrigger:{trigger:'.desk-stage',start:'top 75%'},y:36,opacity:0,scale:0.98,duration:0.75,delay:0.1,ease:easeOut});if(video){const tryPlay=()=>{video.muted=true;video.play().catch(()=>{});};tryPlay();ScrollTrigger.create({trigger:'.desk-stage',start:'top 80%',end:'bottom top',onEnter:tryPlay,onEnterBack:tryPlay});}gsap.utils.toArray('.glass, .glass-soft, .product-card, .feature-card, .work-card, .compare-col').forEach(el=>{gsap.from(el,{scrollTrigger:{trigger:el,start:'top 90%'},y:32,opacity:0,duration:0.65,ease:easeOut});});gsap.from('.hero .chip',{y:16,opacity:0,duration:0.5,ease:easeOut});gsap.from('.hero h1',{y:36,opacity:0,duration:0.75,delay:0.06,ease:easeOut});gsap.from('.hero .lead',{y:20,opacity:0,duration:0.55,delay:0.14,ease:easeOut});gsap.from('.hero .actions',{y:16,opacity:0,duration:0.5,delay:0.2,ease:easeOut});gsap.from('.hero-visual',{y:40,opacity:0,duration:0.8,delay:0.12,ease:easeOut});});</script>
+<script>
+window.addEventListener('load',function(){
+  if(typeof gsap==='undefined'||typeof ScrollTrigger==='undefined')return;
+  gsap.registerPlugin(ScrollTrigger);
+  const easeOut='expo.out';
+  const video=document.getElementById('deskVideo');
+  const title=document.getElementById('scrubTitle');
+  const sub=document.getElementById('scrubSub');
+  const caption=document.getElementById('scrubCaption');
+  const steps=document.querySelectorAll('#scrubSteps li');
+  const bar=document.getElementById('scrubBar');
+  const copy=[
+    {t:'What if every enquiry was already answered?',s:'No chasing. No missed WhatsApps. No leads going cold while you were on a job.',c:'01 · The problem'},
+    {t:'This is your Renolt desk.',s:'Every message lands here automatically. The system reads it and replies in seconds.',c:'02 · Your desk — live'},
+    {t:'Only what actually needs you.',s:'Hot leads are marked. Follow-ups are queued. Viewings get booked without you typing a line.',c:'03 · Action queue'},
+    {t:'We set it up for your business.',s:'Real estate and home-service teams use this. You focus on people ready to buy or book.',c:'04 · Installed for you'}
+  ];
+  let lastStep=-1;
+  function setStep(i){
+    if(i===lastStep)return;lastStep=i;
+    steps.forEach((el,n)=>el.classList.toggle('on',n===i));
+    if(title){gsap.to(title,{opacity:0,y:10,duration:0.12,onComplete:()=>{title.textContent=copy[i].t;gsap.to(title,{opacity:1,y:0,duration:0.35,ease:easeOut});}})}
+    if(sub){gsap.to(sub,{opacity:0,duration:0.1,onComplete:()=>{sub.textContent=copy[i].s;gsap.to(sub,{opacity:1,duration:0.3,ease:easeOut});}})}
+    if(caption)caption.textContent=copy[i].c;
+  }
+  function bindScrub(){
+    const dur=(video&&video.duration&&isFinite(video.duration)&&video.duration>0)?video.duration:41;
+    ScrollTrigger.create({
+      trigger:'.desk-scrub-track',
+      start:'top top',
+      end:'+=180%',
+      pin:'.desk-scrub-pin',
+      scrub:0.65,
+      anticipatePin:1,
+      invalidateOnRefresh:true,
+      onUpdate:function(self){
+        var p=self.progress;
+        if(bar)bar.style.width=(p*100)+'%';
+        if(video&&dur>0){try{var t=Math.min(dur*0.98,p*dur);if(Math.abs(video.currentTime-t)>0.04)video.currentTime=t}catch(e){}}
+        setStep(Math.min(3,Math.floor(p*4)));
+      }
+    });
+  }
+  if(video){
+    video.addEventListener('loadedmetadata',bindScrub,{once:true});
+    if(video.readyState>=1)bindScrub();
+    setTimeout(bindScrub,600);
+  } else bindScrub();
+  steps.forEach(function(li){
+    li.style.cursor='pointer';
+    li.addEventListener('click',function(){
+      var i=Number(li.getAttribute('data-i')||0);
+      var st=ScrollTrigger.getAll().find(function(s){return s.trigger&&s.trigger.classList&&s.trigger.classList.contains('desk-scrub-track')});
+      if(st){var target=st.start+(st.end-st.start)*((i+0.5)/4);window.scrollTo({top:target,behavior:'smooth'})}
+    });
+  });
+  gsap.from('.hero .chip',{y:16,opacity:0,duration:0.5,ease:easeOut});
+  gsap.from('.hero h1',{y:36,opacity:0,duration:0.75,delay:0.06,ease:easeOut});
+  gsap.from('.hero .lead',{y:20,opacity:0,duration:0.55,delay:0.14,ease:easeOut});
+  gsap.from('.hero .actions',{y:16,opacity:0,duration:0.5,delay:0.2,ease:easeOut});
+  gsap.from('.hero-visual',{y:40,opacity:0,duration:0.8,delay:0.12,ease:easeOut});
+  gsap.utils.toArray('.glass, .glass-soft, .product-card, .feature-card, .work-card, .compare-col').forEach(function(el){
+    gsap.from(el,{scrollTrigger:{trigger:el,start:'top 90%'},y:28,opacity:0,duration:0.6,ease:easeOut});
+  });
+});
+</script>
 </body>
 </html>
