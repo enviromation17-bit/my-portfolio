@@ -1,244 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<style>html,body{background:#05060a!important;color:#eef0f4;margin:0}html{color-scheme:dark}</style>
-<script>!function(){function d(){document.documentElement.style.background="#05060a";if(document.body)document.body.style.background="#05060a"}d();window.addEventListener("pageshow",function(e){if(e.persisted)d()});document.addEventListener("DOMContentLoaded",d)}()</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Renolt — Stop losing enquiries</title>
-<meta name="description" content="We set up Lead System and Omni for service businesses. Every enquiry answered, scored, and sorted. WhatsApp 0307 4136536.">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Renolt Flow — We install the flow. You run the business.</title>
+<meta name="description" content="Renolt Flow — AI agents qualify, book, follow-up and report. Black + Parrot Premium.">
+<style>html,body{background:#050706!important;color:#FAFAF8;margin:0}html{color-scheme:dark}</style>
+<script>!function(){function d(){document.documentElement.style.background="#050706";if(document.body)document.body.style.background="#050706"}d();window.addEventListener("pageshow",function(e){if(e.persisted)d()})}()</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
-<canvas id="bgCanvas" aria-hidden="true"></canvas>
-<div class="orb orb-1" aria-hidden="true"></div>
-<div class="orb orb-2" aria-hidden="true"></div>
-<div class="vignette" aria-hidden="true"></div>
-<div class="scroll-progress" id="scrollProgress"></div>
-<div class="content">
-<header class="nav" id="nav">
-  <div class="wrap navin">
-    <a href="/" class="brand">RENOLT<span>.</span></a>
-    <nav class="links" id="navLinks">
-      <a href="#desk">The desk</a>
-      <a href="#system">Products</a>
-      <a href="agents.html">Agents</a>
-      <a href="https://enviromation17-bit.github.io/my-portfolio/demos/">Demos</a>
+<div class="orbs" aria-hidden="true">
+  <div class="orb o1" id="o1"></div>
+  <div class="orb o2" id="o2"></div>
+  <div class="orb o3" id="o3"></div>
+</div>
+
+<header class="nav-wrap" id="navWrap">
+  <div class="nav" id="nav">
+    <a href="/" class="brand">
+      <span class="brand-mark">R</span>
+      <span class="brand-name">renolt.flow</span>
+    </a>
+    <nav class="links">
+      <a href="#flows">Services</a>
+      <a href="#flows">How it works</a>
+      <a href="#cta">Pricing</a>
+      <a href="https://enviromation17-bit.github.io/my-portfolio/demos/">Work</a>
     </nav>
-    <a href="#" class="navcta js-wa-open">WhatsApp</a>
-    <button class="burger" id="burger" aria-label="Menu">☰</button>
+    <a href="https://wa.me/923074136536" class="nav-cta mag" target="_blank" rel="noopener">WhatsApp →</a>
   </div>
 </header>
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="chip"><span class="chip-dot"></span> We install the system</div>
-      <h1>Stop losing<br><span class="accent">enquiries</span><br><span class="soft">to slow replies.</span></h1>
-      <p class="lead">We set up a full desk for your business — every WhatsApp, form and call answered, scored, and sorted. You only see what needs you.</p>
-      <div class="actions">
-        <a href="#" class="btn primary js-wa-open">WhatsApp 0307 4136536</a>
-        <a href="#desk" class="btn ghost">See the desk</a>
-      </div>
-      <div class="trust"><span>Real estate</span><span>Service operators</span><span>Built for you · not DIY SaaS</span></div>
-    </div>
-    <div class="hero-visual">
-      <div class="desk-frame glass">
-        <div class="desk-banner"><p>This week your system saved <strong>11 hours</strong>. Right now <strong>3</strong> leads need you.</p></div>
-        <div class="desk-pipe">
-          <div class="pipe-cell"><b>0</b><span>New</span></div>
-          <div class="pipe-cell active"><b>3</b><span>Waiting for you</span></div>
-          <div class="pipe-cell"><b>2</b><span>Contacted</span></div>
-          <div class="pipe-cell"><b>1</b><span>Booked</span></div>
-        </div>
-        <div class="desk-lead hot">
-          <div class="dl-top"><strong>Marcus Reed</strong><span class="dl-badges"><i class="need">Needs you</i><i class="hot">Hot 88</i></span></div>
-          <p class="dl-sum"><b>AI analysis:</b> Ready in 3 weeks, budget set, wants viewing this week. Urgency high.</p>
-          <ul class="dl-tl"><li>Enquiry received on WhatsApp</li><li>Scored hot · reply drafted</li><li>Owner notified</li></ul>
-        </div>
-      </div>
-      <div class="float-pill a">Hours saved · live</div>
-      <div class="float-pill b">Only what needs you</div>
-      <div class="float-pill c">We set this up</div>
-    </div>
-  </div>
-</section>
 
-<section class="desk-scrub" id="desk">
-  <div class="desk-scrub-track">
-    <div class="desk-scrub-pin">
-      <div class="wrap desk-scrub-inner">
-        <div class="desk-scrub-copy">
-          <p class="section-label">The desk</p>
-          <h2 class="section-title" id="scrubTitle">What if every enquiry was already answered?</h2>
-          <p class="section-sub" id="scrubSub">No chasing. No missed WhatsApps. No leads going cold while you were on a job.</p>
-          <ul class="scrub-steps" id="scrubSteps">
-            <li class="on" data-i="0"><span>01</span><div><b>The problem</b><small>Leads go cold while you’re busy</small></div></li>
-            <li data-i="1"><span>02</span><div><b>Your Renolt desk</b><small>Messages land and get answered</small></div></li>
-            <li data-i="2"><span>03</span><div><b>Only what needs you</b><small>Hot leads flagged · follow-ups queued</small></div></li>
-            <li data-i="3"><span>04</span><div><b>We set it up</b><small>Installed for your business</small></div></li>
-          </ul>
-          <div class="scrub-hint">Scroll to play the story →</div>
+<main>
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="chip"><i></i> Black + Parrot Premium</div>
+        <h1 class="display stagger" data-stagger>We install the flow.</h1>
+        <h1 class="display soft stagger" data-stagger data-delay="0.18">You run the business.</h1>
+        <p class="lead blur-in">Renolt Flow is the operating system for agencies that close. AI agents qualify, book, follow-up and report — while you stay in the conversation that matters.</p>
+        <div class="actions">
+          <a href="https://wa.me/923074136536" class="btn-parrot mag" target="_blank" rel="noopener">Start with Parrot</a>
+          <a href="https://enviromation17-bit.github.io/my-portfolio/demos/" class="btn-ghost">See flows in action</a>
         </div>
-        <div class="desk-scrub-stage glass">
-          <div class="desk-chrome">
-            <span class="dc-dots"><i></i><i></i><i></i></span>
-            <span class="dc-url">yourdesk · Oakline Properties</span>
-            <span class="dc-live"><i></i> Scrub</span>
+        <div class="stats">
+          <div><span class="k">FLOWS</span><span class="v">6 automated</span></div>
+          <div><span class="k">SETUP</span><span class="v">48h install</span></div>
+          <div><span class="k">STACK</span><span class="v">GSAP + glass</span></div>
+        </div>
+      </div>
+
+      <div class="hero-card-col">
+        <div class="glass agent-card lime-glow">
+          <div class="agent-top">
+            <span class="label">Your Agent</span>
+            <span class="dot"></span>
           </div>
-          <div class="desk-video-wrap">
-            <video id="deskVideo" muted playsinline preload="auto">
-              <source src="https://litter.catbox.moe/yn8xws.mp4" type="video/mp4">
-            </video>
+          <div class="agent-row">
+            <div class="avatar-r" id="avatarR">
+              <div class="r-body"></div>
+              <div class="r-eye l"></div>
+              <div class="r-eye r"></div>
+              <div class="r-mouth"></div>
+              <div class="r-dot"></div>
+            </div>
+            <div>
+              <div class="agent-name">R — Curious</div>
+              <div class="agent-meta">Fold 42% 58% · Float 2.2px</div>
+            </div>
           </div>
-          <div class="scrub-progress"><i id="scrubBar"></i></div>
-          <p class="scrub-caption" id="scrubCaption">Scroll · the desk story plays with you</p>
+          <div class="flow-pills">
+            <div class="pill"><span>Lead Qualify</span><em>active</em></div>
+            <div class="pill"><span>Book &amp; Confirm</span><em>active</em></div>
+            <div class="pill"><span>Nurture Loop</span><em>active</em></div>
+          </div>
+        </div>
+        <div class="glass note-card">
+          <div class="note-s">Install once. Compound forever.</div>
+          <div class="note-t">Black base #050706 — Parrot #D4FF32</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="stats-bar">
-  <div class="wrap stats-grid">
-    <div class="stat"><strong>2 systems</strong><span>Lead · Omni</span></div>
-    <div class="stat"><strong>&lt; 60s</strong><span>first reply target</span></div>
-    <div class="stat"><strong>Service</strong><span>we install · you run</span></div>
-    <div class="stat"><strong>WhatsApp</strong><span>where clients are</span></div>
-  </div>
-</section>
-<section class="section" id="compare">
-  <div class="wrap">
-    <p class="section-label">The shift</p>
-    <h2 class="section-title">Before Renolt vs after.</h2>
-    <p class="section-sub">Most teams lose deals to chaos — not to competition.</p>
-    <div class="compare">
-      <div class="compare-col old glass-soft"><h3>Without a system</h3><ul><li>WhatsApp threads scattered across phones</li><li>First reply hours later — or never</li><li>Follow-up depends on memory</li><li>No single place for every lead</li><li>Facebook / IG messages ignored</li></ul></div>
-      <div class="compare-col new glass"><h3>With Lead System + Omni</h3><ul><li>One queue for every enquiry</li><li>Instant first reply, clear ownership</li><li>Follow-up until closed</li><li>WhatsApp + forms + calls logged</li><li>Omni: FB, IG, FAQ, booking, language</li></ul></div>
+  <section class="flows" id="flows">
+    <div class="flows-head">
+      <div class="label-parrot">Flows</div>
+      <h2 class="display-sm">Six systems. One install.</h2>
     </div>
-  </div>
-</section>
-<section class="section" id="system">
-  <div class="wrap">
-    <p class="section-label">Products</p>
-    <h2 class="section-title">Two systems. Equal weight.</h2>
-    <p class="section-sub">Lead System owns the enquiry queue. Omni runs multi-channel conversation. We install one or both for your business.</p>
-    <div class="product-pair">
-      <article class="product-card lead glass"><p class="tag">Product 01</p><h3>Lead System</h3><p>Capture every enquiry, first reply, operator queue, follow-up until closed.</p><ul><li>WhatsApp, forms, phone intake</li><li>Fast first reply + ownership</li><li>Follow-up until closed</li><li>Owner alerts &amp; status</li></ul><a class="card-link" href="https://enviromation17-bit.github.io/my-portfolio/demos/lead-system.html" target="_blank" rel="noopener">Interactive demo →</a></article>
-      <article class="product-card omni glass" id="omni"><p class="tag">Product 02</p><h3>Omni</h3><p>WhatsApp + Facebook + Instagram. FAQ, booking, language detect, human handoff.</p><ul><li>Three channels, one layer</li><li>Booking from the thread</li><li>Business FAQ answers</li><li>Reply in the client’s language</li><li>Alert human when needed</li></ul><a class="card-link" href="https://enviromation17-bit.github.io/my-portfolio/demos/omni.html" target="_blank" rel="noopener">Interactive demo →</a></article>
+    <div class="flow-grid" id="flowGrid">
+      <article class="glass flow-card lime-glow"><div class="fid">flow_01</div><h3>Lead Qualify</h3><p>Inbound → scored → routed. No human before intent.</p></article>
+      <article class="glass flow-card lime-glow"><div class="fid">flow_02</div><h3>Book &amp; Confirm</h3><p>Calendar sync, SMS confirm, no-show armor.</p></article>
+      <article class="glass flow-card lime-glow"><div class="fid">flow_03</div><h3>Nurture Loop</h3><p>7-touch follow-up across SMS + email, auto-stop on reply.</p></article>
+      <article class="glass flow-card lime-glow"><div class="fid">flow_04</div><h3>Review Harvest</h3><p>Trigger → collect → syndicate reviews to GMB.</p></article>
+      <article class="glass flow-card lime-glow"><div class="fid">flow_05</div><h3>Churn Shield</h3><p>At-risk detection + save sequence with offer logic.</p></article>
+      <article class="glass flow-card lime-glow"><div class="fid">flow_06</div><h3>Report Pulse</h3><p>Daily Loom-style report: what R did while you slept.</p></article>
     </div>
-  </div>
-</section>
-<section class="section" id="how">
-  <div class="wrap">
-    <p class="section-label">How it works</p>
-    <h2 class="section-title">Four steps. No CRM theatre.</h2>
-    <div class="feature-grid">
-      <article class="feature-card glass-soft"><span class="feature-num">01</span><h3>Audit</h3><p>Where messages arrive and stall.</p></article>
-      <article class="feature-card glass-soft"><span class="feature-num">02</span><h3>Choose</h3><p>Lead System, Omni, or both.</p></article>
-      <article class="feature-card glass-soft"><span class="feature-num">03</span><h3>Install</h3><p>We build and hand over the desk.</p></article>
-      <article class="feature-card glass-soft"><span class="feature-num">04</span><h3>Tighten</h3><p>Reply times reviewed with you.</p></article>
+  </section>
+
+  <section class="cta-sec" id="cta">
+    <div class="glass cta-box lime-glow">
+      <div class="label-parrot">Next step</div>
+      <h2 class="display-sm">Want the flow installed?</h2>
+      <p>We set it up for your business. One message is enough.</p>
+      <div class="actions center">
+        <a href="https://wa.me/923074136536" class="btn-parrot mag" target="_blank" rel="noopener">WhatsApp 0307 4136536</a>
+        <a href="mailto:hellorenolt@gmail.com" class="btn-ghost">Email Renolt</a>
+      </div>
     </div>
-  </div>
-</section>
-<section class="section" id="work">
-  <div class="wrap">
-    <p class="section-label">Work</p>
-    <h2 class="section-title">Sites and systems that convert.</h2>
-    <div class="work-grid">
-      <article class="work-card featured glass"><div class="work-meta"><span class="tag-sm">Real estate</span><span class="pill">Live</span></div><h3>Brick &amp; Build Developers</h3><p>Developer site with plot enquiry path and WhatsApp conversion.</p><a class="work-link" href="https://bricksandbuiltdevelopers.com/" target="_blank" rel="noopener">View project →</a></article>
-      <article class="work-card glass"><div class="work-meta"><span class="tag-sm">Lead System</span><span class="pill">Demo</span></div><h3>Lead System walkthrough</h3><p>Capture, reply, and follow-up — interactive.</p><a class="work-link" href="https://enviromation17-bit.github.io/my-portfolio/demos/lead-system.html" target="_blank" rel="noopener">Open demo →</a></article>
-      <article class="work-card glass"><div class="work-meta"><span class="tag-sm">Agents</span><span class="pill">Family</span></div><h3>Renolt companions</h3><p>Core, Omni, and modules.</p><a class="work-link" href="agents.html">Meet the team →</a></article>
-    </div>
-  </div>
-</section>
-<section class="section">
-  <div class="wrap">
-    <div class="cta-box glass">
-      <div><p class="section-label">Next step</p><h2 class="section-title" style="margin-bottom:8px">Want a desk like this?</h2><p class="section-sub" style="margin:0">We set it up for your business. One WhatsApp is enough.</p></div>
-      <div class="cta-actions"><a href="#" class="btn primary js-wa-open">WhatsApp 0307 4136536</a><a href="contact.html" class="btn ghost">Contact form</a></div>
-    </div>
-  </div>
-</section>
-<footer class="footer">
-  <div class="wrap foot">
-    <div><strong class="brand">RENOLT<span>.</span></strong><p style="margin-top:8px;max-width:280px;color:var(--muted);font-weight:300;font-size:.9rem">Lead System and Omni — installed for real estate and service businesses.</p></div>
-    <div class="foot-links"><a href="/" class="social-link">Home</a><a href="agents.html" class="social-link">Agents</a><a href="https://enviromation17-bit.github.io/my-portfolio/demos/" class="social-link">Demos</a><a href="https://wa.me/923074136536" class="social-link" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:hellorenolt@gmail.com" class="social-link">Email</a><a href="contact.html" class="social-link">Contact</a></div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="brand-name">renolt.flow</div>
+  <div class="foot-links">
+    <a href="https://wa.me/923074136536">WhatsApp</a>
+    <a href="mailto:hellorenolt@gmail.com">Email</a>
+    <a href="https://enviromation17-bit.github.io/my-portfolio/demos/">Demos</a>
   </div>
 </footer>
-</div>
-<div class="wa-widget" aria-label="WhatsApp"><span class="wa-widget-label">Chat · 0307 4136536</span><button type="button" class="wa-widget-btn js-wa-open" aria-label="Open WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></button></div>
-<div id="waModal" class="wa-modal" hidden><div class="wa-modal-backdrop js-wa-close"></div><div class="wa-modal-panel glass" role="dialog"><div class="wa-modal-head"><div><h2>Chat on WhatsApp</h2><p>Name and number — then continue.</p></div><button type="button" class="wa-modal-x js-wa-close">&times;</button></div><form id="waForm" class="wa-modal-form"><label for="wa-name">Name *</label><input id="wa-name" required placeholder="Your name"><label for="wa-phone">Phone / WhatsApp *</label><input id="wa-phone" type="tel" required placeholder="03XX XXXXXXX"><label for="wa-interest">What do you need?</label><select id="wa-interest"><option value="">Select…</option><option>Lead System</option><option>Omni</option><option>Lead System + Omni</option><option>Website</option><option>Custom</option></select><button type="submit" class="wa-modal-submit">Continue to WhatsApp</button><button type="button" class="wa-modal-skip" id="waSkip">Skip — open WhatsApp only</button></form><p class="wa-modal-foot">Business WhatsApp · 0307 4136536</p></div></div>
-<script>(function(){const WA='923074136536';const modal=document.getElementById('waModal'),form=document.getElementById('waForm');function openM(e){if(e)e.preventDefault();modal.hidden=false;document.body.style.overflow='hidden'}function closeM(){modal.hidden=true;document.body.style.overflow=''}function openWA(n,p,i){let m='Hello Renolt, I want to discuss Lead System or Omni.';if(n||p||i){m='Hello Renolt.';if(n)m+=' My name is '+n+'.';if(p)m+=' Phone: '+p+'.';if(i)m+=' I am interested in: '+i+'.';}window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(m),'_blank','noopener')}document.querySelectorAll('.js-wa-open').forEach(el=>el.addEventListener('click',openM));modal.querySelectorAll('.js-wa-close').forEach(el=>el.addEventListener('click',closeM));form.addEventListener('submit',e=>{e.preventDefault();const n=document.getElementById('wa-name').value.trim(),p=document.getElementById('wa-phone').value.trim(),i=(document.getElementById('wa-interest').value||'').trim();if(!n||!p)return;openWA(n,p,i);closeM()});document.getElementById('waSkip').onclick=()=>{openWA('','','');closeM()};const nav=document.getElementById('nav'),burger=document.getElementById('burger'),links=document.getElementById('navLinks');window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40),{passive:true});if(burger&&links)burger.addEventListener('click',()=>links.classList.toggle('open'));const bar=document.getElementById('scrollProgress');window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;bar.style.width=(h>0?(window.scrollY/h)*100:0)+'%'},{passive:true});})();</script>
-<script>(function(){const canvas=document.getElementById('bgCanvas');if(!canvas)return;const ctx=canvas.getContext('2d');let w,h;function resize(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight}function draw(){ctx.clearRect(0,0,w,h);const g=ctx.createRadialGradient(w*0.7,h*0.2,0,w*0.7,h*0.2,Math.max(w,h)*0.55);g.addColorStop(0,'rgba(212,160,23,0.06)');g.addColorStop(1,'transparent');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);const g2=ctx.createRadialGradient(w*0.15,h*0.75,0,w*0.15,h*0.75,Math.max(w,h)*0.4);g2.addColorStop(0,'rgba(79,184,255,0.04)');g2.addColorStop(1,'transparent');ctx.fillStyle=g2;ctx.fillRect(0,0,w,h);requestAnimationFrame(draw)}resize();draw();window.addEventListener('resize',resize,{passive:true});})();</script>
-<script>
-window.addEventListener('load',function(){
-  if(typeof gsap==='undefined'||typeof ScrollTrigger==='undefined')return;
-  gsap.registerPlugin(ScrollTrigger);
-  const easeOut='expo.out';
-  const video=document.getElementById('deskVideo');
-  const title=document.getElementById('scrubTitle');
-  const sub=document.getElementById('scrubSub');
-  const caption=document.getElementById('scrubCaption');
-  const steps=document.querySelectorAll('#scrubSteps li');
-  const bar=document.getElementById('scrubBar');
-  const copy=[
-    {t:'What if every enquiry was already answered?',s:'No chasing. No missed WhatsApps. No leads going cold while you were on a job.',c:'01 · The problem'},
-    {t:'This is your Renolt desk.',s:'Every message lands here automatically. The system reads it and replies in seconds.',c:'02 · Your desk — live'},
-    {t:'Only what actually needs you.',s:'Hot leads are marked. Follow-ups are queued. Viewings get booked without you typing a line.',c:'03 · Action queue'},
-    {t:'We set it up for your business.',s:'Real estate and home-service teams use this. You focus on people ready to buy or book.',c:'04 · Installed for you'}
-  ];
-  let lastStep=-1;
-  function setStep(i){
-    if(i===lastStep)return;lastStep=i;
-    steps.forEach((el,n)=>el.classList.toggle('on',n===i));
-    if(title){gsap.to(title,{opacity:0,y:10,duration:0.12,onComplete:()=>{title.textContent=copy[i].t;gsap.to(title,{opacity:1,y:0,duration:0.35,ease:easeOut});}})}
-    if(sub){gsap.to(sub,{opacity:0,duration:0.1,onComplete:()=>{sub.textContent=copy[i].s;gsap.to(sub,{opacity:1,duration:0.3,ease:easeOut});}})}
-    if(caption)caption.textContent=copy[i].c;
-  }
-  function bindScrub(){
-    const dur=(video&&video.duration&&isFinite(video.duration)&&video.duration>0)?video.duration:41;
-    ScrollTrigger.create({
-      trigger:'.desk-scrub-track',
-      start:'top top',
-      end:'+=180%',
-      pin:'.desk-scrub-pin',
-      scrub:0.65,
-      anticipatePin:1,
-      invalidateOnRefresh:true,
-      onUpdate:function(self){
-        var p=self.progress;
-        if(bar)bar.style.width=(p*100)+'%';
-        if(video&&dur>0){try{var t=Math.min(dur*0.98,p*dur);if(Math.abs(video.currentTime-t)>0.04)video.currentTime=t}catch(e){}}
-        setStep(Math.min(3,Math.floor(p*4)));
-      }
-    });
-  }
-  if(video){
-    video.addEventListener('loadedmetadata',bindScrub,{once:true});
-    if(video.readyState>=1)bindScrub();
-    setTimeout(bindScrub,600);
-  } else bindScrub();
-  steps.forEach(function(li){
-    li.style.cursor='pointer';
-    li.addEventListener('click',function(){
-      var i=Number(li.getAttribute('data-i')||0);
-      var st=ScrollTrigger.getAll().find(function(s){return s.trigger&&s.trigger.classList&&s.trigger.classList.contains('desk-scrub-track')});
-      if(st){var target=st.start+(st.end-st.start)*((i+0.5)/4);window.scrollTo({top:target,behavior:'smooth'})}
-    });
-  });
-  gsap.from('.hero .chip',{y:16,opacity:0,duration:0.5,ease:easeOut});
-  gsap.from('.hero h1',{y:36,opacity:0,duration:0.75,delay:0.06,ease:easeOut});
-  gsap.from('.hero .lead',{y:20,opacity:0,duration:0.55,delay:0.14,ease:easeOut});
-  gsap.from('.hero .actions',{y:16,opacity:0,duration:0.5,delay:0.2,ease:easeOut});
-  gsap.from('.hero-visual',{y:40,opacity:0,duration:0.8,delay:0.12,ease:easeOut});
-  gsap.utils.toArray('.glass, .glass-soft, .product-card, .feature-card, .work-card, .compare-col').forEach(function(el){
-    gsap.from(el,{scrollTrigger:{trigger:el,start:'top 90%'},y:28,opacity:0,duration:0.6,ease:easeOut});
-  });
-});
-</script>
+
+<script src="app.js"></script>
 </body>
 </html>
