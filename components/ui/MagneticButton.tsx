@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useRef, type ReactNode, type MouseEvent } from "react";
 export default function MagneticButton({ children, href, variant = "solid" }: { children: ReactNode; href: string; variant?: "solid" | "ghost" }) {
-  const ref = useRef<HTMLAnchorElement>(null);
+  const ref = useRef<HTMLSpanElement>(null);
   const move = (e: MouseEvent) => {
     const el = ref.current; if (!el) return;
     const r = el.getBoundingClientRect();
@@ -10,7 +10,8 @@ export default function MagneticButton({ children, href, variant = "solid" }: { 
   };
   const cls = variant === "solid" ? "sheen bg-lime text-black" : "glass text-ceramic";
   return (
-    <Link ref={ref} href={href} onMouseMove={move} onMouseLeave={() => { if (ref.current) ref.current.style.transform = "translate(0,0)"; }}
-      className={`inline-block rounded-full px-7 py-3.5 font-medium transition-transform duration-200 ease-out ${cls}`}>{children}</Link>
+    <span ref={ref} onMouseMove={move} onMouseLeave={() => { if (ref.current) ref.current.style.transform = "translate(0,0)"; }} className="inline-block transition-transform duration-200 ease-out">
+      <Link href={href} className={`inline-block rounded-full px-7 py-3.5 font-medium ${cls}`}>{children}</Link>
+    </span>
   );
 }
