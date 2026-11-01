@@ -36,7 +36,7 @@ export default function Home() {
         <section className="mx-auto max-w-6xl px-6 py-24">
           <BlurReveal><h2 className="fraunces text-4xl font-bold text-[#FAFAF8]">Six flows</h2></BlurReveal>
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {AGENTS.map((a, i) => <BlurReveal key={a.slug} delay={(i % 3) * 0.1}><AgentCard index={i} {...a} /></BlurReveal>)}
+            {AGENTS.map((a, i) => <BlurReveal key={a.slug} delay={(i % 3) * 0.1}><AgentCard index={i} slug={a.slug} name={a.name} line={a.line} /></BlurReveal>)}
           </div>
         </section>
         <section className="mx-auto max-w-4xl px-6 py-24 text-center">

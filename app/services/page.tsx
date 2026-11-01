@@ -9,7 +9,7 @@ export default function Services() {
       <h1 className="fraunces text-5xl font-bold text-[#FAFAF8]">Services</h1>
       <p className="mt-4 max-w-xl text-ceramic/70">Six flows. Hover a card to see the letters swap.</p>
       <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {AGENTS.map((a, i) => <BlurReveal key={a.slug} delay={(i % 3) * 0.1}><AgentCard index={i} {...a} /></BlurReveal>)}
+        {AGENTS.map((a, i) => <BlurReveal key={a.slug} delay={(i % 3) * 0.1}><AgentCard index={i} slug={a.slug} name={a.name} line={a.line} /></BlurReveal>)}
       </div>
     </main>
   );

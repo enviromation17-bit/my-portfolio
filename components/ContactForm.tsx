@@ -6,7 +6,14 @@ export default function ContactForm({ options, template = "", onTemplate }: { op
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault(); setState("sending");
     const f = new FormData(e.currentTarget);
-    const payload = Object.fromEntries(["name", "email", "company", "message", "honeypot"].map((k) => [k, String(f.get(k) ?? "")]).concat(options ? [["template", template]] : []));
+    const payload: Record<string, string> = {
+      name: String(f.get("name") ?? ""),
+      email: String(f.get("email") ?? ""),
+      company: String(f.get("company") ?? ""),
+      message: String(f.get("message") ?? ""),
+      honeypot: String(f.get("honeypot") ?? ""),
+    };
+    if (options) payload.template = template;
     try {
       const r = await fetch("/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
       const j = await r.json().catch(() => ({}));
