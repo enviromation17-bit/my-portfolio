@@ -1,4 +1,4 @@
-/* Renolt Flow — Black + Parrot Premium */
+/* Renolt Flow — Black + Parrot Premium FINAL */
 :root{
   --black:#050706;
   --parrot:#D4FF32;
@@ -40,10 +40,7 @@ a{color:inherit;text-decoration:none}
 .brand-name{font-size:16px;letter-spacing:-.02em;color:var(--ceramic);font-weight:700}
 .links{display:flex;gap:28px;font-size:13px;color:var(--muted)}
 .links a:hover{color:var(--ceramic)}
-.nav-cta{
-  padding:8px 20px;border-radius:999px;background:var(--parrot);color:var(--black);
-  font-size:13px;font-weight:600;display:inline-flex;
-}
+.nav-cta{padding:8px 20px;border-radius:999px;background:var(--parrot);color:var(--black);font-size:13px;font-weight:600;display:inline-flex}
 .nav-cta:hover{box-shadow:0 0 28px rgba(212,255,50,.4)}
 
 .glass{
@@ -67,16 +64,9 @@ a{color:inherit;text-decoration:none}
 .lead{margin-top:32px;max-width:520px;font-size:17px;line-height:1.6;color:var(--muted)}
 .actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:40px}
 .actions.center{justify-content:center}
-.btn-parrot{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:14px 28px;border-radius:999px;background:var(--parrot);color:var(--black);
-  font-size:14px;font-weight:600;letter-spacing:.02em;
-}
+.btn-parrot{display:inline-flex;align-items:center;justify-content:center;padding:14px 28px;border-radius:999px;background:var(--parrot);color:var(--black);font-size:14px;font-weight:600}
 .btn-parrot:hover{box-shadow:0 0 32px rgba(212,255,50,.45)}
-.btn-ghost{
-  display:inline-flex;align-items:center;padding:14px 28px;border-radius:999px;
-  border:1px solid rgba(255,255,255,.1);font-size:14px;letter-spacing:.02em;color:#FAFAF8;
-}
+.btn-ghost{display:inline-flex;align-items:center;padding:14px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.1);font-size:14px;color:#FAFAF8}
 .btn-ghost:hover{border-color:rgba(212,255,50,.4);color:var(--parrot)}
 .stats{margin-top:64px;padding-top:32px;border-top:1px solid rgba(255,255,255,.1);display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:560px}
 .stats .k{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage)}
@@ -118,9 +108,19 @@ a{color:inherit;text-decoration:none}
 .cta-box p{margin:16px auto 0;max-width:420px;font-size:16px;color:var(--muted)}
 .cta-box .actions{margin-top:32px}
 
-.foot{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.06);padding:40px 24px;max-width:var(--max);margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:13px;color:var(--muted)}
-.foot-links{display:flex;gap:24px}
-.foot-links a:hover{color:var(--parrot)}
+.site-footer{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.06);padding:48px 24px 28px;max-width:var(--max);margin:0 auto}
+.footer-top{display:grid;gap:32px}
+@media(min-width:900px){.footer-top{grid-template-columns:1.2fr 2fr;gap:48px}}
+.footer-brand{display:flex;gap:14px;align-items:center}
+.avatar-r.sm{width:40px;height:40px}
+.footer-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+@media(min-width:700px){.footer-cols{grid-template-columns:repeat(4,1fr)}}
+.footer-cols a{display:block;margin-top:8px;font-size:13px;color:var(--muted)}
+.footer-cols a:hover{color:var(--parrot)}
+.langs{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.langs span{font-size:12px;color:var(--muted);padding:4px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.08)}
+.footer-bottom{margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:12px;color:var(--muted)}
+.secure{color:var(--sage)}
 
 @media(max-width:800px){
   .links{display:none}
