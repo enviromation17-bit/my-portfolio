@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import Rilo3D, { type Rilo3DActivity } from "./Rilo3D";
 
-type Activity = "idle" | "type" | "think" | "read" | "wave" | "sleep";
+type Activity = Rilo3DActivity;
 
 const ACTIVITIES: { id: Activity; label: string; screen: string }[] = [
   { id: "idle", label: "At desk", screen: "Renolt Flow · ready" },
@@ -20,7 +21,7 @@ const FAQ: { test: RegExp; reply: string }[] = [
   { test: /approval|safe|security|permission/i, reply: "Sensitive steps can wait for approval. Backend is the real gate." },
   { test: /how.*(work|flow)|what is|outcome/i, reply: "Understand → Detect → Decide → Act → Verify → Improve." },
   { test: /contact|talk|human|call/i, reply: "Use Contact / Get started — a person will respond." },
-  { test: /hello|hi|hey|who are you/i, reply: "Business Rilo — I sit at this desk and help explain Flow." },
+  { test: /hello|hi|hey|who are you/i, reply: "Business Rilo — 3D desk companion for Renolt Flow." },
   { test: /hide|go away|sleep/i, reply: "Hiding the desk. Open the chip anytime." },
 ];
 
@@ -29,52 +30,6 @@ function replyTo(q: string) {
   if (!t) return "Ask about leads, omni, pricing, demo, or approvals.";
   for (const f of FAQ) if (f.test.test(t)) return f.reply;
   return "I can cover Flow outcomes, leads, omni, pricing, and the demo — or send you to Contact.";
-}
-
-function Rilo({ activity }: { activity: Activity }) {
-  const sleepy = activity === "sleep";
-  const focus = activity === "think" || activity === "read";
-  const happy = activity === "wave";
-  return (
-    <svg className={`rilo-body rilo-act-${activity}`} width="72" height="80" viewBox="0 0 56 64" fill="none" aria-hidden>
-      <ellipse cx="28" cy="60" rx="12" ry="2.5" fill="rgba(0,0,0,0.2)" />
-      <ellipse cx="22" cy="54" rx="5" ry="6" fill="#F5F2EC" />
-      <ellipse cx="34" cy="54" rx="5" ry="6" fill="#F5F2EC" />
-      <ellipse cx="28" cy="42" rx="14" ry="16" fill="#FAF8F4" />
-      <path d="M14 38c0-2 2-6 6-8 2 6 6 9 8 10 2-1 6-4 8-10 4 2 6 6 6 8v10c0 4-4 8-14 8s-14-4-14-8V38z" fill="#5B6B7C" />
-      <g className="rilo-arm-l">
-        <ellipse cx="12" cy="40" rx="5" ry="7" fill="#FAF8F4" transform="rotate(-15 12 40)" />
-      </g>
-      <g className="rilo-arm-r">
-        <ellipse cx="44" cy="38" rx="5" ry="8" fill="#FAF8F4" transform="rotate(20 44 38)" />
-      </g>
-      <ellipse cx="28" cy="20" rx="16" ry="15" fill="#FAF8F4" />
-      <path d="M36 8c8-2 14 4 12 12-1 4-4 6-8 6 2-4 1-10-4-14z" fill="#FAF8F4" />
-      <ellipse cx="44" cy="14" rx="5" ry="6" fill="#6B7C8F" transform="rotate(25 44 14)" />
-      {sleepy ? (
-        <>
-          <path d="M18 20h8" stroke="#1a1a1a" strokeWidth="1.6" strokeLinecap="round" />
-          <path d="M30 20h8" stroke="#1a1a1a" strokeWidth="1.6" strokeLinecap="round" />
-        </>
-      ) : (
-        <>
-          <ellipse cx="22" cy="20" rx="3.2" ry={focus ? 2.4 : 3.6} fill="#1a1a1a" />
-          <ellipse cx="34" cy="20" rx="3.2" ry={focus ? 2.4 : 3.6} fill="#1a1a1a" />
-          <circle cx="23" cy="18.6" r="1" fill="#fff" opacity="0.95" />
-          <circle cx="35" cy="18.6" r="1" fill="#fff" opacity="0.95" />
-        </>
-      )}
-      {happy ? (
-        <path d="M23 26c2 3 8 3 10 0" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" fill="none" />
-      ) : sleepy ? (
-        <path d="M25 27c2 .8 4 .8 6 0" stroke="#1a1a1a" strokeWidth="1.2" strokeLinecap="round" fill="none" />
-      ) : focus ? (
-        <path d="M25 27c2 1 5 1 7 0" stroke="#1a1a1a" strokeWidth="1.3" strokeLinecap="round" fill="none" />
-      ) : (
-        <path d="M24 26c1.5 2 6.5 2 8 0" stroke="#1a1a1a" strokeWidth="1.4" strokeLinecap="round" fill="none" />
-      )}
-    </svg>
-  );
 }
 
 export default function Cursor() {
@@ -97,12 +52,11 @@ export default function Cursor() {
     }
   }, []);
 
-  // Autonomous desk activities (Codex-pet style)
   useEffect(() => {
     if (!mounted || hidden) return;
     const cycle = () => {
       if (userBusy.current) return;
-      const next = ACTIVITIES[Math.floor(Math.random() * (ACTIVITIES.length - 1))]; // avoid sleep mostly
+      const next = ACTIVITIES[Math.floor(Math.random() * (ACTIVITIES.length - 1))];
       setActivity(next.id);
       setScreen(next.screen);
     };
@@ -182,7 +136,6 @@ export default function Cursor() {
 
   return (
     <aside className={`rilo-desk rilo-act-${activity}`} aria-label="Business Rilo desk">
-      {/* Mini computer */}
       <div className="rilo-pc">
         <div className="rilo-pc-bezel">
           <div className="rilo-pc-screen">
@@ -199,9 +152,8 @@ export default function Cursor() {
         <div className="rilo-pc-base" />
       </div>
 
-      {/* Character at desk */}
       <div className="rilo-seat">
-        <Rilo activity={activity} />
+        <Rilo3D activity={activity} size={148} />
       </div>
 
       {panel && (
