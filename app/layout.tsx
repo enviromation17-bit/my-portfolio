@@ -5,11 +5,12 @@ import LenisProvider from "@/components/LenisProvider";
 import GlassNav from "@/components/ui/GlassNav";
 import ScrollProgress from "@/components/effects/ScrollProgress";
 import Footer from "@/components/ui/Footer";
+import Cursor from "@/components/effects/Cursor";
 
 export const metadata: Metadata = {
-  title: "Renolt — From business goals to verified action",
+  title: "Renolt Flow — From business goals to verified action",
   description:
-    "Renolt helps teams know what needs attention, decide what to do next, run authorized work, and see evidence of the result. Renolt Flow is the business product focus.",
+    "Renolt Flow helps teams know what needs attention, decide what to do next, run authorized work, and see evidence of the result.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="bg-bg text-ceramic">
         <ScrollProgress />
         <div className="grain" aria-hidden="true" />
+        <Cursor />
         <LenisProvider>
           <GlassNav />
           {children}
