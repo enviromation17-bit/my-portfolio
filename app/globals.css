@@ -23,13 +23,16 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 
-/* —— Business Rilo floating companion (Muse / Codex pet style) —— */
+/* —— Business Rilo companion —— */
 .rilo-widget{
-  position:fixed;z-index:90;width:160px;
+  position:fixed;z-index:90;width:200px;
   display:flex;flex-direction:column;align-items:center;gap:6px;
   touch-action:none;user-select:none;cursor:grab;
+  transition:filter .3s;
 }
 .rilo-widget:active{cursor:grabbing}
+.rilo-following{cursor:default}
+.rilo-following .rilo-avatar{pointer-events:none}
 .rilo-avatar{
   position:relative;z-index:2;border:0;background:transparent;padding:0;cursor:pointer;
   filter:drop-shadow(0 12px 28px rgba(0,0,0,.45));
@@ -38,23 +41,38 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .rilo-avatar:hover{transform:scale(1.06)}
 .rilo-avatar:active{transform:scale(.96)}
 .rilo-avatar svg{display:block;width:112px;height:128px;animation:rilo-bob 2.8s ease-in-out infinite}
+.rilo-mood-think .rilo-avatar svg{animation:rilo-bob 1.1s ease-in-out infinite,rilo-think-glow 1.4s ease-in-out infinite}
+.rilo-mood-listen .rilo-avatar svg{animation:rilo-bob 2s ease-in-out infinite}
+.rilo-following .rilo-avatar svg{animation:rilo-bob 1.6s ease-in-out infinite}
 
 .rilo-orbit{position:absolute;left:50%;top:48px;width:120px;height:120px;margin:-60px 0 0 -60px;pointer-events:none;z-index:1}
 .rilo-dot{position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px;border-radius:50%;background:#D4FF32;box-shadow:0 0 10px rgba(212,255,50,.75)}
 .rilo-dot.d1{animation:rilo-orbit 3.2s linear infinite}
 .rilo-dot.d2{animation:rilo-orbit 3.2s linear infinite 1.05s}
 .rilo-dot.d3{animation:rilo-orbit 3.2s linear infinite 2.1s}
+.rilo-mood-think .rilo-dot,.rilo-mood-demo .rilo-dot{animation-duration:1.4s}
 .rilo-mood-explain .rilo-dot,.rilo-mood-flow .rilo-dot{animation-duration:2s}
-.rilo-mood-demo .rilo-dot{animation-duration:1.6s}
+.rilo-following .rilo-dot{animation-duration:2.2s}
 
 .rilo-bubble{
-  max-width:200px;padding:10px 12px;border-radius:14px;
-  background:rgba(10,14,11,.92);border:1px solid rgba(212,255,50,.28);
-  backdrop-filter:blur(12px);box-shadow:0 12px 40px rgba(0,0,0,.4);
+  width:200px;padding:10px 12px;border-radius:14px;
+  background:rgba(10,14,11,.94);border:1px solid rgba(212,255,50,.28);
+  backdrop-filter:blur(12px);box-shadow:0 12px 40px rgba(0,0,0,.45);
   font-size:12px;line-height:1.45;color:#F7F5F0;
   animation:rilo-bubble-in .35s cubic-bezier(.16,1,.3,1);
 }
 .rilo-bubble p{margin:0}
+.rilo-ask{display:flex;gap:6px;margin-top:10px}
+.rilo-ask input{
+  flex:1;min-width:0;border-radius:999px;border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.05);color:#FAFAF8;padding:6px 10px;font-size:11px;outline:none;
+}
+.rilo-ask input:focus{border-color:rgba(212,255,50,.45)}
+.rilo-ask input::placeholder{color:rgba(138,154,139,.8)}
+.rilo-ask button[type=submit]{
+  border:0;border-radius:999px;background:#D4FF32;color:#000;font-size:10px;font-weight:600;
+  padding:6px 10px;cursor:pointer;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em;text-transform:uppercase;
+}
 .rilo-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .rilo-actions a,.rilo-actions button{
   font-size:10px;letter-spacing:.04em;text-transform:uppercase;
@@ -72,6 +90,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .rilo-hint{margin:0;font-size:9px;color:rgba(138,154,139,.7);letter-spacing:.04em}
 
 @keyframes rilo-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes rilo-think-glow{0%,100%{filter:drop-shadow(0 0 0 transparent)}50%{filter:drop-shadow(0 0 10px rgba(212,255,50,.35))}}
 @keyframes rilo-orbit{
   0%{transform:rotate(0deg) translateX(48px) rotate(0deg)}
   100%{transform:rotate(360deg) translateX(48px) rotate(-360deg)}
@@ -79,9 +98,9 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 @keyframes rilo-bubble-in{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:none}}
 
 @media (max-width:640px){
-  .rilo-widget{width:120px}
+  .rilo-widget{width:150px}
   .rilo-avatar svg{width:88px;height:100px}
-  .rilo-bubble{max-width:160px;font-size:11px}
+  .rilo-bubble{width:160px;font-size:11px}
   .rilo-hint{display:none}
 }
 @media (prefers-reduced-motion:reduce){
